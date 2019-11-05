@@ -1,0 +1,90 @@
+﻿@model KSA_MOTOR.Models.quotation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>quotation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Make)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Make)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VPicture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VPicture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PartsNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartsNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PartsName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartsName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PartsDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartsDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PPicture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PPicture)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

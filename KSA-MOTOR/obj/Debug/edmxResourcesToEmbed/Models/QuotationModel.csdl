@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KSAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="quotation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Make" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Year" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Model" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VIN" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="VPicture" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PartsNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PartsName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PartsDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PPicture" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="QuotationDbContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="quotations" EntityType="Self.quotation" />
+    <EntitySet Name="Administrations" EntityType="KSAModel.Administration" />
+  </EntityContainer>
+  <EntityType Name="Administration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

@@ -74,3 +74,9 @@ C:\Users\Tanvir\source\repos\KSA-MOTOR\KSA-MOTOR\obj\Debug\KSA-MOTOR.csproj.Core
 C:\Users\Tanvir\source\repos\KSA-MOTOR\KSA-MOTOR\obj\Debug\KSA-MOTOR.csproj.CopyComplete
 C:\Users\Tanvir\source\repos\KSA-MOTOR\KSA-MOTOR\obj\Debug\KSA-MOTOR.dll
 C:\Users\Tanvir\source\repos\KSA-MOTOR\KSA-MOTOR\obj\Debug\KSA-MOTOR.pdb
+C:\Users\Tanvir\source\repos\KSA-MOTOR\KSA-MOTOR\bin\EntityFramework.dll
+C:\Users\Tanvir\source\repos\KSA-MOTOR\KSA-MOTOR\bin\EntityFramework.SqlServer.dll
+C:\Users\Tanvir\source\repos\KSA-MOTOR\KSA-MOTOR\bin\EntityFramework.xml
+C:\Users\Tanvir\source\repos\KSA-MOTOR\KSA-MOTOR\bin\EntityFramework.SqlServer.xml
+C:\Users\Tanvir\source\repos\KSA-MOTOR\KSA-MOTOR\bin\BusinessLayer.dll
+C:\Users\Tanvir\source\repos\KSA-MOTOR\KSA-MOTOR\bin\BusinessLayer.pdb
