@@ -26,7 +26,7 @@ namespace KSA_MOTOR.Controllers
       
         [HttpPost]
 
-        [Authorize()]
+       
         public ActionResult Index( string Password)
         {
 

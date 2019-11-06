@@ -27,5 +27,7 @@ namespace KSA_MOTOR.Models
     
         public virtual DbSet<quotation> quotations { get; set; }
         public virtual DbSet<Administration> Administrations { get; set; }
+
+        public System.Data.Entity.DbSet<BusinessLayer.PartsInventory> PartsInventories { get; set; }
     }
 }
