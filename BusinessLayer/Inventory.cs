@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
+using System.IO;
+using System.Web.UI.WebControls;
+
+
 
 namespace BusinessLayer
 {
@@ -16,7 +20,7 @@ namespace BusinessLayer
         {
             get
             {
-                IList<PartsInventory> Parts = new List<PartsInventory>();
+                List<PartsInventory> Parts = new List<PartsInventory>();
                 SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
                 SqlCommand command = new SqlCommand("spGetAllParts", connection);
                 command.CommandType = CommandType.StoredProcedure;
@@ -29,8 +33,13 @@ namespace BusinessLayer
                     Part.ID = Convert.ToInt32(sdr["ID"]);
                     Part.Name = sdr["Name"].ToString();
                     Part.Description = sdr["Description"].ToString();
-                    Part.Picture = sdr["Picture"].ToString();
-                    Part.VehicleId = 1;
+                   
+                    Part.ImagePath = sdr["Picture"].ToString();
+
+                    Part.BuyPrice = sdr["BuyPrice"].ToString();
+                    Part.SalePrice = sdr["SalePrice"].ToString();
+                    Part.Stock = sdr["Stock"].ToString();
+                   
                     Parts.Add(Part);
 
 
@@ -39,6 +48,97 @@ namespace BusinessLayer
 
             }
         }
+
+
+        public IEnumerable<Vehicle> Vehicles
+        {
+            get
+            {
+                IList<Vehicle> Vehicless = new List<Vehicle>();
+                SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
+                SqlCommand command = new SqlCommand("spGetAllVehicle", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                connection.Open();
+                SqlDataReader sdr = command.ExecuteReader();
+                while (sdr.Read())
+                {
+                    Vehicle vehicle = new Vehicle();
+
+                    vehicle.Id = Convert.ToInt32(sdr["Id"]);
+                    vehicle.Make = sdr["Make"].ToString();
+                    vehicle.Yearr = sdr["Yearr"].ToString();
+
+                    vehicle.Model = sdr["Model"].ToString();
+
+                    vehicle.VIN = sdr["VIN"].ToString();
+                   
+                   
+
+                    Vehicless.Add(vehicle);
+                   
+
+
+                }
+                return Vehicless;
+
+            }
+        }
+
+        public string GetRequests()
+        {
+            string req="";
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString))
+            {
+                SqlCommand command = new SqlCommand("select Stock from Parts where ID=1",connection);
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                SqlDataReader sdr = command.ExecuteReader();
+                while (sdr.Read())
+                {
+                    req = sdr["Stock"].ToString();
+                }
+            }
+            return req;
+        }
+
+
+        public void Delete(int ID)
+        {
+
+        }
+
+
+        public void AddParts(PartsInventory parts)
+        {
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
+            SqlCommand command = new SqlCommand("InsertInventory", connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter parameter = new SqlParameter("@Name", parts.Name);
+            SqlParameter parameter1 = new SqlParameter("@Description", parts.Description);
+            SqlParameter parameter2 = new SqlParameter("@Picture", parts.ImagePath);
+            SqlParameter parameter3 = new SqlParameter("@BuyPrice",parts.BuyPrice);
+            SqlParameter parameter4 = new SqlParameter("@SalePrice", parts.SalePrice);
+            SqlParameter parameter5 = new SqlParameter("@Stock", parts.Stock);
+            SqlParameter parameter6 = new SqlParameter("@VehicleId", 1);
+            SqlParameter parameter7 = new SqlParameter("@Brand", parts.Brand);
+            SqlParameter parameter8 = new SqlParameter("@Approved", parts.Approved);
+
+
+            command.Parameters.Add(parameter);
+            command.Parameters.Add(parameter1);
+            command.Parameters.Add(parameter2);
+            command.Parameters.Add(parameter3);
+            command.Parameters.Add(parameter4);
+            command.Parameters.Add(parameter5);
+            command.Parameters.Add(parameter6);
+            command.Parameters.Add(parameter7);
+            command.Parameters.Add(parameter8);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+        }
+
 
 
     }

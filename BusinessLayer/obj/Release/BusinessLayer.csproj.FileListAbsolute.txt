@@ -1,0 +1,5 @@
+C:\Users\Tanvir\source\repos\KSA-MOTOR\BusinessLayer\bin\Release\BusinessLayer.dll
+C:\Users\Tanvir\source\repos\KSA-MOTOR\BusinessLayer\bin\Release\BusinessLayer.pdb
+C:\Users\Tanvir\source\repos\KSA-MOTOR\BusinessLayer\obj\Release\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Tanvir\source\repos\KSA-MOTOR\BusinessLayer\obj\Release\BusinessLayer.dll
+C:\Users\Tanvir\source\repos\KSA-MOTOR\BusinessLayer\obj\Release\BusinessLayer.pdb

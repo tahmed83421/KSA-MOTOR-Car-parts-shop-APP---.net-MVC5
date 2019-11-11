@@ -157,6 +157,8 @@
       <DependentUpon>QuotationModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\quotatn.cs" />
+    <Compile Include="Models\Request.cs" />
+    <Compile Include="Models\VehicleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +171,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\bpad.jpg" />
+    <Content Include="Images\gaskit.jpg" />
+    <Content Include="Images\radiator.jpg" />
     <Content Include="Models\QuotationModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QuotationModel.edmx</DependentUpon>
@@ -188,6 +193,7 @@
     <Content Include="Models\QuotationModel.edmx.diagram">
       <DependentUpon>QuotationModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -224,6 +230,7 @@
     <Content Include="Views\Administrations\Edit.cshtml" />
     <Content Include="Views\Administrations\Index.cshtml" />
     <Content Include="Views\Inventories\Index.cshtml" />
+    <Content Include="Views\Inventories\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\" />

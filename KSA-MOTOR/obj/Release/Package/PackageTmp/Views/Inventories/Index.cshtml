@@ -1,0 +1,76 @@
+﻿@model IEnumerable<BusinessLayer.PartsInventory>
+    @using BusinessLayer
+
+@{
+    ViewBag.Title = "InventoryDetails";
+}
+    <div style="">
+        <h2 style="text-align:center"><b><u>Inventory Details</u></b></h2>
+        <div style="">
+            @Html.ActionLink("Hello Ahmed, You have new " + ViewData["req"] + "  Parts Request. Click here for details", "Create", "Inventories", new { Style = "color:Red;font-size:25px" })
+            <br />
+        </div>
+          <p><br />
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Picture)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VehicleId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BuyPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SalePrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Stock)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+
+                        <img src="@Url.Content(item.Picture)" height="70px" width="70px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VehicleId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BuyPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SalePrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stock)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>

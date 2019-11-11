@@ -31,9 +31,10 @@ namespace KSA_MOTOR.Controllers
         {
 
             LoginCheck login = new LoginCheck();
+           
             if (login.LoginAuthorization(Password))
             {
-                return RedirectToAction("Create");
+                return RedirectToAction("Index", "Inventories", new { area = "" });
             }
             else
             {
