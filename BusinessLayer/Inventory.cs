@@ -102,14 +102,47 @@ namespace BusinessLayer
         }
 
 
-        public void Delete(int ID)
+        public PartsInventory GetPartsById(int id)
         {
+            
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString))
+            {
+                SqlCommand command = new SqlCommand("select * from tblParts where ID="+id+"", connection);
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                SqlDataReader sdr = command.ExecuteReader();
+                PartsInventory Part = new PartsInventory();
+                while (sdr.Read())
+                {
+                    
 
+                    Part.ID = Convert.ToInt32(sdr["ID"]);
+                    Part.Name = sdr["Name"].ToString();
+                    Part.Description = sdr["Description"].ToString();
+
+                    Part.ImagePath = sdr["Picture"].ToString();
+                    Part.selctedBrands = Convert.ToInt32(sdr["VehicleId"]);
+
+                    Part.BuyPrice = sdr["BuyPrice"].ToString();
+                    Part.SalePrice = sdr["SalePrice"].ToString();
+                    Part.Stock = sdr["Stock"].ToString();
+                    Part.Brand = sdr["Brand"].ToString();
+                    Part.Approved = sdr["Approved"].ToString();
+
+                    
+                }
+                return Part;
+            }
+         
         }
+
+
 
 
         public void AddParts(PartsInventory parts)
         {
+
+            StringBuilder sb = new StringBuilder();
             SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
             SqlCommand command = new SqlCommand("InsertInventory", connection);
             command.CommandType = CommandType.StoredProcedure;
@@ -120,7 +153,12 @@ namespace BusinessLayer
             SqlParameter parameter3 = new SqlParameter("@BuyPrice",parts.BuyPrice);
             SqlParameter parameter4 = new SqlParameter("@SalePrice", parts.SalePrice);
             SqlParameter parameter5 = new SqlParameter("@Stock", parts.Stock);
-            SqlParameter parameter6 = new SqlParameter("@VehicleId", 1);
+            foreach (string item in parts.SelectedVehicles)
+            {
+               
+                sb.Append(item);
+            }
+            SqlParameter parameter6 = new SqlParameter("@VehicleId", sb.ToString());
             SqlParameter parameter7 = new SqlParameter("@Brand", parts.Brand);
             SqlParameter parameter8 = new SqlParameter("@Approved", parts.Approved);
 
@@ -138,6 +176,59 @@ namespace BusinessLayer
             connection.Open();
             command.ExecuteNonQuery();
         }
+
+
+
+        public void UpdateParts(PartsInventory parts)
+        {
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
+            SqlCommand command = new SqlCommand("UpdateParts", connection);
+            command.CommandType = CommandType.StoredProcedure;
+            SqlParameter parameter0 = new SqlParameter("@ID", parts.ID);
+            SqlParameter parameter = new SqlParameter("@Name", parts.Name);
+            SqlParameter parameter1 = new SqlParameter("@Description", parts.Description);
+            SqlParameter parameter2 = new SqlParameter("@Picture", parts.ImagePath);
+            SqlParameter parameter3 = new SqlParameter("@BuyPrice", parts.BuyPrice);
+            SqlParameter parameter4 = new SqlParameter("@SalePrice", parts.SalePrice);
+            SqlParameter parameter5 = new SqlParameter("@Stock", parts.Stock);
+            SqlParameter parameter6 = new SqlParameter("@VehicleId", 1);
+            SqlParameter parameter7 = new SqlParameter("@Brand", parts.Brand);
+            SqlParameter parameter8 = new SqlParameter("@Approved", parts.Approved);
+
+            command.Parameters.Add(parameter0);
+            command.Parameters.Add(parameter);
+            command.Parameters.Add(parameter1);
+            command.Parameters.Add(parameter2);
+            command.Parameters.Add(parameter3);
+            command.Parameters.Add(parameter4);
+            command.Parameters.Add(parameter5);
+            command.Parameters.Add(parameter6);
+            command.Parameters.Add(parameter7);
+            command.Parameters.Add(parameter8);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+        }
+
+        public void DeleteParts(int id)
+        {
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
+            SqlCommand command = new SqlCommand("DeleteParts", connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+
+            SqlParameter parameter1 = new SqlParameter("@ID", id);
+
+
+            command.Parameters.Add(parameter1);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+
+        }
+
+  
+
 
 
 

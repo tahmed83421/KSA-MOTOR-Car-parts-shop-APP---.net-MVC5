@@ -25,7 +25,7 @@
                     @Html.DisplayNameFor(model => model.Picture)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.VehicleId)
+                   NA
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.BuyPrice)
@@ -50,10 +50,10 @@
                     </td>
                     <td>
 
-                        <img src="@Url.Content(item.Picture)" height="70px" width="70px" />
+                        <img src="@Url.Content(item.ImagePath)" height="70px" width="70px" />
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.VehicleId)
+                      N/A
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.BuyPrice)

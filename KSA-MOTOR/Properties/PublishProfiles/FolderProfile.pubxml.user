@@ -16,10 +16,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/BusinessLayer.dll">
-      <publishTime>11/09/2019 01:16:15</publishTime>
+      <publishTime>11/13/2019 10:25:03</publishTime>
     </File>
     <File Include="bin/BusinessLayer.pdb">
-      <publishTime>11/09/2019 01:16:15</publishTime>
+      <publishTime>11/13/2019 10:25:03</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>10/23/2017 13:15:18</publishTime>
@@ -28,10 +28,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2017 13:15:20</publishTime>
     </File>
     <File Include="bin/KSA-MOTOR.dll">
-      <publishTime>11/09/2019 01:18:13</publishTime>
+      <publishTime>11/13/2019 14:16:46</publishTime>
     </File>
     <File Include="bin/KSA-MOTOR.pdb">
-      <publishTime>11/09/2019 01:18:13</publishTime>
+      <publishTime>11/13/2019 14:16:46</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>05/24/2018 13:38:22</publishTime>
@@ -204,6 +204,30 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/WebGrease.dll">
       <publishTime>01/23/2014 12:57:34</publishTime>
     </File>
+    <File Include="Content/bootstrap-grid.css">
+      <publishTime>11/12/2019 23:36:13</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.css.map">
+      <publishTime>11/12/2019 23:36:13</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.min.css">
+      <publishTime>11/12/2019 23:36:13</publishTime>
+    </File>
+    <File Include="Content/bootstrap-grid.min.css.map">
+      <publishTime>11/12/2019 23:36:13</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.css">
+      <publishTime>11/12/2019 23:36:13</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.css.map">
+      <publishTime>11/12/2019 23:36:13</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.min.css">
+      <publishTime>11/12/2019 23:36:13</publishTime>
+    </File>
+    <File Include="Content/bootstrap-reboot.min.css.map">
+      <publishTime>11/12/2019 23:36:13</publishTime>
+    </File>
     <File Include="Content/bootstrap-theme.css">
       <publishTime>10/28/2019 02:10:46</publishTime>
     </File>
@@ -217,16 +241,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2019 02:10:46</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>10/28/2019 02:10:46</publishTime>
+      <publishTime>11/13/2019 14:15:11</publishTime>
     </File>
     <File Include="Content/bootstrap.css.map">
-      <publishTime>10/28/2019 02:10:46</publishTime>
+      <publishTime>11/12/2019 23:36:13</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
-      <publishTime>10/28/2019 02:10:46</publishTime>
+      <publishTime>11/12/2019 23:36:12</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css.map">
-      <publishTime>10/28/2019 02:10:46</publishTime>
+      <publishTime>11/12/2019 23:36:12</publishTime>
+    </File>
+    <File Include="Content/chosen.css">
+      <publishTime>11/12/2019 23:45:46</publishTime>
+    </File>
+    <File Include="Content/chosen.min.css">
+      <publishTime>11/12/2019 23:45:46</publishTime>
     </File>
     <File Include="Content/Custom.css">
       <publishTime>11/08/2019 02:45:05</publishTime>
@@ -256,10 +286,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2019 02:10:43</publishTime>
     </File>
     <File Include="Images/bpad.jpg">
-      <publishTime>11/06/2019 02:47:52</publishTime>
+      <publishTime>11/12/2019 22:44:03</publishTime>
     </File>
     <File Include="Images/gaskit.jpg">
-      <publishTime>11/06/2019 03:03:20</publishTime>
+      <publishTime>11/12/2019 22:52:37</publishTime>
     </File>
     <File Include="Images/radiator.jpg">
       <publishTime>11/06/2019 03:00:46</publishTime>
@@ -267,11 +297,68 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Models/QuotationModel.edmx.diagram">
       <publishTime>11/04/2019 10:44:36</publishTime>
     </File>
+    <File Include="Models/UserModel.edmx.diagram">
+      <publishTime>11/12/2019 11:23:01</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.js">
+      <publishTime>11/12/2019 23:36:12</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.js.map">
+      <publishTime>11/12/2019 23:36:12</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.min.js">
+      <publishTime>11/12/2019 23:36:12</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.min.js.map">
+      <publishTime>11/12/2019 23:36:12</publishTime>
+    </File>
     <File Include="Scripts/bootstrap.js">
-      <publishTime>10/28/2019 02:10:46</publishTime>
+      <publishTime>11/12/2019 23:36:12</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js.map">
+      <publishTime>11/12/2019 23:36:12</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
-      <publishTime>10/28/2019 02:10:46</publishTime>
+      <publishTime>11/12/2019 23:36:12</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js.map">
+      <publishTime>11/12/2019 23:36:12</publishTime>
+    </File>
+    <File Include="Scripts/chosen.jquery.js">
+      <publishTime>11/12/2019 23:45:10</publishTime>
+    </File>
+    <File Include="Scripts/chosen.jquery.min.js">
+      <publishTime>11/12/2019 23:45:10</publishTime>
+    </File>
+    <File Include="Scripts/chosen.proto.js">
+      <publishTime>11/12/2019 23:45:10</publishTime>
+    </File>
+    <File Include="Scripts/chosen.proto.min.js">
+      <publishTime>11/12/2019 23:45:10</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper-utils.js">
+      <publishTime>11/12/2019 23:36:11</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper-utils.js.map">
+      <publishTime>11/12/2019 23:36:11</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper-utils.min.js">
+      <publishTime>11/12/2019 23:36:11</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper-utils.min.js.map">
+      <publishTime>11/12/2019 23:36:11</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper.js">
+      <publishTime>11/12/2019 23:36:11</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper.js.map">
+      <publishTime>11/12/2019 23:36:11</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper.min.js">
+      <publishTime>11/12/2019 23:36:11</publishTime>
+    </File>
+    <File Include="Scripts/esm/popper.min.js.map">
+      <publishTime>11/12/2019 23:36:11</publishTime>
     </File>
     <File Include="Scripts/jquery-3.3.1.js">
       <publishTime>10/28/2019 02:10:46</publishTime>
@@ -291,6 +378,24 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery-3.3.1.slim.min.map">
       <publishTime>10/28/2019 02:10:46</publishTime>
     </File>
+    <File Include="Scripts/jquery-3.4.1.js">
+      <publishTime>11/12/2019 23:36:53</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.min.js">
+      <publishTime>11/12/2019 23:36:53</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.min.map">
+      <publishTime>11/12/2019 23:36:53</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.js">
+      <publishTime>11/12/2019 23:36:53</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.min.js">
+      <publishTime>11/12/2019 23:36:53</publishTime>
+    </File>
+    <File Include="Scripts/jquery-3.4.1.slim.min.map">
+      <publishTime>11/12/2019 23:36:53</publishTime>
+    </File>
     <File Include="Scripts/jquery.validate.js">
       <publishTime>10/28/2019 02:10:48</publishTime>
     </File>
@@ -305,6 +410,57 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Scripts/modernizr-2.8.3.js">
       <publishTime>10/28/2019 02:10:48</publishTime>
+    </File>
+    <File Include="Scripts/popper-utils.js">
+      <publishTime>11/12/2019 23:36:11</publishTime>
+    </File>
+    <File Include="Scripts/popper-utils.js.map">
+      <publishTime>11/12/2019 23:36:11</publishTime>
+    </File>
+    <File Include="Scripts/popper-utils.min.js">
+      <publishTime>11/12/2019 23:36:11</publishTime>
+    </File>
+    <File Include="Scripts/popper-utils.min.js.map">
+      <publishTime>11/12/2019 23:36:11</publishTime>
+    </File>
+    <File Include="Scripts/popper.js">
+      <publishTime>11/12/2019 23:36:11</publishTime>
+    </File>
+    <File Include="Scripts/popper.js.map">
+      <publishTime>11/12/2019 23:36:11</publishTime>
+    </File>
+    <File Include="Scripts/popper.min.js">
+      <publishTime>11/12/2019 23:36:10</publishTime>
+    </File>
+    <File Include="Scripts/popper.min.js.map">
+      <publishTime>11/12/2019 23:36:10</publishTime>
+    </File>
+    <File Include="Scripts/README.md">
+      <publishTime>11/12/2019 23:36:10</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper-utils.js">
+      <publishTime>11/12/2019 23:36:10</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper-utils.js.map">
+      <publishTime>11/12/2019 23:36:10</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper-utils.min.js">
+      <publishTime>11/12/2019 23:36:10</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper-utils.min.js.map">
+      <publishTime>11/12/2019 23:36:10</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper.js">
+      <publishTime>11/12/2019 23:36:10</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper.js.map">
+      <publishTime>11/12/2019 23:36:10</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper.min.js">
+      <publishTime>11/12/2019 23:36:10</publishTime>
+    </File>
+    <File Include="Scripts/umd/popper.min.js.map">
+      <publishTime>11/12/2019 23:36:10</publishTime>
     </File>
     <File Include="Views/Administrations/Create.cshtml">
       <publishTime>11/04/2019 10:45:48</publishTime>
@@ -330,8 +486,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Home/Index.cshtml">
       <publishTime>10/28/2019 02:12:24</publishTime>
     </File>
+    <File Include="Views/Inventories/Create.cshtml">
+      <publishTime>11/13/2019 10:22:51</publishTime>
+    </File>
+    <File Include="Views/Inventories/Delete.cshtml">
+      <publishTime>11/10/2019 17:11:28</publishTime>
+    </File>
+    <File Include="Views/Inventories/Details.cshtml">
+      <publishTime>11/13/2019 10:04:04</publishTime>
+    </File>
+    <File Include="Views/Inventories/Edit.cshtml">
+      <publishTime>11/10/2019 17:39:42</publishTime>
+    </File>
     <File Include="Views/Inventories/Index.cshtml">
-      <publishTime>11/09/2019 01:16:00</publishTime>
+      <publishTime>11/10/2019 14:37:28</publishTime>
     </File>
     <File Include="Views/quotations/Create.cshtml">
       <publishTime>10/28/2019 17:46:06</publishTime>
@@ -352,7 +520,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2019 02:10:43</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/06/2019 02:40:17</publishTime>
+      <publishTime>11/13/2019 14:15:36</publishTime>
+    </File>
+    <File Include="Views/Users/Create.cshtml">
+      <publishTime>11/12/2019 11:40:53</publishTime>
+    </File>
+    <File Include="Views/Users/Delete.cshtml">
+      <publishTime>11/12/2019 11:30:38</publishTime>
+    </File>
+    <File Include="Views/Users/Details.cshtml">
+      <publishTime>11/12/2019 11:30:39</publishTime>
+    </File>
+    <File Include="Views/Users/Edit.cshtml">
+      <publishTime>11/12/2019 11:30:40</publishTime>
+    </File>
+    <File Include="Views/Users/Index.cshtml">
+      <publishTime>11/12/2019 11:43:22</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>10/28/2019 02:10:43</publishTime>
@@ -361,7 +544,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2019 02:10:43</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/08/2019 01:00:03</publishTime>
+      <publishTime>11/13/2019 10:25:08</publishTime>
     </File>
   </ItemGroup>
 </Project>

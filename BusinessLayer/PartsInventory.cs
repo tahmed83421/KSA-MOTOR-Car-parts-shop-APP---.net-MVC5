@@ -42,8 +42,10 @@ namespace BusinessLayer
         public string Stock { get; set; }
         [Required]
         [Display(Name = "Vehicle")]
-        public string SelectedVehicles { get; set; }
-        public IEnumerable<SelectListItem> Vehivcles { get; set; }
+        public string[] SelectedVehicles { get; set; }
+        public int selctedBrands { get; set; }
+        public List<Vehicle> GetVehivclesList { get; set; }
+        [Required]
         public string Brand { get; set; }
         public string Approved { get; set; }
 
