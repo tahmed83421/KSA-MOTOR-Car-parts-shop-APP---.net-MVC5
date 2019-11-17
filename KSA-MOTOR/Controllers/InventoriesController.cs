@@ -18,9 +18,13 @@ namespace KSA_MOTOR.Controllers
         
         public ActionResult Index()
         {
-           
+            PartsInventory partsInventory = new PartsInventory();
             Inventory inventory = new Inventory();
+            
+
             List<PartsInventory> Parts = inventory.Parts.ToList();
+           
+            
             ViewData["req"]= inventory.GetRequests();
             return View(Parts);
         }
@@ -31,7 +35,8 @@ namespace KSA_MOTOR.Controllers
             Inventory inventory = new Inventory();
 
             PartsInventory parts = new PartsInventory();
-            parts.GetVehivclesList = inventory.Vehicles.Select(x => new Vehicle { Id = x.Id, Make = x.Make }).ToList();
+            Vehicle vehicle = new Vehicle();
+            parts.GetVehivclesList = inventory.Vehicles.ToList();
 
 
 
@@ -88,6 +93,8 @@ namespace KSA_MOTOR.Controllers
 
             Inventory inventory = new Inventory();
             PartsInventory parts = inventory.GetPartsById(id);
+            parts.GetVehivclesList = inventory.Vehicles.ToList();
+
             return View(parts);
         }
 

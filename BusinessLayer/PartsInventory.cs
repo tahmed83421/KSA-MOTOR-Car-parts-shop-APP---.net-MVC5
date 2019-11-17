@@ -15,7 +15,7 @@ namespace BusinessLayer
 
     public interface IEParts
     {
-        int ID { get; set; }
+        int PartID { get; set; }
         string Name { get; set; }
         string Description { get; set; }
        HttpPostedFileBase Picture { get; set; }
@@ -28,26 +28,34 @@ namespace BusinessLayer
     {
 
 
-        public int ID { get; set; }
+
+        public int PartID { get; set; }
+        [Display(Name ="Car Mfg No:")]
+        public string CarMfgID { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
+
         [DataType(DataType.Upload)]
-        [Display(Name = "Upload Picture")]
+        [Display(Name = "Image")]
         [Required(ErrorMessage = "Please choose file to upload.")]
         public HttpPostedFileBase Picture { get; set; }
         public string ImagePath { get; set; }
-       
-        public string BuyPrice {get;set;}
+        public string Description { get; set; }
+        public string Brand { get; set; }
+        public string Fitment { get; set; }
+
+        public string CostPrice {get;set;}
         public string SalePrice { get; set; }
-        public string Stock { get; set; }
+        [Display(Name ="Quantity")]
+        public string Qty { get; set; }
+        public string Age { get; set; }
         [Required]
         [Display(Name = "Vehicle")]
         public string[] SelectedVehicles { get; set; }
-        public int selctedBrands { get; set; }
+        public string selctedCarBrands { get; set; }
         public List<Vehicle> GetVehivclesList { get; set; }
         [Required]
-        public string Brand { get; set; }
-        public string Approved { get; set; }
+       
+        public bool Approved { get; set; }
 
 
     }

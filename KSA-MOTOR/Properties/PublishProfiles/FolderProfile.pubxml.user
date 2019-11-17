@@ -28,10 +28,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2017 13:15:20</publishTime>
     </File>
     <File Include="bin/KSA-MOTOR.dll">
-      <publishTime>11/13/2019 14:16:46</publishTime>
+      <publishTime>11/14/2019 03:40:23</publishTime>
     </File>
     <File Include="bin/KSA-MOTOR.pdb">
-      <publishTime>11/13/2019 14:16:46</publishTime>
+      <publishTime>11/14/2019 03:40:23</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>05/24/2018 13:38:22</publishTime>
@@ -496,7 +496,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/13/2019 10:04:04</publishTime>
     </File>
     <File Include="Views/Inventories/Edit.cshtml">
-      <publishTime>11/10/2019 17:39:42</publishTime>
+      <publishTime>11/14/2019 02:11:21</publishTime>
     </File>
     <File Include="Views/Inventories/Index.cshtml">
       <publishTime>11/10/2019 14:37:28</publishTime>
@@ -520,7 +520,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2019 02:10:43</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/13/2019 14:15:36</publishTime>
+      <publishTime>11/14/2019 03:37:07</publishTime>
     </File>
     <File Include="Views/Users/Create.cshtml">
       <publishTime>11/12/2019 11:40:53</publishTime>

@@ -68,6 +68,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SelectedVehicles, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                @Html.DropDownListFor(model=> model.SelectedVehicles,Model.GetVehivclesList.Select(x=> new SelectListItem {
+
+
+               Text=x.Make,Value=x.Id.ToString()
+
+           }),new { @class="form-control"})
                 @Html.EditorFor(model => model.SelectedVehicles, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SelectedVehicles, "", new { @class = "text-danger" })
             </div>
