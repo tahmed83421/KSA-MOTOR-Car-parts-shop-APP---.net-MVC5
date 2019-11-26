@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using KSA_MOTOR.Models;
+using BusinessLayer;
 
 namespace KSA_MOTOR.Controllers
 {
@@ -18,6 +19,8 @@ namespace KSA_MOTOR.Controllers
         public ActionResult Index()
         {
             return View(db.quotations.ToList());
+            
+            
            
         }
 
@@ -36,6 +39,27 @@ namespace KSA_MOTOR.Controllers
             return View(quotation);
         }
 
+
+        public ActionResult Report(int? id)
+        {
+            MyViewModel myView = new MyViewModel();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            quotation quotation = db.quotations.Find(id);
+          
+            myView.marketAnalyzes = db.MarketAnalyzes.ToList();
+            myView.quotationss = db.quotations.Find(id);
+            if (quotation == null)
+            {
+                return HttpNotFound();
+            }
+            return View(myView);
+
+           
+        }
+
         // GET: quotations/Create
         public ActionResult Create()
         {
@@ -51,8 +75,12 @@ namespace KSA_MOTOR.Controllers
         {
             if (ModelState.IsValid)
             {
+                Inventory inventory = new Inventory();  
                 db.quotations.Add(quotation);
                 db.SaveChanges();
+                
+                string Mail= inventory.GetEmailAddressByRole("Admin");
+
                 return RedirectToAction("Index");
             }
 

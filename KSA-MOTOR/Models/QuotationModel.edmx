@@ -17,6 +17,22 @@
           <Property Name="Email" Type="varchar" MaxLength="255" />
           <Property Name="Phone" Type="varchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KSA.dbo.MarketAnalyze' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MarketAnalyze">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Brand" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Price" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Brand" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Condition" Type="varchar" MaxLength="255" />
+          <Property Name="DeliveryTime" Type="varchar" MaxLength="255" />
+          <Property Name="Supplier" Type="varchar" MaxLength="255" />
+          <Property Name="Warranty" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="quotation">
           <Key>
             <PropertyRef Name="Id" />
@@ -31,10 +47,23 @@
           <Property Name="PartsName" Type="varchar" MaxLength="255" />
           <Property Name="PartsDescription" Type="varchar" MaxLength="255" />
           <Property Name="PPicture" Type="varchar" MaxLength="255" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="KSAModelStoreContainer">
           <EntitySet Name="Administration" EntityType="Self.Administration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="quotation" EntityType="Self.quotation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MarketAnalyze" EntityType="Self.MarketAnalyze" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MarketAnalyze].[ID] AS [ID], 
+    [MarketAnalyze].[Price] AS [Price], 
+    [MarketAnalyze].[Brand] AS [Brand], 
+    [MarketAnalyze].[Condition] AS [Condition], 
+    [MarketAnalyze].[DeliveryTime] AS [DeliveryTime], 
+    [MarketAnalyze].[Supplier] AS [Supplier], 
+    [MarketAnalyze].[Warranty] AS [Warranty]
+    FROM [dbo].[MarketAnalyze] AS [MarketAnalyze]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -54,10 +83,13 @@
           <Property Name="PartsName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="PartsDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="PPicture" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="QuotationDbContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="quotations" EntityType="Self.quotation" />
           <EntitySet Name="Administrations" EntityType="KSAModel.Administration" />
+          <EntitySet Name="MarketAnalyzes" EntityType="KSAModel.MarketAnalyze" />
         </EntityContainer>
         <EntityType Name="Administration">
           <Key>
@@ -71,6 +103,20 @@
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="MarketAnalyze">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Brand" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Brand" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Condition" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryTime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Supplier" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Warranty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -80,6 +126,8 @@
           <EntitySetMapping Name="quotations">
             <EntityTypeMapping TypeName="KSAModel.quotation">
               <MappingFragment StoreEntitySet="quotation">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Make" ColumnName="Make" />
                 <ScalarProperty Name="Year" ColumnName="Year" />
@@ -102,6 +150,19 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MarketAnalyzes">
+            <EntityTypeMapping TypeName="KSAModel.MarketAnalyze">
+              <MappingFragment StoreEntitySet="MarketAnalyze">
+                <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="DeliveryTime" ColumnName="DeliveryTime" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

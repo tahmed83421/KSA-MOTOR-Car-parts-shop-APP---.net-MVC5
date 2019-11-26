@@ -24,5 +24,7 @@ namespace KSA_MOTOR.Models
         public string PartsName { get; set; }
         public string PartsDescription { get; set; }
         public string PPicture { get; set; }
+        public Nullable<System.DateTime> EntryDate { get; set; }
+        public string Status { get; set; }
     }
 }

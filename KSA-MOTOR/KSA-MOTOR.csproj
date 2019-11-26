@@ -141,6 +141,10 @@
     <Compile Include="Models\Administration.cs">
       <DependentUpon>QuotationModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MarketAnalyze.cs">
+      <DependentUpon>QuotationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MyViewModel.cs" />
     <Compile Include="Models\quotation.cs">
       <DependentUpon>QuotationModel.tt</DependentUpon>
     </Compile>
@@ -309,6 +313,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
     <Content Include="Scripts\umd\popper-utils.js.map" />
     <Content Include="Scripts\README.md" />
+    <Content Include="Views\quotations\Report.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\" />

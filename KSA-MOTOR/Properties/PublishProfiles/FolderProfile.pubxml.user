@@ -16,10 +16,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/BusinessLayer.dll">
-      <publishTime>11/13/2019 10:25:03</publishTime>
+      <publishTime>11/20/2019 02:33:11</publishTime>
     </File>
     <File Include="bin/BusinessLayer.pdb">
-      <publishTime>11/13/2019 10:25:03</publishTime>
+      <publishTime>11/20/2019 02:33:11</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>10/23/2017 13:15:18</publishTime>
@@ -28,10 +28,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2017 13:15:20</publishTime>
     </File>
     <File Include="bin/KSA-MOTOR.dll">
-      <publishTime>11/14/2019 03:40:23</publishTime>
+      <publishTime>11/20/2019 02:33:12</publishTime>
     </File>
     <File Include="bin/KSA-MOTOR.pdb">
-      <publishTime>11/14/2019 03:40:23</publishTime>
+      <publishTime>11/20/2019 02:33:12</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>05/24/2018 13:38:22</publishTime>
@@ -286,19 +286,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2019 02:10:43</publishTime>
     </File>
     <File Include="Images/bpad.jpg">
-      <publishTime>11/12/2019 22:44:03</publishTime>
+      <publishTime>11/15/2019 15:37:26</publishTime>
     </File>
     <File Include="Images/gaskit.jpg">
-      <publishTime>11/12/2019 22:52:37</publishTime>
+      <publishTime>11/15/2019 12:42:11</publishTime>
     </File>
     <File Include="Images/radiator.jpg">
-      <publishTime>11/06/2019 03:00:46</publishTime>
+      <publishTime>11/15/2019 15:32:19</publishTime>
     </File>
     <File Include="Models/QuotationModel.edmx.diagram">
       <publishTime>11/04/2019 10:44:36</publishTime>
     </File>
     <File Include="Models/UserModel.edmx.diagram">
-      <publishTime>11/12/2019 11:23:01</publishTime>
+      <publishTime>11/14/2019 22:29:55</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
       <publishTime>11/12/2019 23:36:12</publishTime>
@@ -487,22 +487,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2019 02:12:24</publishTime>
     </File>
     <File Include="Views/Inventories/Create.cshtml">
-      <publishTime>11/13/2019 10:22:51</publishTime>
+      <publishTime>11/15/2019 11:11:15</publishTime>
     </File>
     <File Include="Views/Inventories/Delete.cshtml">
-      <publishTime>11/10/2019 17:11:28</publishTime>
+      <publishTime>11/17/2019 01:50:46</publishTime>
     </File>
     <File Include="Views/Inventories/Details.cshtml">
       <publishTime>11/13/2019 10:04:04</publishTime>
     </File>
     <File Include="Views/Inventories/Edit.cshtml">
-      <publishTime>11/14/2019 02:11:21</publishTime>
+      <publishTime>11/17/2019 02:03:18</publishTime>
     </File>
     <File Include="Views/Inventories/Index.cshtml">
-      <publishTime>11/10/2019 14:37:28</publishTime>
+      <publishTime>11/17/2019 02:00:18</publishTime>
     </File>
     <File Include="Views/quotations/Create.cshtml">
-      <publishTime>10/28/2019 17:46:06</publishTime>
+      <publishTime>11/17/2019 15:24:37</publishTime>
     </File>
     <File Include="Views/quotations/Delete.cshtml">
       <publishTime>10/28/2019 17:43:14</publishTime>
@@ -514,13 +514,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2019 17:43:16</publishTime>
     </File>
     <File Include="Views/quotations/Index.cshtml">
-      <publishTime>10/28/2019 17:43:16</publishTime>
+      <publishTime>11/18/2019 14:51:49</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>10/28/2019 02:10:43</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/14/2019 03:37:07</publishTime>
+      <publishTime>11/16/2019 01:56:09</publishTime>
     </File>
     <File Include="Views/Users/Create.cshtml">
       <publishTime>11/12/2019 11:40:53</publishTime>
@@ -544,7 +544,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2019 02:10:43</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/13/2019 10:25:08</publishTime>
+      <publishTime>11/20/2019 02:33:13</publishTime>
     </File>
   </ItemGroup>
 </Project>

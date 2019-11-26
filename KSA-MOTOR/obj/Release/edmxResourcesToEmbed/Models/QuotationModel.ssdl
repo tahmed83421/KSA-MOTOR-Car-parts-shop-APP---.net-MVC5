@@ -26,6 +26,8 @@
     <Property Name="PartsName" Type="varchar" MaxLength="255" />
     <Property Name="PartsDescription" Type="varchar" MaxLength="255" />
     <Property Name="PPicture" Type="varchar" MaxLength="255" />
+    <Property Name="EntryDate" Type="datetime" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="KSAModelStoreContainer">
     <EntitySet Name="Administration" EntityType="Self.Administration" Schema="dbo" store:Type="Tables" />

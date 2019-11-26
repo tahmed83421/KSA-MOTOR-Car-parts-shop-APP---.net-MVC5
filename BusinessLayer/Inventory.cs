@@ -201,6 +201,24 @@ namespace BusinessLayer
          
         }
 
+        public string GetEmailAddressByRole(string Role)
+        {
+            string Email = "";
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString))
+            {
+                SqlCommand command = new SqlCommand("select Email from Users where Role='"+Role+"'", connection);
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                SqlDataReader sdr = command.ExecuteReader();
+                while (sdr.Read())
+                {
+                  Email = sdr["Email"].ToString();
+                }
+            }
+            return Email;
+
+        }
+
 
 
 

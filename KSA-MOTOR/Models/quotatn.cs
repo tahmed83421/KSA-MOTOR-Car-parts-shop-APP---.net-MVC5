@@ -16,7 +16,9 @@ namespace KSA_MOTOR.Models
     {
        [Display(Name = "Parts Picture")]
        public string PPicture { get; set; }
+        [Display(Name ="Vehicle Picture")]
         public string VPicture { get; set; }
+        public string Status { get; set; }
     }
 
 

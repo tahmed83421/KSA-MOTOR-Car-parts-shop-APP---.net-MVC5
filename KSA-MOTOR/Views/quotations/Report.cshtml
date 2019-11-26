@@ -1,0 +1,181 @@
+﻿@model KSA_MOTOR.Models.MyViewModel
+
+
+@{
+    ViewBag.Title = "Report";
+}
+
+<h2>Report</h2>
+
+<div >
+    <br />
+    <h4 style="text-align:center;color:blueviolet">Quotation Request Information</h4>
+    <hr />
+    <dl class="dl-horizontal" >
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.Make)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.Make)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.VIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.VIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.VPicture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.VPicture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.PartsNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.PartsNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.PartsName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.PartsName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.PartsDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.PartsDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.PPicture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.PPicture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.EntryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.EntryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.Status)
+        </dd>
+
+    </dl>
+</div>
+
+
+<div class="form-group">
+
+</div>
+<div class="form-horizontal">
+    <h4  style="text-align:center;color:blueviolet">Market Analyze Report</h4>
+    <hr />
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.marketAnalyze.Brand, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.marketAnalyze.Brand, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.marketAnalyze.Brand, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.marketAnalyze.Condition, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model =>model.marketAnalyze.Condition, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.marketAnalyze.Condition, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.marketAnalyze.DeliveryTime, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.marketAnalyze.DeliveryTime, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.marketAnalyze.DeliveryTime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.marketAnalyze.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.marketAnalyze.Price, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model =>model.marketAnalyze.Price, "", new { @class = "text-danger" })
+        </div>
+    </div>
+  
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.marketAnalyze.Supplier, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model =>  model.marketAnalyze.Supplier, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model =>  model.marketAnalyze.Supplier, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.marketAnalyze.Warranty, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.marketAnalyze.Warranty, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.marketAnalyze.Warranty, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit Quotation Report" class="btn btn-default" />
+            @Html.ActionLink("Cancel", "Index",new { @class="btn btn-default"})
+        </div>
+    </div>
+</div>
+
+
+<div>
+  
+</div>
+

@@ -3,14 +3,14 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2><b><u>Index</u></b></h2>
+<br /><br />
+<h2><b><u>Quotations</u></b></h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Request New Quotation", "Create")
 </p>
 <table class="table">
-    <tr>
+    <tr style="background-color:Highlight">
         <th>
             @Html.DisplayNameFor(model => model.Make)
         </th>
@@ -38,44 +38,63 @@
         <th>
             @Html.DisplayNameFor(model => model.PPicture)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>Actions</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Make)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Year)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Model)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VIN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VPicture)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PartsNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PartsName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PartsDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PPicture)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Make)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Year)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Model)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.VIN)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.VPicture)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PartsNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PartsName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PartsDescription)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PPicture)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Status)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })|
+        @Html.ActionLink("Report", "Delete", new { id = item.Id })
+    </td>
+</tr>
+
+    }
 
 </table>
+<input id="Button1" type="button" value="button" />
+@Html.Editor("Editor1", new { id = "Editor1" })
+<script>
+    
+    $('#Button1').click(function () {
+        $('#Editor1').hide();
+         $('#Button1').hide();
+
+    });
+</script>
