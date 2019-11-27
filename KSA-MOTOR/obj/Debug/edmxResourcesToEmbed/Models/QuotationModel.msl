@@ -35,6 +35,8 @@
     <EntitySetMapping Name="MarketAnalyzes">
       <EntityTypeMapping TypeName="KSAModel.MarketAnalyze">
         <MappingFragment StoreEntitySet="MarketAnalyze">
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="QuotationId" ColumnName="QuotationId" />
           <ScalarProperty Name="Warranty" ColumnName="Warranty" />
           <ScalarProperty Name="Supplier" ColumnName="Supplier" />
           <ScalarProperty Name="DeliveryTime" ColumnName="DeliveryTime" />

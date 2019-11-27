@@ -12,13 +12,9 @@
     <Property Name="Email" Type="varchar" MaxLength="255" />
     <Property Name="Phone" Type="varchar" MaxLength="50" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'KSA.dbo.MarketAnalyze' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="MarketAnalyze">
     <Key>
       <PropertyRef Name="ID" />
-      <PropertyRef Name="Price" />
-      <PropertyRef Name="Brand" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Price" Type="varchar" MaxLength="255" Nullable="false" />
@@ -27,6 +23,8 @@ warning 6002: The table/view 'KSA.dbo.MarketAnalyze' does not have a primary key
     <Property Name="DeliveryTime" Type="varchar" MaxLength="255" />
     <Property Name="Supplier" Type="varchar" MaxLength="255" />
     <Property Name="Warranty" Type="varchar" MaxLength="50" />
+    <Property Name="QuotationId" Type="int" />
+    <Property Name="Comment" Type="varchar" MaxLength="1000" />
   </EntityType>
   <EntityType Name="quotation">
     <Key>
@@ -47,17 +45,7 @@ warning 6002: The table/view 'KSA.dbo.MarketAnalyze' does not have a primary key
   </EntityType>
   <EntityContainer Name="KSAModelStoreContainer">
     <EntitySet Name="Administration" EntityType="Self.Administration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MarketAnalyze" EntityType="Self.MarketAnalyze" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="quotation" EntityType="Self.quotation" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="MarketAnalyze" EntityType="Self.MarketAnalyze" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [MarketAnalyze].[ID] AS [ID], 
-    [MarketAnalyze].[Price] AS [Price], 
-    [MarketAnalyze].[Brand] AS [Brand], 
-    [MarketAnalyze].[Condition] AS [Condition], 
-    [MarketAnalyze].[DeliveryTime] AS [DeliveryTime], 
-    [MarketAnalyze].[Supplier] AS [Supplier], 
-    [MarketAnalyze].[Warranty] AS [Warranty]
-    FROM [dbo].[MarketAnalyze] AS [MarketAnalyze]</DefiningQuery>
-    </EntitySet>
   </EntityContainer>
 </Schema>

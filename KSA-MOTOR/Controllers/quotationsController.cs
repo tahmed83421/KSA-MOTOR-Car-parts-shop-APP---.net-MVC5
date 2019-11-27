@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using KSA_MOTOR.Models;
 using BusinessLayer;
+using System.Data.Entity.Validation;
 
 namespace KSA_MOTOR.Controllers
 {
@@ -48,9 +49,10 @@ namespace KSA_MOTOR.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             quotation quotation = db.quotations.Find(id);
-          
-            myView.marketAnalyzes = db.MarketAnalyzes.ToList();
+
+            myView.marketAnalyzes = db.MarketAnalyzes.Where(x => x.QuotationId == id).ToList();
             myView.quotationss = db.quotations.Find(id);
+           
             if (quotation == null)
             {
                 return HttpNotFound();
@@ -58,6 +60,53 @@ namespace KSA_MOTOR.Controllers
             return View(myView);
 
            
+        }
+       
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+      
+        public ActionResult ReportSubmit( int QuotationId ,string Price,string _Brand,string _Condition,string DeliveryTime,string Supplier,string Warranty,string Comment)
+        {
+
+
+
+
+
+            // market.ID = myView.marketAnalyze.ID;
+            MarketAnalyze market = new MarketAnalyze();
+            market.Price = Price;
+            market.Brand = _Brand;
+            market.Condition = _Condition;
+            market.DeliveryTime = DeliveryTime;
+            market.Supplier = Supplier;
+            market.Warranty = Warranty;
+            market.Comment = Comment;
+            market.QuotationId = QuotationId;
+                    db.MarketAnalyzes.Add(market);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                
+              
+            
+
+            //  return View(myView);
+         
+
+
+        }
+
+
+        public ActionResult EditMarketOption( int id)
+        {
+            
+            return View(db.MarketAnalyzes.Find(id));
+        }
+        [HttpPost]
+        public ActionResult CommentSubmit(string Cmnt)
+        {
+          
+
+            return View();
         }
 
         // GET: quotations/Create

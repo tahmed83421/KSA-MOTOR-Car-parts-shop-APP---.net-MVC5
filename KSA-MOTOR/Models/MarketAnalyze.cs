@@ -21,5 +21,7 @@ namespace KSA_MOTOR.Models
         public string DeliveryTime { get; set; }
         public string Supplier { get; set; }
         public string Warranty { get; set; }
+        public Nullable<int> QuotationId { get; set; }
+        public string Comment { get; set; }
     }
 }
