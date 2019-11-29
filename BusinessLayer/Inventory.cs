@@ -222,6 +222,47 @@ namespace BusinessLayer
         }
 
 
+        public void SetQuotationStatus(string status,int Id)
+        {
+           
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString))
+            {
+                SqlCommand command = new SqlCommand("Update quotation set Status ='" + status + "' where Id ="+Id+"", connection);
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                command.ExecuteReader();
+                connection.Close();
+               
+            }
+         
+
+        }
+
+        public bool updateComment(string Cmnt, int ID)
+        {
+
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString))
+            {
+                SqlCommand command = new SqlCommand("Update MarketAnalyze set Comment ='" + Cmnt + "' where ID ="+ID+"", connection);
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                try
+                {
+                    command.ExecuteReader();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+              
+
+            }
+
+
+        }
+
+
 
 
         public void AddParts(PartsInventory parts)

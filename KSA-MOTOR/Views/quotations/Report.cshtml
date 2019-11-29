@@ -84,7 +84,8 @@
                             @Html.ValidationMessage("Comment", "", new { @class = "text-danger" })
                         </div>
                     </div>
-                    <input type="submit" value="Submit Quotation Report" class="btn btn-default" />
+
+                    <input type="submit" value="Submit Quotation Report" class="btn btn-warning" />
 
 
 
@@ -211,74 +212,83 @@
 
 
 
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(modelItem => item.Price)
-        </dt>
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(modelItem => item.Price)
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(modelItem => item.Price)
-        </dd>
+    <dd>
+        @Html.DisplayFor(modelItem => item.Price)
+    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(modelItem => item.Brand)
-        </dt>
+    <dt>
+        @Html.DisplayNameFor(modelItem => item.Brand)
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(modelItem => item.Brand)
-        </dd>
+    <dd>
+        @Html.DisplayFor(modelItem => item.Brand)
+    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(modelItem => item.Condition)
-        </dt>
+    <dt>
+        @Html.DisplayNameFor(modelItem => item.Condition)
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(modelItem => item.Condition)
-        </dd>
+    <dd>
+        @Html.DisplayFor(modelItem => item.Condition)
+    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(modelItem => item.DeliveryTime)
-        </dt>
+    <dt>
+        @Html.DisplayNameFor(modelItem => item.DeliveryTime)
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(modelItem => item.DeliveryTime)
-        </dd>
+    <dd>
+        @Html.DisplayFor(modelItem => item.DeliveryTime)
+    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(modelItem => item.Supplier)
-        </dt>
+    <dt>
+        @Html.DisplayNameFor(modelItem => item.Supplier)
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(modelItem => item.Supplier)
-        </dd>
+    <dd>
+        @Html.DisplayFor(modelItem => item.Supplier)
+    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(modelItem => item.Warranty)
-        </dt>
+    <dt>
+        @Html.DisplayNameFor(modelItem => item.Warranty)
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(modelItem => item.Warranty)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(modelItem => item.Comment)
-        </dt>
+    <dd>
+        @Html.DisplayFor(modelItem => item.Warranty)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(modelItem => item.Comment)
+    </dt>
 
-        <dd>
-            @Html.DisplayFor(modelItem => item.Comment)
-        </dd>
+    <dd>
+        @Html.DisplayFor(modelItem => item.Comment)
+    </dd>
+    <dt>
+        @Html.Label("Comment")
+    </dt>
+    <dd>
         @using (Html.BeginForm("CommentSubmit", "quotations", FormMethod.Post))
         {
-            <dt>
-                Comment From Sale:
-            </dt>
-            <dd>
-                @Html.Editor("Cmnnt")
-                <input type="submit" value="Submit Comment" class="btn btn-default" />
-            </dd>
+            @Html.AntiForgeryToken()
+
+
+            @Html.TextArea("Cmnt", null, new { @class = "form-control" })
+            @Html.Hidden("comnid", item.ID)
+            @Html.Hidden("Id", item.ID)
+
+
+
+            <input type="submit" value="Submit Comment" class="btn btn-outline-warning" />
+
 
         }
+    </dd>
 
-    </dl>
+</dl>
 
     <hr />
     }
@@ -290,8 +300,8 @@
 </div>
 <div id="Create_Div" class="form-horizontal">
 
-
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" style="float:right" data-target="#myModal">Create New Report</button>
+   
+    <button type="button" class="btn btn-warning" data-toggle="modal" style="float:right" data-target="#myModal">Create New Report</button>
     <hr />
 
 

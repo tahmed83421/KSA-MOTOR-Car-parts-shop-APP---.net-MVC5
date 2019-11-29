@@ -63,10 +63,7 @@ namespace KSA_MOTOR.Controllers
            
         }
 
-        private void SetStatus(string status)
-        {
-            
-        }
+     
        
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -74,7 +71,8 @@ namespace KSA_MOTOR.Controllers
         public ActionResult ReportSubmit( int QuotationId ,string Price,string _Brand,string _Condition,string DeliveryTime,string Supplier,string Warranty,string Comment)
         {
 
-
+            Inventory inventory = new Inventory();
+            inventory.SetQuotationStatus("Reviewed on"+DateTime.Now+"",QuotationId);
 
 
 
@@ -88,6 +86,7 @@ namespace KSA_MOTOR.Controllers
             market.Warranty = Warranty;
             market.Comment = Comment;
             market.QuotationId = QuotationId;
+
                     db.MarketAnalyzes.Add(market);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -120,6 +119,7 @@ namespace KSA_MOTOR.Controllers
             {
                 db.Entry(market).State = EntityState.Modified;
                 db.SaveChanges();
+
                 return RedirectToAction("Report",new { id=market.QuotationId});
             }
             return View(market);
@@ -144,11 +144,23 @@ namespace KSA_MOTOR.Controllers
         }
 
         [HttpPost]
-        public ActionResult CommentSubmit(string Cmnt)
+        [ValidateAntiForgeryToken]
+        public ActionResult CommentSubmit( int comnid,string Cmnt,int Id)
         {
-          
 
-            return View();
+            Inventory inventory = new Inventory();
+            if (inventory.updateComment(Cmnt, comnid))
+            {
+                inventory.SetQuotationStatus("Commented on" + DateTime.Now + "", Id);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("report");
+            }
+
+            
+            
         }
 
 
