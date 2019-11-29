@@ -204,77 +204,83 @@
     {
 
         <p> Option: @Html.DisplayFor(modelItem => item.ID)</p>
-        @Html.ActionLink("Edit","EditMarketOption", new { ID = item.ID }) 
-<dl class="dl-horizontal">
-    <dt>
-        @Html.DisplayNameFor(modelItem => item.Price)
-    </dt>
+        @Html.ActionLink("Edit", "EditMarketOption", new { ID = item.ID })  <text>|</text>
+        
 
-    <dd>
-        @Html.DisplayFor(modelItem => item.Price)
-    </dd>
+         @Html.ActionLink("Delete", "DeleteMarketOption", new { ID = item.ID })
 
-    <dt>
-        @Html.DisplayNameFor(modelItem => item.Brand)
-    </dt>
 
-    <dd>
-        @Html.DisplayFor(modelItem => item.Brand)
-    </dd>
 
-    <dt>
-        @Html.DisplayNameFor(modelItem => item.Condition)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(modelItem => item.Condition)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(modelItem => item.DeliveryTime)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(modelItem => item.DeliveryTime)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(modelItem => item.Supplier)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(modelItem => item.Supplier)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(modelItem => item.Warranty)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(modelItem => item.Warranty)
-    </dd>
-    <dt>
-        @Html.DisplayNameFor(modelItem => item.Comment)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(modelItem => item.Comment)
-    </dd>
-    @using (Html.BeginForm("CommentSubmit", "quotations", FormMethod.Post))
-    {
+    <dl class="dl-horizontal">
         <dt>
-            Comment From Sale:
+            @Html.DisplayNameFor(modelItem => item.Price)
         </dt>
+
         <dd>
-            @Html.Editor("Cmnnt")
-            <input type="submit" value="Submit Comment" class="btn btn-default" />
+            @Html.DisplayFor(modelItem => item.Price)
         </dd>
 
-    }
+        <dt>
+            @Html.DisplayNameFor(modelItem => item.Brand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => item.Brand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(modelItem => item.Condition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => item.Condition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(modelItem => item.DeliveryTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => item.DeliveryTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(modelItem => item.Supplier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => item.Supplier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(modelItem => item.Warranty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => item.Warranty)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(modelItem => item.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </dd>
+        @using (Html.BeginForm("CommentSubmit", "quotations", FormMethod.Post))
+        {
+            <dt>
+                Comment From Sale:
+            </dt>
+            <dd>
+                @Html.Editor("Cmnnt")
+                <input type="submit" value="Submit Comment" class="btn btn-default" />
+            </dd>
+
+        }
 
     </dl>
 
-        <hr />
+    <hr />
     }
 </div>
 

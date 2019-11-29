@@ -315,6 +315,7 @@
     <Content Include="Scripts\README.md" />
     <Content Include="Views\quotations\Report.cshtml" />
     <Content Include="Views\quotations\EditMarketOption.cshtml" />
+    <Content Include="Views\quotations\DeleteMarketOption.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\" />

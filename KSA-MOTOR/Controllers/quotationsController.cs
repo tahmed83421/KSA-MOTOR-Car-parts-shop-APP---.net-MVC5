@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using KSA_MOTOR.Models;
 using BusinessLayer;
 using System.Data.Entity.Validation;
+using System.Net.Mail;
 
 namespace KSA_MOTOR.Controllers
 {
@@ -61,6 +62,11 @@ namespace KSA_MOTOR.Controllers
 
            
         }
+
+        private void SetStatus(string status)
+        {
+            
+        }
        
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -96,11 +102,47 @@ namespace KSA_MOTOR.Controllers
         }
 
 
+
+
         public ActionResult EditMarketOption( int id)
         {
             
             return View(db.MarketAnalyzes.Find(id));
         }
+
+        [HttpPost]
+      
+        public ActionResult EditMarketOption(MarketAnalyze market)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(market).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Report",new { id=market.QuotationId});
+            }
+            return View(market);
+        }
+
+
+
+        [ActionName("DeleteMarketOption")]
+        public ActionResult GETDeleteMarketOption(int id)
+        {
+            MarketAnalyze market = db.MarketAnalyzes.Find(id);
+
+            return View(market);
+        }
+        [HttpPost]
+        public ActionResult DeleteMarketOption(int id)
+        {
+            MarketAnalyze market = db.MarketAnalyzes.Find(id);
+            db.MarketAnalyzes.Remove(market);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public ActionResult CommentSubmit(string Cmnt)
         {
@@ -108,6 +150,13 @@ namespace KSA_MOTOR.Controllers
 
             return View();
         }
+
+
+     
+
+
+
+
 
         // GET: quotations/Create
         public ActionResult Create()
@@ -129,8 +178,24 @@ namespace KSA_MOTOR.Controllers
                 db.SaveChanges();
                 
                 string Mail= inventory.GetEmailAddressByRole("Admin");
-
-                return RedirectToAction("Index");
+                // sending mial 
+                MailMessage message = new MailMessage();
+                SmtpClient smtp = new SmtpClient();
+                message.From = new MailAddress("tanvir@jayariken.com");
+                message.To.Add(new MailAddress("ahmed.tanvir83421@gmail.com"));
+                message.Subject = "Test";
+                message.IsBodyHtml = true; //to make message body as html  
+                message.Body = "Hi you have got a new Quotation Request. Please Sign in to Care-n-Repair for more details.?";
+                smtp.Port = 26;
+                smtp.Host = "mail.jayariken.com"; //for gmail host  
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("tanvir@jayariken.com", "7919raka");
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.Send(message);
+            
+            return RedirectToAction("Index");
+             
             }
 
             return View(quotation);
