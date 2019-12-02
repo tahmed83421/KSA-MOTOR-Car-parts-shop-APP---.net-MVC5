@@ -16,5 +16,5 @@ C:\Users\Tanvir\source\repos\KSA-MOTOR\BusinessLayer\bin\Release\System.Web.Razo
 C:\Users\Tanvir\source\repos\KSA-MOTOR\BusinessLayer\bin\Release\System.Web.WebPages.xml
 C:\Users\Tanvir\source\repos\KSA-MOTOR\BusinessLayer\bin\Release\System.Web.WebPages.Deployment.xml
 C:\Users\Tanvir\source\repos\KSA-MOTOR\BusinessLayer\bin\Release\System.Web.WebPages.Razor.xml
-C:\Users\Tanvir\source\repos\KSA-MOTOR\BusinessLayer\obj\Release\BusinessLayer.csprojAssemblyReference.cache
 C:\Users\Tanvir\source\repos\KSA-MOTOR\BusinessLayer\obj\Release\BusinessLayer.csproj.CopyComplete
+C:\Users\Tanvir\source\repos\KSA-MOTOR\BusinessLayer\obj\Release\BusinessLayer.csprojAssemblyReference.cache

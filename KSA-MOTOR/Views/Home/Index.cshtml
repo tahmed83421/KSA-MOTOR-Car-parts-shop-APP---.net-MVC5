@@ -1,8 +1,134 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
-    <div style="text-align:center">
+﻿@model BusinessLayer.PartsInventory
 
-        <h1> KSA MOTOR</h1>
+
+
+@{
+    ViewBag.Title = "Index";
+       Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<br />
+<br />
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Car Parts" />
+    <meta name="keywords" content="car, parts, automobile, automotive, workshop, engine oil, content" />
+    <meta name="author" content="Tanvir" />
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/chosen.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+
+    <link href="~/Content/style1.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/style1.css" />
+    <link href="~/Content/demo.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+</head>
+
+<body>
+
+    <ul class="cb-slideshow">
+        <li><span><img src="~/Images/b2.jpg" /></span><div><h4>Care-n-Repair</h4></div></li>
+        <li> <span> <img src="~/Images/backgg.jpg" /> </span><div><h2>Car Parts </h2></div> </li>
+        <li><span><img src="~/Images/b1.jpg" /></span><div><h4>HelpDesk</h4></div></li>
+        <li><span><img src="~/Images/b2.jpg" /></span><div><h4>Care-n_Repair</h4></div></li>
+        <li><span><img src="~/Images/b3.jpg" /></span><div><h4>Support</h4></div></li>
+
+    </ul>
+    <div class="container">
+
+        <header>
+            <h1>Care-n-Repair </h1>
+            <h2>Get your car cared-n-Repaired</h2>
+            <p class="codrops-demos">
+                <a href="https://localhost:44316/Home" class="current-demos">Home</a>
+                <a href="https://localhost:44316/quotations">Quotation</a>
+                <a href="https://localhost:44316/inventory">Inventory</a>
+                <a href="index4.html">Administration</a>
+            </p>
+        </header>
 
     </div>
+    <div class="container" style=" width:98%;
+    margin:1%; ">
+
+        <a href="index4.html " style="color:white">Login</a> |
+        <a href="index4.html " style="color:white">Administration</a> |
+        <a href="index4.html " style="color:white">Request Quotation</a>
+
+
+        <table style=" margin-left:auto;
+    margin-right:auto;margin-top:5%">
+            <tr>
+
+                <td colspan="2">
+                    @Html.DropDownListFor(m => m.SelectedVehicles, Model.GetVehivclesList.Select(x => new SelectListItem
+            {
+                Text = x.Make,
+           Value = x.Id.ToString()
+            }), "    MAKER", new { @class = "form-control chosen-select", @multipleclass = "chosen-select", id = "DDL", style = " border-color:red;Height:200px; Width:100px" })
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.SelectedVehicles, Model.GetVehivclesList.Select(x => new SelectListItem
+             {
+                 Text = x.Model,
+            Value = x.Id.ToString()
+             }), " MODEL|", new { @class = "form-control chosen-select", @multipleclass = "chosen-select", id = "DDL1", style = "border-color:red;Height:55px; Width:100px;text-align:center" })
+                </td>
+                <td>
+                    @Html.DropDownListFor(m => m.SelectedVehicles, Model.GetVehivclesList.Select(x => new SelectListItem
+             {
+                 Text = x.Yearr,
+            Value = x.Id.ToString()
+             }), "YEAR", new { @class = "form-control chosen-select", @multipleclass = "chosen-select", id = "DDL2", style = " border-color:red;Height:55px; Width:100px;text-align:center" })
+                </td>
+                <td>
+                    <p class="codrops-demos"> <a href="https://localhost:44316/Home">Search Parts</a>  </p>
+                </td>
+            </tr>
+        </table>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+</body>
+
+
+</html>
+<script>
+    $('#DDL').chosen();
+    $('#DDL1').chosen();
+     $('#DDL2').chosen();
+   
+</script>
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+}
+

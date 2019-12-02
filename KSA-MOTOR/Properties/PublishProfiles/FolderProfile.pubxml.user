@@ -16,10 +16,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2013 16:29:20</publishTime>
     </File>
     <File Include="bin/BusinessLayer.dll">
-      <publishTime>11/20/2019 02:33:11</publishTime>
+      <publishTime>11/29/2019 22:31:00</publishTime>
     </File>
     <File Include="bin/BusinessLayer.pdb">
-      <publishTime>11/20/2019 02:33:11</publishTime>
+      <publishTime>11/29/2019 22:31:00</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>10/23/2017 13:15:18</publishTime>
@@ -28,10 +28,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2017 13:15:20</publishTime>
     </File>
     <File Include="bin/KSA-MOTOR.dll">
-      <publishTime>11/20/2019 02:33:12</publishTime>
+      <publishTime>11/29/2019 22:31:01</publishTime>
     </File>
     <File Include="bin/KSA-MOTOR.pdb">
-      <publishTime>11/20/2019 02:33:12</publishTime>
+      <publishTime>11/29/2019 22:31:01</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>05/24/2018 13:38:22</publishTime>
@@ -295,7 +295,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/15/2019 15:32:19</publishTime>
     </File>
     <File Include="Models/QuotationModel.edmx.diagram">
-      <publishTime>11/04/2019 10:44:36</publishTime>
+      <publishTime>11/26/2019 20:09:42</publishTime>
     </File>
     <File Include="Models/UserModel.edmx.diagram">
       <publishTime>11/14/2019 22:29:55</publishTime>
@@ -507,14 +507,23 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/quotations/Delete.cshtml">
       <publishTime>10/28/2019 17:43:14</publishTime>
     </File>
+    <File Include="Views/quotations/DeleteMarketOption.cshtml">
+      <publishTime>11/27/2019 12:04:19</publishTime>
+    </File>
     <File Include="Views/quotations/Details.cshtml">
       <publishTime>10/28/2019 17:43:15</publishTime>
     </File>
     <File Include="Views/quotations/Edit.cshtml">
       <publishTime>10/28/2019 17:43:16</publishTime>
     </File>
+    <File Include="Views/quotations/EditMarketOption.cshtml">
+      <publishTime>11/27/2019 01:42:15</publishTime>
+    </File>
     <File Include="Views/quotations/Index.cshtml">
-      <publishTime>11/18/2019 14:51:49</publishTime>
+      <publishTime>11/28/2019 02:48:51</publishTime>
+    </File>
+    <File Include="Views/quotations/Report.cshtml">
+      <publishTime>11/29/2019 04:29:13</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>10/28/2019 02:10:43</publishTime>
@@ -544,7 +553,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2019 02:10:43</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/20/2019 02:33:13</publishTime>
+      <publishTime>11/29/2019 22:31:06</publishTime>
     </File>
   </ItemGroup>
 </Project>

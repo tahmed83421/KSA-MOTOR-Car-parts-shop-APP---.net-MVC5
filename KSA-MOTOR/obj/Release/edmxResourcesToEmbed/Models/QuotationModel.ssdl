@@ -12,6 +12,20 @@
     <Property Name="Email" Type="varchar" MaxLength="255" />
     <Property Name="Phone" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="MarketAnalyze">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Price" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Brand" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Condition" Type="varchar" MaxLength="255" />
+    <Property Name="DeliveryTime" Type="varchar" MaxLength="255" />
+    <Property Name="Supplier" Type="varchar" MaxLength="255" />
+    <Property Name="Warranty" Type="varchar" MaxLength="50" />
+    <Property Name="QuotationId" Type="int" />
+    <Property Name="Comment" Type="varchar" MaxLength="1000" />
+  </EntityType>
   <EntityType Name="quotation">
     <Key>
       <PropertyRef Name="Id" />
@@ -31,6 +45,7 @@
   </EntityType>
   <EntityContainer Name="KSAModelStoreContainer">
     <EntitySet Name="Administration" EntityType="Self.Administration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MarketAnalyze" EntityType="Self.MarketAnalyze" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="quotation" EntityType="Self.quotation" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

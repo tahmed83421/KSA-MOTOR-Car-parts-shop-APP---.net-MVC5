@@ -1,0 +1,332 @@
+﻿@model KSA_MOTOR.Models.MyViewModel
+   
+
+
+@{
+    ViewBag.Title = "Report";
+}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+@using (Html.BeginForm("ReportSubmit", "quotations", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create</h4>
+                </div>
+                <div class="modal-body">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.Label("QuotationId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                          
+                            @Html.Editor("QuotationId", new { htmlAttributes = new { @class = "form-control", Value = Model.quotationss.Id, ReadOnly=true } })
+                           
+                            @Html.ValidationMessageFor(model => model.marketAnalyze.Brand, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Price", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.Editor("Price", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.marketAnalyze.Brand, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Brand", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.Editor("_Brand", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.marketAnalyze.Brand, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("_Condition", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.Editor("_Condition", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.marketAnalyze.Brand, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("DeliveryTime", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.Editor("DeliveryTime", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.marketAnalyze.Brand, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Supplier", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.Editor("Supplier", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.marketAnalyze.Brand, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Warranty", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.Editor("Warranty", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessage("Warranty", "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Comment", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.Editor("Comment", new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessage("Comment", "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Submit Quotation Report" class="btn btn-warning" />
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+}
+<h2>Report</h2>
+
+<div>
+    <br />
+    <h4 style="text-align:center;color:blueviolet">Quotation Request Information</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.Make)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.Make)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.VIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.VIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.VPicture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.VPicture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.PartsNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.PartsNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.PartsName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.PartsName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.PartsDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.PartsDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.PPicture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.PPicture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.EntryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.EntryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quotationss.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quotationss.Status)
+        </dd>
+
+    </dl>
+</div>
+
+
+
+
+<div>
+    <br />
+    <h4 style="text-align:center;color:blueviolet">Quotation Review Report</h4>
+    <hr />
+    @foreach (var item in Model.marketAnalyzes)
+    {
+
+        <p> Option: @Html.DisplayFor(modelItem => item.ID)</p>
+        @Html.ActionLink("Edit", "EditMarketOption", new { ID = item.ID })  <text>|</text>
+        
+
+         @Html.ActionLink("Delete", "DeleteMarketOption", new { ID = item.ID })
+
+
+
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(modelItem => item.Price)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(modelItem => item.Price)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(modelItem => item.Brand)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(modelItem => item.Brand)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(modelItem => item.Condition)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(modelItem => item.Condition)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(modelItem => item.DeliveryTime)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(modelItem => item.DeliveryTime)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(modelItem => item.Supplier)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(modelItem => item.Supplier)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(modelItem => item.Warranty)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(modelItem => item.Warranty)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(modelItem => item.Comment)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(modelItem => item.Comment)
+    </dd>
+    <dt>
+        @Html.Label("Comment")
+    </dt>
+    <dd>
+        @using (Html.BeginForm("CommentSubmit", "quotations", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+
+            @Html.TextArea("Cmnt", null, new { @class = "form-control" })
+            @Html.Hidden("comnid", item.ID)
+            @Html.Hidden("Id", item.ID)
+
+
+
+            <input type="submit" value="Submit Comment" class="btn btn-outline-warning" />
+
+
+        }
+    </dd>
+
+</dl>
+
+    <hr />
+    }
+</div>
+
+
+<div class="form-group">
+
+</div>
+<div id="Create_Div" class="form-horizontal">
+
+   
+    <button type="button" class="btn btn-warning" data-toggle="modal" style="float:right" data-target="#myModal">Create New Report</button>
+    <hr />
+
+
+
+
+
+    @Html.ActionLink("Cancel", "Index", new { @class = "btn btn-default" })
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+
+
+            @if (Model.quotationss.Id == 1)
+            {
+
+            }
+
+        </div>
+    </div>
+</div>
+
+
+<div>
+
+</div>
+

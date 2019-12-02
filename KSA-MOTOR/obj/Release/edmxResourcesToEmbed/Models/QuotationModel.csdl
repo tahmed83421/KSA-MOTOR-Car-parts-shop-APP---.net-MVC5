@@ -20,6 +20,7 @@
   <EntityContainer Name="QuotationDbContext" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="quotations" EntityType="Self.quotation" />
     <EntitySet Name="Administrations" EntityType="KSAModel.Administration" />
+    <EntitySet Name="MarketAnalyzes" EntityType="KSAModel.MarketAnalyze" />
   </EntityContainer>
   <EntityType Name="Administration">
     <Key>
@@ -32,5 +33,19 @@
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MarketAnalyze">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Price" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Brand" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Condition" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DeliveryTime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Supplier" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Warranty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="QuotationId" Type="Int32" />
+    <Property Name="Comment" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

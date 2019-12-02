@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BusinessLayer;
 
 namespace KSA_MOTOR.Controllers
 {
@@ -10,7 +11,15 @@ namespace KSA_MOTOR.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            Inventory inventory = new Inventory();
+
+            PartsInventory parts = new PartsInventory();
+            Vehicle vehicle = new Vehicle();
+            parts.GetVehivclesList = inventory.Vehicles.ToList();
+
+
+
+            return View(parts);
         }
 
         public ActionResult About()

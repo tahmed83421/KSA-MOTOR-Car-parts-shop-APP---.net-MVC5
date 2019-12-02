@@ -81,20 +81,11 @@
         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.Id })|
-        @Html.ActionLink("Report", "Delete", new { id = item.Id })
+        @Html.ActionLink("Report", "Report", new { id = item.Id })
     </td>
 </tr>
 
     }
 
 </table>
-<input id="Button1" type="button" value="button" />
-@Html.Editor("Editor1", new { id = "Editor1" })
-<script>
-    
-    $('#Button1').click(function () {
-        $('#Editor1').hide();
-         $('#Button1').hide();
 
-    });
-</script>

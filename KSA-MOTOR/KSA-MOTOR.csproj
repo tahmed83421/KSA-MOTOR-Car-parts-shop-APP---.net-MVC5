@@ -196,9 +196,19 @@
     <Content Include="Content\chosen.css" />
     <Content Include="Content\chosen.min.css" />
     <Content Include="Content\Custom.css" />
+    <Content Include="Content\demo.css" />
+    <Content Include="Content\style1.css" />
+    <Content Include="Content\style2.css" />
+    <Content Include="Content\style3.css" />
+    <Content Include="Content\style4.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\b1.jpg" />
+    <Content Include="Images\b2.jpg" />
+    <Content Include="Images\b3.jpg" />
+    <Content Include="Images\backg.jpg" />
+    <Content Include="Images\backgg.jpg" />
     <Content Include="Images\bpad.jpg" />
     <Content Include="Images\gaskit.jpg" />
     <Content Include="Images\radiator.jpg" />
@@ -270,6 +280,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\modernizr.custom.86080.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
