@@ -86,7 +86,7 @@ namespace KSA_MOTOR.Controllers
         public PartialViewResult AllTest(int NID, int id,int YID)
         {
 
-            List<PartsInventory> parts = inventory.Parts.Where(x=>  x.VModelId == NID && x.PartID == id).ToList();
+            List<PartsInventory> parts = inventory.Parts.Where(x=>  x.VModelId == NID ).ToList();
             return PartialView("_Parts", parts);
 
         }
