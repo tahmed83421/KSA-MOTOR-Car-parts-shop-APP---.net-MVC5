@@ -50,6 +50,7 @@ namespace BusinessLayer
                     Part.Age = t.Days.ToString() + "Days" + t.Hours.ToString()+"Hours";
 
                     Part.Qty = sdr["Qty"].ToString();
+                    Part.VModelId = Convert.ToInt32(sdr["VModelId"]);
                
 
                     Part.Approved = Convert.ToBoolean(sdr["Approved"]);
@@ -134,6 +135,40 @@ namespace BusinessLayer
 
                     Vehicless.Add(vehicle);
                    
+
+
+                }
+                return Vehicless;
+
+            }
+        }
+
+        public IEnumerable<VehicleModel> VModels
+        {
+            get
+            {
+                IList<VehicleModel> Vehicless = new List<VehicleModel>();
+                SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
+                SqlCommand command = new SqlCommand("Select * from VehicleModel", connection);
+                command.CommandType = CommandType.Text;
+                connection.Open();
+                SqlDataReader sdr = command.ExecuteReader();
+                while (sdr.Read())
+                {
+                    VehicleModel vehicle = new VehicleModel();
+
+                    vehicle.Id = Convert.ToInt32(sdr["Id"]);
+               
+                    vehicle.Yearr = sdr["Yearr"].ToString();
+
+                    vehicle.Model = sdr["Model"].ToString();
+
+                    vehicle.MakerId = Convert.ToInt32(sdr["MakerId"]);
+
+
+
+                    Vehicless.Add(vehicle);
+
 
 
                 }

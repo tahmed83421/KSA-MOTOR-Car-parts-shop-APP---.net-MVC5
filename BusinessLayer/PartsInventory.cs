@@ -51,10 +51,12 @@ namespace BusinessLayer
         [Required]
         [Display(Name = "Vehicle")]
         public string[] SelectedVehicles { get; set; }
+        public string selctedCarModel { get; set; }
         public string selctedCarBrands { get; set; }
         public List<Vehicle> GetVehivclesList { get; set; }
-        [Required]
-       
+        public int selectedYear { get; set; } 
+        public int VModelId { get; set; }
+        public List<VehicleModel> GetModelList { get; set; }
         public bool Approved { get; set; }
 
 

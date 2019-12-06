@@ -21,4 +21,18 @@ namespace BusinessLayer
 
 
     }
+    public class VehicleModel
+    {
+        public int Id { get; set; }
+       
+        public string Yearr { get; set; }
+        public string Model { get; set; }
+        public int MakerId { get; set; }
+   
+
+
+
+
+
+    }
 }
