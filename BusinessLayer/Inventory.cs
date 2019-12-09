@@ -300,6 +300,36 @@ namespace BusinessLayer
 
 
 
+        public void AddOrder(PartsInventory parts)
+        {
+            
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
+            SqlCommand command = new SqlCommand("InsertOrder", connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            SqlParameter parameter = new SqlParameter("@Description", parts.CarMfgID);
+            SqlParameter parameter0 = new SqlParameter("@PartsId", parts.Name);
+            SqlParameter parameter2 = new SqlParameter("@ProductQuantity", parts.ImagePath);
+            SqlParameter parameter1 = new SqlParameter("@DeliveryStatus", parts.Description);
+            SqlParameter parameter7 = new SqlParameter("@Comment", parts.Brand);
+            SqlParameter parameter9 = new SqlParameter("@Approved", parts.Fitment);
+            SqlParameter parameter8 = new SqlParameter("@Approved", parts.Approved);
+            command.Parameters.Add(parameter);
+            command.Parameters.Add(parameter0);
+            command.Parameters.Add(parameter1);
+            command.Parameters.Add(parameter2);  
+            command.Parameters.Add(parameter7);
+            command.Parameters.Add(parameter8);
+            command.Parameters.Add(parameter9);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+        }
+
+
+
+
+
         public void AddParts(PartsInventory parts)
         {
             int c = 0;

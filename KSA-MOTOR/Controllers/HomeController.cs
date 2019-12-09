@@ -33,10 +33,10 @@ namespace KSA_MOTOR.Controllers
         public JsonResult GetModels(string selctedCarBrands)
         {
             Inventory inventory = new Inventory();
-            List<Vehicle> vehicles= inventory.Vehicles.Where(x => x.Id == Convert.ToInt32( selctedCarBrands)).ToList();
+            List<Vehicle> vehicles = inventory.Vehicles.Where(x => x.Id == Convert.ToInt32(selctedCarBrands)).ToList();
             return Json(vehicles, JsonRequestBehavior.AllowGet);
         }
-      
+
 
         [HttpPost]
         public ActionResult Index(PartsInventory parts)
@@ -51,14 +51,14 @@ namespace KSA_MOTOR.Controllers
 
             if (parts.selctedCarBrands != null)
             {
-               // int h = Convert.ToInt32(selctedCarBrands);
+                // int h = Convert.ToInt32(selctedCarBrands);
                 Inventory inventory = new Inventory();
 
                 Vehicle vehicle = new Vehicle();
                 parts.GetVehivclesList = inventory.Vehicles.ToList();
-              //  parts.GetModelList = inventory.VModels.ToList();
+                //  parts.GetModelList = inventory.VModels.ToList();
 
-                  parts.GetModelList = inventory.VModels.Where(x => x.MakerId == Convert.ToInt32( parts.selctedCarBrands)).ToList();
+                parts.GetModelList = inventory.VModels.Where(x => x.MakerId == Convert.ToInt32(parts.selctedCarBrands)).ToList();
 
                 return View(parts);
             }
@@ -67,11 +67,11 @@ namespace KSA_MOTOR.Controllers
                 return View();
             }
 
-           
 
 
 
-           
+
+
         }
 
         Inventory inventory = new Inventory();
@@ -83,12 +83,18 @@ namespace KSA_MOTOR.Controllers
 
         }
 
-        public PartialViewResult AllTest(int NID, int id,int YID)
+        public PartialViewResult AllTest(int NID, int id, int YID)
         {
 
-            List<PartsInventory> parts = inventory.Parts.Where(x=>  x.VModelId == NID ).ToList();
+            List<PartsInventory> parts = inventory.Parts.Where(x => x.VModelId == NID).ToList();
             return PartialView("_Parts", parts);
 
+        }
+        [HttpPost]
+        public ActionResult PlaceOrder(int id,int? Qty)
+        {
+
+            return View();
         }
 
         public ActionResult About()

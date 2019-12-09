@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Inventory.cs" />
     <Compile Include="LoginCheck.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="PartsInventory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vehicle.cs" />
