@@ -9,6 +9,7 @@ namespace KSA_MOTOR.Controllers
 {
     public class HomeController : Controller
     {
+        int c = 5;
         public ActionResult Index()
         {
             Inventory inventory = new Inventory();
@@ -17,9 +18,10 @@ namespace KSA_MOTOR.Controllers
             Vehicle vehicle = new Vehicle();
             parts.GetVehivclesList = inventory.Vehicles.ToList();
             parts.GetModelList = inventory.VModels.ToList();
+            Session["products"] = c;
             ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year, 20).Select(x =>
-
-           new SelectListItem()
+         
+            new SelectListItem()
            {
                Text = x.ToString(),
                Value = x.ToString()
@@ -90,11 +92,19 @@ namespace KSA_MOTOR.Controllers
             return PartialView("_Parts", parts);
 
         }
-        [HttpPost]
-        public ActionResult PlaceOrder(int id,int? Qty)
+        public ActionResult PlaceOrder(int qty,int id)
         {
 
-            return View();
+            OrderDetailDB orderDetailDB = new OrderDetailDB();
+            orderDetailDB.AddOrder(id,qty);
+            Session["products"] = c + 1;
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult PlaceOrder(Order order)
+        {
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult About()

@@ -8,8 +8,14 @@ namespace BusinessLayer
 {
    public  class Order
     {
-
-
+        
+        int ID { get; set; }
+        string Description { get; set; }
+        int PartsId { get; set; }
+        string ProductQuantity { get; set; }
+        string DeliveryStatus { get; set; }
+        string Comment { get; set; }
+        string Approved { get; set; }
 
 
 

@@ -2,9 +2,16 @@
 @{
     Layout = null;
 
+
 }
 
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="~/Scripts/jquery-3.4.1.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
 <link href="~/Content/chosen.css" rel="stylesheet" />
@@ -42,7 +49,7 @@
         }
 </style>
 
-@using (Html.BeginForm("create", "quotations", FormMethod.Post))
+@using (Html.BeginForm("PlaceOrder", "Home", FormMethod.Post))
 {
 
 
@@ -106,9 +113,11 @@
                          new SelectListItem() {Text = "3", Value="3"},
                          new SelectListItem() {Text = "4", Value="4"}
 
-     },new { @class="form-control"})
+     }, new { @class = "form-control", id = "Qty" })
+
                                         </dd>
                                     </dl>  <!-- item-property .// -->
+                                    ,
                                 </div> <!-- col.// -->
                                 <div class="col-sm-7">
                                     <dl class="param param-inline">
@@ -124,8 +133,10 @@
                                 </div> <!-- col.// -->
                             </div> <!-- row.// -->
                             <hr>
-                
-                            @Html.ActionLink("Order", "PlaceOrder", "Home",  new { id = item.PartID, },null);
+                            @Html.Hidden("idd", item.PartID)
+
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" onclick="OrderPostback()" data-target="#myModal">Order</button>
+
 
                         </article> <!-- card-body.// -->
                     </aside> <!-- col.// -->
@@ -134,31 +145,76 @@
         }
 
     </div>
-            }
+}
 
 
-    <!--container.//-->
+<!--container.//-->
 
 
-    <br>
-    <br>
-    <br>
-    <article class="bg-secondary mb-3">
-        <div class="card-body text-center">
-            <h4 class="text-white">Care-n-Repair@KSA </h4>
-            <p class="h5 text-white">
-                for customization of your car or
-                for repair of your car engiene , body and all.
-            </p>   <br>
-            <p>
-                <a class="btn btn-warning" target="_blank" href="http://bootstrap-ecommerce.com/">
-                    care-n-repair.com
-                    <i class="fa fa-window-restore "></i>
-                </a>
-            </p>
+<br>
+<br>
+<br>
+<article class="bg-secondary mb-3">
+    <div class="card-body text-center">
+        <h4 class="text-white">Care-n-Repair@KSA </h4>
+        <p class="h5 text-white">
+            for customization of your car or
+            for repair of your car engiene , body and all.
+        </p>   <br>
+        <p>
+            <a class="btn btn-warning" target="_blank" href="http://bootstrap-ecommerce.com/">
+                care-n-repair.com
+                <i class="fa fa-window-restore "></i>
+            </a>
+        </p>
+    </div>
+    <br><br><br>
+</article>
+
+<div class="container">
+    <h2>Modal Example</h2>
+    <!-- Trigger the modal with a button -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:gold">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <h1>Paers Added Into Cart</h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
         </div>
-        <br><br><br>
-    </article>
+    </div>
+
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+  function OrderPostback() {
+            debugger;
+     alert( $('#Qty option:selected').val());
+
+                $.ajax({
+                    url: '@Url.Action("PlaceOrder","Home")',
+                    type: 'GET',
+                    data: { qty: $('#Qty option:selected').val(),id :$('#idd').val() },
+                    success: function () {
 
 
-
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                });
+                return false;
+        }
+</script>
