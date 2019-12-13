@@ -58,6 +58,7 @@ namespace BusinessLayer
         public int VModelId { get; set; }
         public List<VehicleModel> GetModelList { get; set; }
         public bool Approved { get; set; }
+        public int Qtyy { get; set; }
 
 
     }

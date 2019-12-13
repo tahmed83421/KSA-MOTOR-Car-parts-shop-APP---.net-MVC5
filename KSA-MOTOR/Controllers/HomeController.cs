@@ -19,6 +19,14 @@ namespace KSA_MOTOR.Controllers
             parts.GetVehivclesList = inventory.Vehicles.ToList();
             parts.GetModelList = inventory.VModels.ToList();
             Session["products"] = c;
+            if (Request.Cookies["cookie"] == null)
+            {
+                Response.Cookies["cookie"].Value = "1";
+            }
+            else
+            {
+               // Response.Cookies["cookie"].Value = Convert.ToString(Convert.ToInt32(Request.Cookies["cookie"].Value.ToString()) + 1);
+            }
             ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year, 20).Select(x =>
          
             new SelectListItem()
@@ -76,33 +84,87 @@ namespace KSA_MOTOR.Controllers
 
         }
 
-        Inventory inventory = new Inventory();
-        public PartialViewResult All()
-        {
+      
+ 
 
-            List<PartsInventory> parts = inventory.Parts.ToList();
+        public PartialViewResult AllTest(int? NID, int? id, int? YID)
+        {
+            Inventory inventory = new Inventory();
+            List<PartsInventory> parts;
+            if (NID == null || id == null || YID == null)
+            {
+                parts = inventory.Parts.ToList();
+            }
+            else
+            {
+                parts = inventory.Parts.Where(x => x.VModelId == NID).ToList();
+            }
+           
             return PartialView("_Parts", parts);
 
         }
 
-        public PartialViewResult AllTest(int NID, int id, int YID)
+
+        public ActionResult CheckOut()
         {
 
-            List<PartsInventory> parts = inventory.Parts.Where(x => x.VModelId == NID).ToList();
-            return PartialView("_Parts", parts);
-
+            List<PartsInventory> parts = (List<PartsInventory>)Session["cart"];
+           return View(parts);
         }
-        public ActionResult PlaceOrder(int qty,int id)
+
+
+        public ActionResult PlaceOrder()
         {
 
-            OrderDetailDB orderDetailDB = new OrderDetailDB();
-            orderDetailDB.AddOrder(id,qty);
-            Session["products"] = c + 1;
             return RedirectToAction("Index");
+
+
+            /*
+            List<int> Pid = new List<int>();
+            OrderDetailDB orderDetailDB = new OrderDetailDB();
+            // orderDetailDB.AddOrder(id,qty);
+            Pid.Add(id);
+            
+
+            Response.Cookies["cookie"].Value = Convert.ToString(Convert.ToInt32(Request.Cookies["cookie"].Value.ToString()) + 1);
+            return RedirectToAction("Index");
+            */
         }
-        [HttpPost]
-        public ActionResult PlaceOrder(Order order)
+      
+        public ActionResult RemoveItemFromCart(int id)
         {
+            List<PartsInventory> li = (List<PartsInventory>)Session["cart"];
+            li.RemoveAll(x => x.PartID == id);
+            Session["cart"] = li;
+            Session["count"] = Convert.ToInt32(Session["count"]) - 1;
+            return RedirectToAction("CheckOut", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult PlaceOrder(PartsInventory parts)
+        {
+            if (Session["cart"] == null)
+            {
+                List<PartsInventory> li = new List<PartsInventory>();
+
+                li.Add(parts);
+                Session["cart"] = li;
+                ViewBag.cart = li.Count();
+
+
+                Session["count"] = 1;
+
+
+            }
+            else
+            {
+                List<PartsInventory> li = (List<PartsInventory>)Session["cart"];
+                li.Add(parts);
+                Session["cart"] = li;
+                ViewBag.cart = li.Count();
+                Session["count"] = Convert.ToInt32(Session["count"]) + 1;
+
+            }
 
             return RedirectToAction("Index");
         }

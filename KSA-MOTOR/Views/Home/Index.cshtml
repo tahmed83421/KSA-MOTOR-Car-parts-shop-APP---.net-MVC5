@@ -1,4 +1,5 @@
 ﻿@model BusinessLayer.PartsInventory
+    @using BusinessLayer
 
 @{
     ViewBag.Title = "Create";
@@ -19,14 +20,6 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script src="~/Scripts/modernizr.custom.86080.js"></script>
     <script src="~/Scripts/jquery-3.4.1.js"></script>
-
-   
-</head>
-
-
-
-
-
     <style>
         .chosen-container {
             width: 100% !important;
@@ -57,10 +50,18 @@
     <link href="~/Content/chosen.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/chosen.jquery.min.js"></script>
+
 </head>
+
+
+
+
+
+
+
 <body>
     <!--Navbar-->
-    <nav class="navbar navbar-expand-sm navbar-dark primary-color" style="background-color:darkslategrey">
+    <nav class="navbar navbar-expand-sm navbar-dark primary-color" style="background-color:darkslategrey; margin-bottom:0.1px;">
         <!-- Navbar brand -->
         <a class="navbar-brand" href="#">Care-n-Reapir</a>
         <!-- Collapse button -->
@@ -106,9 +107,9 @@
                         </li>
                     </ul>
                 </li>
-                <li class="active">
-                    <a href="@Url.Action("Myorder", "AddToCart")" class="btn btn-info btn-lg">
-                        <span class="glyphicon glyphicon-shopping-cart" style="color:green"></span>Cart @Session["products"].ToString()<span class="badge">5</span>
+                <li class="a">
+                    <a href="@Url.Action("CheckOut", "Home")" class="btn btn-info btn-lg">
+                        <span class="glyphicon glyphicon-shopping-cart" style="color:green"></span><span class="badge"> @Session["count"]</span>
                     </a>
                 </li>
             </ul>
@@ -169,7 +170,7 @@
 
                             </td>
                             <td>
-                                @Html.DropDownListFor(m => m.selectedYear, (IEnumerable<SelectListItem>)ViewBag.Years, "Select Year", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL2", style = " border-color:grey; height:40px;width:100%;" })
+                                @Html.DropDownListFor(m => m.selectedYear, (IEnumerable<SelectListItem>)ViewBag.Years, "Select Year", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL2", style = " border-color:yellow" })
                             </td>
 
                             <td>
@@ -211,25 +212,14 @@
             <div class="card-body" id="Cardd" style="text-align:center">
 
                 @{
-                    //  Html.RenderAction("All", "Home");
-                    // Html.RenderPartial("_Parts");
+                    // Html.RenderAction("AllTest", "Home");
+                    Inventory inventory = new Inventory();
+                    List<PartsInventory> parts = inventory.Parts.ToList();
+
+
+                    Html.RenderPartial("_Parts",parts);
                 }
-                <article class="bg-secondary mb-3">
-                    <div class="card-body text-center">
-                        <h4 class="text-white">Care-n-Repair@KSA </h4>
-                        <p class="h5 text-white">
-                            for customization of your car or
-                            for repair of your car engiene , body and all.
-                        </p>   <br>
-                        <p>
-                            <a class="btn btn-warning" target="_blank" href="http://bootstrap-ecommerce.com/">
-                                care-n-repair.com
-                                <i class="fa fa-window-restore "></i>
-                            </a>
-                        </p>
-                    </div>
-                    <br><br><br>
-                </article>
+
             </div>
         </div>
 

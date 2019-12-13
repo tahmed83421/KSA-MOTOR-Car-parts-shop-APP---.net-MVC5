@@ -1,0 +1,199 @@
+﻿@model IEnumerable<BusinessLayer.PartsInventory>
+
+@{
+    ViewBag.Title = "CheckOut";
+}
+
+
+
+
+
+<style>
+    body {
+        margin-top: 20px;
+    }
+</style>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="containerc">
+
+    <div class="rowc">
+        <div class="col-xl-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
+                            </div>
+                            <div class="col-xs-2">
+                                <a href="https://localhost:44316/Home"
+                                    class="btn btn-primary btn-sm btn-block">
+                                        <span class="glyphicon glyphicon-share-alt"></span> Continue shopping
+                                
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-body" >
+
+                    @if (Model.Count() == 0)
+                    {<h3 style="text-align:center;color:red"><strong>Sorry No Items Found in Your Cart <span class="text-muted"></span></strong></h3>}
+
+
+                    @foreach (var items in Model)
+                    {
+                        <div class="row" >
+                            <div class="col-xs-3">
+
+                                <img src="@Url.Content(items.ImagePath)" style="height:90%; width:100%" />
+                            </div>
+                            <div id="dvContents">
+                            <div class="col-xs-4">
+                                <h4 class="product-name"><strong>@items.Name</strong></h4><h4><small>@items.Description</small></h4>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="col-xs-6 text-right">
+                                    <h6><strong>@items.SalePrice  <span class="text-muted">x</span></strong></h6>
+                                </div>
+                                <div class="col-xs-6">
+                                    <input type="text" class="form-control input-sm" value="@items.Qty">
+                                </div>
+                            </div>
+                                <div class="col-xs-2">
+                               
+                               
+                                    <button type="button" class="btn btn-link btn-xs">
+                                      
+                                        <span class="glyphicon glyphicon-trash">  @Html.ActionLink("Remove ", "RemoveItemFromCart", new { id = items.PartID }) </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+
+
+                        <hr>
+                    }
+                    <div class="row">
+                        <div class="text-center">
+                            <div class="col-xs-9">
+                                <h6 class="text-right">Added items?</h6>
+                            </div>
+                            <div class="col-xs-2">
+                                <button type="button" id="btnPrint" class="btn btn-warning">
+                                    Update Cart
+                                </button>
+                            </div>
+                            <div class="col-xs-2">
+                                <button type="button" id="btnPrint" class="btn btn-warning">
+                                    Print
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row text-center">
+                        <div class="col-xs-9">
+                            <h4 class="text-right">Total <strong>$50.00</strong></h4>
+                        </div>
+                        <div class="col-xs-3">
+                            <button type="button" class="btn btn-success btn-block">
+                                Checkout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<p>
+
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+
+
+</table>
+<style type="text/css">
+    .label {
+        -size: 10pt;
+        -weight: bold;
+        -family: Arial;
+    }
+
+    .contents {
+        border: 1px dotted black;
+        padding: 5px;
+        width: 300px;
+    }
+
+    .name {
+        color: #18B5F0;
+    }
+
+    .left {
+        float: left;
+        width: 50px;
+        height: 50px;
+    }
+
+    .right {
+        margin-left: 60px;
+        line-height: 50px;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    #footer {
+        position: fixed;
+        bottom: 0px;
+        height: 3px;
+        background-color: #666;
+        color: #eee;
+        width: 100%
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        $("#btnPrint").click(function () {
+            var contents = $("#dvContents").html();
+            var frame1 = $('<iframe />');
+            frame1[0].name = "frame1";
+            frame1.css({
+                "position": "absolute",
+                "top": "-1000000px"
+            });
+            $("body").append(frame1);
+            var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
+            frameDoc.document.open();
+            //Create a new HTML document.
+            frameDoc.document.write('<html><head><title>DIV Contents</title>');
+            frameDoc.document.write('</head><body>');
+            //Append the external CSS file.
+            frameDoc.document.write('<link href="style.css" rel="stylesheet" type="text/css" />');
+            //Append the DIV contents.
+            frameDoc.document.write(contents);
+            frameDoc.document.write('</body></html>');
+            frameDoc.document.close();
+            setTimeout(function () {
+                window.frames["frame1"].focus();
+                window.frames["frame1"].print();
+                frame1.remove();
+            }, 500);
+        });
+    });
+</script>
