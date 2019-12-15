@@ -107,8 +107,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="a">
-                    <a href="@Url.Action("CheckOut", "Home")" class="btn btn-info btn-lg">
+                <li class="align-content-xl-end" >
+                    <a  href="@Url.Action("CheckOut", "Home")" class="btn btn-info btn-lg">
                         <span class="glyphicon glyphicon-shopping-cart" style="color:green"></span><span class="badge"> @Session["count"]</span>
                     </a>
                 </li>
@@ -122,8 +122,8 @@
         <!-- Collapsible content -->
     </nav>
     <!--/.Navbar-->
-    <div style="background-image:url('https://c4.wallpaperflare.com/wallpaper/519/11/672/car-car-parts-bmw-wallpaper-preview.jpg')">
-        <div class="container">
+    <div style="background-image:url('https://wallup.net/wp-content/uploads/2016/07/21/408376-abstract-car-sports_car-parts-mechanics-Ferrari-Exploded-view_diagram-Composite-748x421.jpg'); background-position:center; background-color:whitesmoke;">
+        <div class="containerr" style="margin-left:90px;margin-right:90px;">
             <img class="mySlides" src="~/Images/backgg.jpg" style="width:100%;height:370px;">
             <img class="mySlides" src="~/Images/b2.jpg" style="width:100%;height:370px;">
             <img class="mySlides" src="~/Images/b3.jpg" style="width:100%;height:370px;">
@@ -200,11 +200,9 @@
     </div>
 
 
-    <div>
-
-    </div>
+   
     <!-- Head End  AFter Head Start-->
-    <div class="containerr">
+    <div class="container" style="width:120%">
 
 
         <div class="card" style="width:100%">
@@ -212,14 +210,100 @@
             <div class="card-body" id="Cardd" style="text-align:center">
 
                 @{
-                    // Html.RenderAction("AllTest", "Home");
-                    Inventory inventory = new Inventory();
-                    List<PartsInventory> parts = inventory.Parts.ToList();
+                    if (ViewBag.parrt != null)
+                    {
+                        //Html.RenderAction("AllTest", "Home");
+                        foreach (PartsInventory item in ViewBag.parrt)
+                        {
+                            using (Html.BeginForm("PlaceOrder", "Home", FormMethod.Post))
+                            {
+                            <div class="card">
+                                <div class="row">
+                                    <aside class="col-sm-5 border-right">
+                                        <article class="gallery-wrap">
+                                            <div class="img-big-wrap">
+                                                <img src="@Url.Content(item.ImagePath)" style="height:90%; width:100%" />
+                                            </div> <!-- slider-product.// -->
+
+                                        </article> <!-- gallery-wrap .end// -->
+                                    </aside>
+                                    <aside class="col-sm-7">
+                                        <article class="card-body p-5">
+
+                                            <tr>
+
+                                                <td>
+                                                    <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+                                                </td>
+                                                <td>
+                                            </tr>
+
+                                            <p class="price-detail-wrap">
+                                                <span class="price h3 text-warning">
+                                                    <span class="currency">US $</span><span class="num"> @Html.DisplayFor(modelItem => item.SalePrice)</span>
+                                                </span>
+
+                                            </p> <!-- price-detail-wrap .// -->
+                                            <dl class="item-property">
+                                                <dt>Description</dt>
+                                                <dd>
+                                                    <p>
+
+                                                        @Html.DisplayFor(modelItem => item.Description)
+                                                    </p>
+                                                </dd>
+                                            </dl>
+                                            @Html.Hidden("SalePrice", item.SalePrice)
+                                            @Html.Hidden("ImagePath", item.ImagePath)
+                                            @Html.Hidden("Name", item.Name)
 
 
-                    Html.RenderPartial("_Parts",parts);
-                }
+                                            @Html.Hidden("IDD", item.PartID)
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-sm-5">
+                                                    <dl class="param param-inline">
+                                                        <dt>Quantity: </dt>
+                                                        <dd>
 
+                                                            @Html.DropDownList("Qty", new List<SelectListItem>
+                     {
+                                         new SelectListItem() {Text = "1", Value="1"},
+                                         new SelectListItem() {Text = "2", Value="2"},
+                                         new SelectListItem() {Text = "3", Value="3"},
+                                         new SelectListItem() {Text = "4", Value="4"}
+
+                     }, new { @class = "form-control", id = "Qty" })
+
+                                                        </dd>
+                                                    </dl>  <!-- item-property .// -->
+                                                    ,
+                                                </div> <!-- col.// -->
+                                                <div class="col-sm-7">
+                                                    <dl class="param param-inline">
+                                                        <dt>Total Order(5) </dt>
+
+                                                    </dl>  <!-- item-property .// -->
+                                                </div> <!-- col.// -->
+                                            </div> <!-- row.// -->
+                                            <hr>
+
+                                           
+                                            <input id="Submit1" type="submit" data-toggle="modal" data-target="#myModal" class="btn btn-danger" value="Order" />
+                                            <!--    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" onclick="OrderPostback()" data-target="#myModal">Order</button>-->
+                                          
+
+                                        </article> <!-- card-body.// -->
+                                    </aside> <!-- col.// -->
+                                </div> <!-- row.// -->
+                            </div> <!-- card.// -->
+                                }
+
+                            }
+
+
+                        }
+                    }
             </div>
         </div>
 

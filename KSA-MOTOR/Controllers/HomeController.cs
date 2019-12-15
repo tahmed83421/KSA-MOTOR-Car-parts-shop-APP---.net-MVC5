@@ -9,7 +9,7 @@ namespace KSA_MOTOR.Controllers
 {
     public class HomeController : Controller
     {
-        int c = 5;
+        
         public ActionResult Index()
         {
             Inventory inventory = new Inventory();
@@ -18,15 +18,7 @@ namespace KSA_MOTOR.Controllers
             Vehicle vehicle = new Vehicle();
             parts.GetVehivclesList = inventory.Vehicles.ToList();
             parts.GetModelList = inventory.VModels.ToList();
-            Session["products"] = c;
-            if (Request.Cookies["cookie"] == null)
-            {
-                Response.Cookies["cookie"].Value = "1";
-            }
-            else
-            {
-               // Response.Cookies["cookie"].Value = Convert.ToString(Convert.ToInt32(Request.Cookies["cookie"].Value.ToString()) + 1);
-            }
+            ViewBag.parrt = inventory.Parts.ToList();
             ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year, 20).Select(x =>
          
             new SelectListItem()
@@ -48,6 +40,23 @@ namespace KSA_MOTOR.Controllers
         }
 
 
+
+        public ActionResult Invoice()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+
+        public ActionResult UpdateCart()
+        {
+            if(Session["Cart"] == null) { }
+            List<PartsInventory> li = (List<PartsInventory>)Session["cart"];
+            return View();
+        }
+
+
         [HttpPost]
         public ActionResult Index(PartsInventory parts)
         {
@@ -60,27 +69,17 @@ namespace KSA_MOTOR.Controllers
           }), "Value", "Text");
 
             if (parts.selctedCarBrands != null)
-            {
-                // int h = Convert.ToInt32(selctedCarBrands);
+            {     
                 Inventory inventory = new Inventory();
-
                 Vehicle vehicle = new Vehicle();
                 parts.GetVehivclesList = inventory.Vehicles.ToList();
-                //  parts.GetModelList = inventory.VModels.ToList();
-
                 parts.GetModelList = inventory.VModels.Where(x => x.MakerId == Convert.ToInt32(parts.selctedCarBrands)).ToList();
-
                 return View(parts);
             }
             else
             {
                 return View();
             }
-
-
-
-
-
 
         }
 
@@ -107,13 +106,13 @@ namespace KSA_MOTOR.Controllers
 
         public ActionResult CheckOut()
         {
-
+           
             List<PartsInventory> parts = (List<PartsInventory>)Session["cart"];
            return View(parts);
         }
 
 
-        public ActionResult PlaceOrder()
+        public ActionResult PlaceOrder(int? IDD)
         {
 
             return RedirectToAction("Index");
@@ -141,7 +140,7 @@ namespace KSA_MOTOR.Controllers
         }
 
         [HttpPost]
-        public ActionResult PlaceOrder(PartsInventory parts)
+        public ActionResult PlaceOrder(PartsInventory parts,int? IDD)
         {
             if (Session["cart"] == null)
             {

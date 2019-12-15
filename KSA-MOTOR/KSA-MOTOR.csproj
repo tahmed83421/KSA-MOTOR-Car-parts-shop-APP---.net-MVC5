@@ -335,6 +335,7 @@
     <Content Include="Views\Home\Index1.cshtml" />
     <Content Include="Views\Home\PlaceOrder.cshtml" />
     <Content Include="Views\Home\CheckOut.cshtml" />
+    <Content Include="Views\Home\Invoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\" />
