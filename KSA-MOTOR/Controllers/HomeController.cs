@@ -49,11 +49,22 @@ namespace KSA_MOTOR.Controllers
 
         [HttpPost]
 
-        public ActionResult UpdateCart()
+        public ActionResult UpdateCart( PartsInventory parts,int? IDD)
         {
-            if(Session["Cart"] == null) { }
-            List<PartsInventory> li = (List<PartsInventory>)Session["cart"];
-            return View();
+            List<PartsInventory> lis= (List<PartsInventory>)Session["cart"];
+            if (Session["Cart"] != null)
+            {
+                foreach (var listy in (List<PartsInventory>)Session["cart"])
+                {
+                    if (listy.PartID == parts.PartID)
+                    {
+                        listy.Qty = parts.Qty;
+                    }
+                }
+
+            }
+
+            return RedirectToAction("CheckOut");
         }
 
 
@@ -105,11 +116,24 @@ namespace KSA_MOTOR.Controllers
 
 
         public ActionResult CheckOut()
-        {
+       {
            
             List<PartsInventory> parts = (List<PartsInventory>)Session["cart"];
            return View(parts);
         }
+        [HttpPost]
+        public ActionResult CheckOut(IEnumerable<PartsInventory> partsc)
+        {
+            Inventory inventory = new Inventory();
+            foreach ( var item in (List<PartsInventory>)Session["cart"])
+            {
+                
+                inventory.AddOrder(item);
+            }
+            List<PartsInventory> parts = (List<PartsInventory>)Session["cart"];
+            return View(parts);
+        }
+
 
 
         public ActionResult PlaceOrder(int? IDD)

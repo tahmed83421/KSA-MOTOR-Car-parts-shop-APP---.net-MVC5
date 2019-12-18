@@ -99,9 +99,11 @@
                                     </p>
                                 </dd>
                             </dl>
+                            @Html.Hidden("PartID",item.PartID)
                             @Html.Hidden("SalePrice", item.SalePrice)
                             @Html.Hidden("ImagePath", item.ImagePath)
                             @Html.Hidden("Name", item.Name)
+
 
 
                             @Html.Hidden("IDD", item.PartID)

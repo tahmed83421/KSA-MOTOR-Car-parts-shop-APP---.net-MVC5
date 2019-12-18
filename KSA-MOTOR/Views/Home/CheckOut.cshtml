@@ -19,12 +19,11 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-@using (Html.BeginForm("UpdateCart", "Home", FormMethod.Post))
-{
 
-    <div class="containerc">
 
-        <div class="rowc">
+    <div class="container">
+
+        <div class="row">
             <div class="col-xl-12">
                 <div class="panel panel-info">
                     <div class="panel-heading">
@@ -43,6 +42,8 @@
                             </div>
                         </div>
                     </div>
+          
+
 
                     <div class="panel-body">
 
@@ -52,54 +53,65 @@
 
                         @foreach (var items in Model)
                         {
-                            <div class="row">
-                                <div class="col-xs-3">
+                            using (Html.BeginForm("UpdateCart", "Home", FormMethod.Post))
+                            {
 
-                                    <img src="@Url.Content(items.ImagePath)" style="height:90%; width:100%" />
-                                </div>
-                                <div id="dvContents">
-                                    <div class="col-xs-4">
-                                        <h4 class="product-name"><strong>@items.Name</strong></h4><h4><small>@items.Description</small></h4>
+                                <div class="row">
+                                    <div class="col-xs-3">
+
+                                        <img src="@Url.Content(items.ImagePath)" style="height:90%; width:100%" />
                                     </div>
-                                    <div class="col-xs-4">
-                                        <div class="col-xs-6 text-right">
-                                            <h6><strong>@items.SalePrice  <span class="text-muted">x</span></strong></h6>
+                                    <div id="dvContents">
+                                        <div class="col-xs-4">
+                                            <h4 class="product-name"><strong>@items.Name</strong></h4><h4><small>@items.Description</small></h4>
                                         </div>
-                                        <div class="col-xs-6">
-                                            <input type="text" id="Quantityy" class="form-control input-sm" value="@items.Qty">
+                                        <div class="col-xs-4">
+                                            <div class="col-xs-6 text-right">
+                                                <h6><strong>@items.SalePrice  <span class="text-muted">x</span></strong></h6>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                @Html.TextBox("Qty", items.Qty, new { @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                        @Html.HiddenFor(model => items.PartID, items.PartID)
+                                        @Html.Hidden("PartID", items.PartID)
+                                        @Html.Hidden("IDD", items.PartID)
+
+                                        <div class="col-xs-2">
+
+
+                                            <button type="button" class="btn btn-link btn-xs">
+
+                                                <span class="glyphicon glyphicon-trash">  @Html.ActionLink("Remove ", "RemoveItemFromCart", new { id = items.PartID }) </span>
+                                            </button>
+
 
                                         </div>
-                                    </div>
+                                        <div class="col-xs-2">
 
 
-                                    <div class="col-xs-2">
 
+                                            <input id="Submit1" class="btn btn-warning" type="submit" value="Update" />
 
-                                        <button type="button" class="btn btn-link btn-xs">
-
-                                            <span class="glyphicon glyphicon-trash">  @Html.ActionLink("Remove ", "RemoveItemFromCart", new { id = items.PartID }) </span>
-                                        </button>
+                                        </div>
 
                                     </div>
                                 </div>
-                            </div>
-                            <hr>
+                                <hr>
 
 
+
+
+
+                            }
                             <hr>
                         }
                         <div class="row">
                             <div class="text-center">
-                                <div class="col-xs-9">
-                                    <h6 class="text-right">Added items?</h6>
-                                </div>
-                                <div class="col-xs-2">
-                                    <button type="button" id="btnPrintss" class="btn btn-warning">
-                                        Update Cart
-                                        <input id="Submit1" type="submit" value="submit" />
-                                    </button>
 
-                                </div>
+
+
                                 <div class="col-xs-2">
                                     <button type="button" id="btnPrint" class="btn btn-warning">
                                         Print
@@ -110,12 +122,12 @@
                     </div>
 
                     @{
-                            int total = 0;
-                            foreach (PartsInventory parts1 in (List<PartsInventory>)Session["cart"])
-                            {
-                                total = total + Convert.ToInt32(parts1.SalePrice) * Convert.ToInt32(parts1.Qty);
+                        int total = 0;
+                        foreach (PartsInventory parts1 in (List<PartsInventory>)Session["cart"])
+                        {
+                            total = total + Convert.ToInt32(parts1.SalePrice) * Convert.ToInt32(parts1.Qty);
 
-                            }
+                        }
                     }
                     <div class="panel-footer">
                         <div class="row text-center">
@@ -123,9 +135,11 @@
                                 <h4 class="text-right">Total <strong>$@total</strong></h4>
                             </div>
                             <div class="col-xs-3">
-                                <button type="button" class="btn btn-success btn-block">
-                                    Place Order
-                                </button>
+                                @using (Html.BeginForm("CheckOut", "Home", FormMethod.Post))
+                                {
+                                    <input id="Submit1" type="submit" value="Place Order"class="btn btn-success btn-block"/>
+                                 
+                                }
                             </div>
                         </div>
                     </div>
@@ -144,7 +158,7 @@
 
 
     </table>
-                            }
+                            
     <style type="text/css">
         .label {
             -size: 10pt;
