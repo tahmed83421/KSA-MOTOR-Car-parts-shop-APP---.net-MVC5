@@ -135,10 +135,16 @@
                                 <h4 class="text-right">Total <strong>$@total</strong></h4>
                             </div>
                             <div class="col-xs-3">
-                                @using (Html.BeginForm("CheckOut", "Home", FormMethod.Post))
-                                {
-                                    <input id="Submit1" type="submit" value="Place Order"class="btn btn-success btn-block"/>
-                                 
+                                @foreach (PartsInventory parts1 in (List<PartsInventory>
+                                    )Session["cart"])
+                                    {
+                                    using (Html.BeginForm("CheckOut", "Home", FormMethod.Post))
+                                    {
+                                        @Html.Hidden("Description",parts1.Description)
+                                        @Html.Hidden("PartsId",parts1.PartID)
+                                        <input id="Submit1" type="submit" value="Place Order" class="btn btn-success btn-block" />
+
+                                    }
                                 }
                             </div>
                         </div>
