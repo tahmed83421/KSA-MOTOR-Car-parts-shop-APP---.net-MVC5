@@ -309,11 +309,11 @@ namespace BusinessLayer
 
 
 
-            SqlParameter parameter = new SqlParameter("@Description", parts.CarMfgID);
-            SqlParameter parameter0 = new SqlParameter("@PartsId", parts.Name);
-            SqlParameter parameter2 = new SqlParameter("@ProductQuantity", parts.ImagePath);
+            SqlParameter parameter = new SqlParameter("@Description", parts.Description);
+            SqlParameter parameter0 = new SqlParameter("@PartsId", parts.PartID);
+            SqlParameter parameter2 = new SqlParameter("@ProductQuantity", parts.Qty);
             SqlParameter parameter1 = new SqlParameter("@DeliveryStatus", parts.Description);
-            SqlParameter parameter7 = new SqlParameter("@Comment", parts.Brand);
+            SqlParameter parameter7 = new SqlParameter("@Comment", "Pending");
          
             SqlParameter parameter8 = new SqlParameter("@Approved", parts.Approved);
             command.Parameters.Add(parameter);

@@ -131,7 +131,9 @@ namespace KSA_MOTOR.Controllers
                 inventory.AddOrder(item);
             }
             List<PartsInventory> parts = (List<PartsInventory>)Session["cart"];
+            Session.Clear();
             return View(parts);
+
         }
 
 
