@@ -90,16 +90,23 @@ namespace KSA_MOTOR.Controllers
 
         public ActionResult Edit(int id)
         {
-            if (id == null)
+            if (id.Equals(null))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+               
             }
-
+            else
+            {
+              
+            }
             Inventory inventory = new Inventory();
             PartsInventory parts = inventory.GetPartsById(id);
             parts.GetVehivclesList = inventory.Vehicles.ToList();
-
             return View(parts);
+
+
+
+
         }
 
         [HttpPost]

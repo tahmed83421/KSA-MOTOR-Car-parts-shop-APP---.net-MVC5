@@ -1,0 +1,126 @@
+﻿@model BusinessLayer.Invoice
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>Invoice</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Invoice_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Invoice_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.To_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.To_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.To_Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.To_Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ship_CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ship_CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ship_Adress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ship_Adress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ship_City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ship_City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ship_Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ship_Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vehicle_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Delivery_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Delivery_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment_Terms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payment_Terms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total_Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total_Price)
+        </dd>
+
+    </dl>
+    @foreach (var item in Model.parts)
+    {
+        @Html.DisplayFor(model => item.ImagePath)
+    }
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

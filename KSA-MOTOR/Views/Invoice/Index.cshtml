@@ -1,0 +1,105 @@
+﻿@model IEnumerable<BusinessLayer.Invoice>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2><b><u>Index</u></b></h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Invoice_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.To_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.To_Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ship_CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ship_Adress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ship_City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ship_Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vehicle_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Delivery_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payment_Terms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total_Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Invoice_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.To_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.To_Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ship_CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ship_Adress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ship_City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ship_Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vehicle_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Delivery_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Payment_Terms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total_Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

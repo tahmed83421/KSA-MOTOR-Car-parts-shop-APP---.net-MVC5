@@ -133,6 +133,7 @@
     <Compile Include="Controllers\AdministrationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoriesController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\quotationsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -336,6 +337,8 @@
     <Content Include="Views\Home\PlaceOrder.cshtml" />
     <Content Include="Views\Home\CheckOut.cshtml" />
     <Content Include="Views\Home\Invoice.cshtml" />
+    <Content Include="Views\Invoice\Index.cshtml" />
+    <Content Include="Views\Invoice\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\" />
