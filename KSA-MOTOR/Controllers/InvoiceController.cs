@@ -16,7 +16,7 @@ namespace KSA_MOTOR.Controllers
             List<PartsInventory> parts = inventory.Parts.ToList();
             Invoice invoice = new Invoice();
             invoice.Invoice_ID = 1;
-            invoice.parts = parts;
+            invoice.Parts = parts;
             invoice.Payment_Terms = "VISA";
             invoice.Ship_Adress = "7913 Wedgewood street,BC,Canada";
             invoice.Ship_City = "Burnaby";
@@ -33,7 +33,7 @@ namespace KSA_MOTOR.Controllers
             List<PartsInventory> parts = inventory.Parts.ToList();
             Invoice invoice = new Invoice();
             invoice.Invoice_ID = 1;
-            invoice.parts = parts;
+            invoice.Parts = parts;
             invoice.Payment_Terms = "VISA";
             invoice.Ship_Adress = "7913 Wedgewood street,BC,Canada";
             invoice.Ship_City = "Burnaby";

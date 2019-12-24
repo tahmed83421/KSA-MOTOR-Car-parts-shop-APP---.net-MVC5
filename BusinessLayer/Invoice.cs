@@ -19,7 +19,7 @@ namespace BusinessLayer
         public int Vehicle_ID { get; set; }
         public string Delivery_Date { get; set; }
         public string Payment_Terms { get; set; }
-        public List<PartsInventory> parts { get; set; }
+        public List<PartsInventory> Parts { get; set; }
         public int Weight { get; set; }
         public int Total_Price { get; set; }
 
