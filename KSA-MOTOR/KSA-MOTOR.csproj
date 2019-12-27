@@ -214,6 +214,8 @@
     <Content Include="Images\cover.jpeg" />
     <Content Include="Images\gaskit.jpg" />
     <Content Include="Images\radiator.jpg" />
+    <Content Include="Images\Untitled.png" />
+    <Content Include="Images\Untitled2.png" />
     <Content Include="Models\QuotationModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QuotationModel.edmx</DependentUpon>
