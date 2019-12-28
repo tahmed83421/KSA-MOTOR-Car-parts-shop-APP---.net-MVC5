@@ -45,5 +45,23 @@ namespace KSA_MOTOR.Controllers
 
             return View(invoice);
         }
+
+
+        public ActionResult Create()
+        {
+           
+
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Invoice invoice)
+        {
+
+
+
+            return View();
+        }
+
     }
 }
