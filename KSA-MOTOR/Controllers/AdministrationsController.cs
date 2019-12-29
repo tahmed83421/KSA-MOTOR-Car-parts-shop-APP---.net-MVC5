@@ -39,6 +39,7 @@ namespace KSA_MOTOR.Controllers
            
             if (login.LoginAuthorization(Password))
             {
+                Session["user"] = Password.ToString();
                 return RedirectToAction("Index", "Inventories", new { area = "" });
             }
             else

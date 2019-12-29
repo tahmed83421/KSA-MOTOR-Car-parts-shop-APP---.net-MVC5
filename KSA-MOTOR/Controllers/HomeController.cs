@@ -12,6 +12,11 @@ namespace KSA_MOTOR.Controllers
         
         public ActionResult Index()
         {
+            if (Session["User"] == null)
+            {
+                Session["User"] = "Guest";
+            }
+            
             Inventory inventory = new Inventory();
 
             PartsInventory parts = new PartsInventory();
@@ -132,7 +137,7 @@ namespace KSA_MOTOR.Controllers
             }
             List<PartsInventory> parts = (List<PartsInventory>)Session["cart"];
             Session.Clear();
-            return View(parts);
+            return RedirectToAction("PlaceOrder");
 
         }
 
@@ -141,7 +146,7 @@ namespace KSA_MOTOR.Controllers
         public ActionResult PlaceOrder(int? IDD)
         {
 
-            return RedirectToAction("Index");
+            return View();
 
 
             /*
