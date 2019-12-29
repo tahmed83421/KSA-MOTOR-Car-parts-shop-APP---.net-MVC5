@@ -7,138 +7,110 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using KSA_MOTOR.Models;
-using BusinessLayer;
-
-
 
 namespace KSA_MOTOR.Controllers
 {
-    public class AdministrationsController : Controller
+    public class OrderDetailsController : Controller
     {
         private QuotationDbContext db = new QuotationDbContext();
 
-
-    
-
-
-
-        // GET: Administrations
+        // GET: OrderDetails
         public ActionResult Index()
         {
-
-            return View();
-        }
-      
-        [HttpPost]
-
-       
-        public ActionResult Index( string Password)
-        {
-
-            LoginCheck login = new LoginCheck();
-           
-            if (login.LoginAuthorization(Password))
-            {
-                return RedirectToAction("Index", "Inventories", new { area = "" });
-            }
-            else
-            {
-                return RedirectToAction("Index");
-            }
-            
+            return View(db.OrderDetails.ToList());
         }
 
-        // GET: Administrations/Details/5
+        // GET: OrderDetails/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Administration administration = db.Administrations.Find(id);
-            if (administration == null)
+            OrderDetail orderDetail = db.OrderDetails.Find(id);
+            if (orderDetail == null)
             {
                 return HttpNotFound();
             }
-            return View(administration);
+            return View(orderDetail);
         }
 
-        // GET: Administrations/Create
+        // GET: OrderDetails/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Administrations/Create
+        // POST: OrderDetails/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,LastName,FirstName,UserId,Password,Email,Phone")] Administration administration)
+        public ActionResult Create([Bind(Include = "ID,Description,PartsId,ProductQuantity,DeliveryStatus,Comment,Approved,CustomerID,Unit_Price")] OrderDetail orderDetail)
         {
             if (ModelState.IsValid)
             {
-                db.Administrations.Add(administration);
+                db.OrderDetails.Add(orderDetail);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(administration);
+            return View(orderDetail);
         }
 
-        // GET: Administrations/Edit/5
+        // GET: OrderDetails/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Administration administration = db.Administrations.Find(id);
-            if (administration == null)
+            OrderDetail orderDetail = db.OrderDetails.Find(id);
+            if (orderDetail == null)
             {
                 return HttpNotFound();
             }
-            return View(administration);
+            return View(orderDetail);
         }
 
-        // POST: Administrations/Edit/5
+        // POST: OrderDetails/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,LastName,FirstName,UserId,Password,Email,Phone")] Administration administration)
+        public ActionResult Edit([Bind(Include = "ID,Description,PartsId,ProductQuantity,DeliveryStatus,Comment,Approved,CustomerID,Unit_Price")] OrderDetail orderDetail)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(administration).State = EntityState.Modified;
+                db.Entry(orderDetail).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(administration);
+            return View(orderDetail);
         }
 
-        // GET: Administrations/Delete/5
+        // GET: OrderDetails/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Administration administration = db.Administrations.Find(id);
-            if (administration == null)
+            OrderDetail orderDetail = db.OrderDetails.Find(id);
+            if (orderDetail == null)
             {
                 return HttpNotFound();
             }
-            return View(administration);
+            return View(orderDetail);
         }
 
-        // POST: Administrations/Delete/5
+        // POST: OrderDetails/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Administration administration = db.Administrations.Find(id);
-            db.Administrations.Remove(administration);
+            OrderDetail orderDetail = db.OrderDetails.Find(id);
+            db.OrderDetails.Remove(orderDetail);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

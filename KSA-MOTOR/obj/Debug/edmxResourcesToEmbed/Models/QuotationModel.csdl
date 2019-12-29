@@ -21,6 +21,12 @@
     <EntitySet Name="quotations" EntityType="Self.quotation" />
     <EntitySet Name="Administrations" EntityType="KSAModel.Administration" />
     <EntitySet Name="MarketAnalyzes" EntityType="KSAModel.MarketAnalyze" />
+    <EntitySet Name="OrderDetails" EntityType="KSAModel.OrderDetail" />
+    <EntitySet Name="Invoices" EntityType="KSAModel.Invoice" />
+    <AssociationSet Name="FK__Invoices__Order___73BA3083" Association="KSAModel.FK__Invoices__Order___73BA3083">
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+      <End Role="Invoice" EntitySet="Invoices" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Administration">
     <Key>
@@ -48,4 +54,52 @@
     <Property Name="QuotationId" Type="Int32" />
     <Property Name="Comment" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PartsId" Type="Int32" />
+    <Property Name="ProductQuantity" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DeliveryStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Approved" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="Unit_Price" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Invoices" Relationship="KSAModel.FK__Invoices__Order___73BA3083" FromRole="OrderDetail" ToRole="Invoice" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="Invoice_ID" />
+      <PropertyRef Name="To_Name" />
+      <PropertyRef Name="Payment_Terms" />
+    </Key>
+    <Property Name="Invoice_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="To_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="To_Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Ship_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Ship_Company" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Ship_Adress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Ship_City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Ship_Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Vehicle_Id" Type="Int32" />
+    <Property Name="Order_Id" Type="Int32" />
+    <Property Name="Delivary_Date" Type="DateTime" Precision="3" />
+    <Property Name="Payment_Terms" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="OrderDetail" Relationship="KSAModel.FK__Invoices__Order___73BA3083" FromRole="Invoice" ToRole="OrderDetail" />
+  </EntityType>
+  <Association Name="FK__Invoices__Order___73BA3083">
+    <End Type="KSAModel.OrderDetail" Role="OrderDetail" Multiplicity="0..1" />
+    <End Type="KSAModel.Invoice" Role="Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="Order_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

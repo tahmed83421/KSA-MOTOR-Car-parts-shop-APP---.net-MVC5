@@ -8,6 +8,9 @@
         <EntityTypeShape EntityType="KSAModel.quotation" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KSAModel.Administration" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="KSAModel.MarketAnalyze" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="KSAModel.OrderDetail" Width="1.5" PointX="5.375" PointY="1.375" />
+        <EntityTypeShape EntityType="KSAModel.Invoice" Width="1.5" PointX="7.625" PointY="1" />
+        <AssociationConnector Association="KSAModel.FK__Invoices__Order___73BA3083" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -17,6 +17,28 @@
           <Property Name="Email" Type="varchar" MaxLength="255" />
           <Property Name="Phone" Type="varchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KSA.dbo.Invoices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Invoices">
+          <Key>
+            <PropertyRef Name="Invoice ID" />
+            <PropertyRef Name="To_Name" />
+            <PropertyRef Name="Payment_Terms" />
+          </Key>
+          <Property Name="Invoice ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="To_Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="To_Phone" Type="varchar" MaxLength="255" />
+          <Property Name="Ship_Name" Type="varchar" MaxLength="255" />
+          <Property Name="Ship_Company" Type="varchar" MaxLength="255" />
+          <Property Name="Ship_Adress" Type="varchar" MaxLength="255" />
+          <Property Name="Ship_City" Type="varchar" MaxLength="255" />
+          <Property Name="Ship_Contact" Type="varchar" MaxLength="50" />
+          <Property Name="Vehicle_Id" Type="int" />
+          <Property Name="Order_Id" Type="int" />
+          <Property Name="Delivary_Date" Type="datetime" />
+          <Property Name="Payment_Terms" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="MarketAnalyze">
           <Key>
             <PropertyRef Name="ID" />
@@ -30,6 +52,20 @@
           <Property Name="Warranty" Type="varchar" MaxLength="50" />
           <Property Name="QuotationId" Type="int" />
           <Property Name="Comment" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PartsId" Type="int" />
+          <Property Name="ProductQuantity" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="DeliveryStatus" Type="varchar" MaxLength="255" />
+          <Property Name="Comment" Type="varchar" MaxLength="255" />
+          <Property Name="Approved" Type="varchar" MaxLength="255" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="Unit_Price" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="quotation">
           <Key>
@@ -48,10 +84,44 @@
           <Property Name="EntryDate" Type="datetime" />
           <Property Name="Status" Type="varchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK__Invoices__Order___73BA3083">
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="0..1" />
+          <End Role="Invoices" Type="Self.Invoices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDetails">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoices">
+              <PropertyRef Name="Order_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="KSAModelStoreContainer">
           <EntitySet Name="Administration" EntityType="Self.Administration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MarketAnalyze" EntityType="Self.MarketAnalyze" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="quotation" EntityType="Self.quotation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoices" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Invoices].[Invoice ID] AS [Invoice ID], 
+    [Invoices].[CustomerID] AS [CustomerID], 
+    [Invoices].[To_Name] AS [To_Name], 
+    [Invoices].[To_Phone] AS [To_Phone], 
+    [Invoices].[Ship_Name] AS [Ship_Name], 
+    [Invoices].[Ship_Company] AS [Ship_Company], 
+    [Invoices].[Ship_Adress] AS [Ship_Adress], 
+    [Invoices].[Ship_City] AS [Ship_City], 
+    [Invoices].[Ship_Contact] AS [Ship_Contact], 
+    [Invoices].[Vehicle_Id] AS [Vehicle_Id], 
+    [Invoices].[Order_Id] AS [Order_Id], 
+    [Invoices].[Delivary_Date] AS [Delivary_Date], 
+    [Invoices].[Payment_Terms] AS [Payment_Terms]
+    FROM [dbo].[Invoices] AS [Invoices]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Invoices__Order___73BA3083" Association="Self.FK__Invoices__Order___73BA3083">
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+            <End Role="Invoices" EntitySet="Invoices" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -78,6 +148,12 @@
           <EntitySet Name="quotations" EntityType="Self.quotation" />
           <EntitySet Name="Administrations" EntityType="KSAModel.Administration" />
           <EntitySet Name="MarketAnalyzes" EntityType="KSAModel.MarketAnalyze" />
+          <EntitySet Name="OrderDetails" EntityType="KSAModel.OrderDetail" />
+          <EntitySet Name="Invoices" EntityType="KSAModel.Invoice" />
+          <AssociationSet Name="FK__Invoices__Order___73BA3083" Association="KSAModel.FK__Invoices__Order___73BA3083">
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+            <End Role="Invoice" EntitySet="Invoices" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Administration">
           <Key>
@@ -105,6 +181,54 @@
           <Property Name="QuotationId" Type="Int32" />
           <Property Name="Comment" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PartsId" Type="Int32" />
+          <Property Name="ProductQuantity" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Approved" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="Unit_Price" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Invoices" Relationship="KSAModel.FK__Invoices__Order___73BA3083" FromRole="OrderDetail" ToRole="Invoice" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="Invoice_ID" />
+            <PropertyRef Name="To_Name" />
+            <PropertyRef Name="Payment_Terms" />
+          </Key>
+          <Property Name="Invoice_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="To_Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="To_Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Ship_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Ship_Company" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Ship_Adress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Ship_City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Ship_Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Vehicle_Id" Type="Int32" />
+          <Property Name="Order_Id" Type="Int32" />
+          <Property Name="Delivary_Date" Type="DateTime" Precision="3" />
+          <Property Name="Payment_Terms" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrderDetail" Relationship="KSAModel.FK__Invoices__Order___73BA3083" FromRole="Invoice" ToRole="OrderDetail" />
+        </EntityType>
+        <Association Name="FK__Invoices__Order___73BA3083">
+          <End Type="KSAModel.OrderDetail" Role="OrderDetail" Multiplicity="0..1" />
+          <End Type="KSAModel.Invoice" Role="Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDetail">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="Order_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -154,6 +278,40 @@
                 <ScalarProperty Name="Brand" ColumnName="Brand" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="KSAModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="Unit_Price" ColumnName="Unit_Price" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="DeliveryStatus" ColumnName="DeliveryStatus" />
+                <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+                <ScalarProperty Name="PartsId" ColumnName="PartsId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="KSAModel.Invoice">
+              <MappingFragment StoreEntitySet="Invoices">
+                <ScalarProperty Name="Payment_Terms" ColumnName="Payment_Terms" />
+                <ScalarProperty Name="Delivary_Date" ColumnName="Delivary_Date" />
+                <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+                <ScalarProperty Name="Vehicle_Id" ColumnName="Vehicle_Id" />
+                <ScalarProperty Name="Ship_Contact" ColumnName="Ship_Contact" />
+                <ScalarProperty Name="Ship_City" ColumnName="Ship_City" />
+                <ScalarProperty Name="Ship_Adress" ColumnName="Ship_Adress" />
+                <ScalarProperty Name="Ship_Company" ColumnName="Ship_Company" />
+                <ScalarProperty Name="Ship_Name" ColumnName="Ship_Name" />
+                <ScalarProperty Name="To_Phone" ColumnName="To_Phone" />
+                <ScalarProperty Name="To_Name" ColumnName="To_Name" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Invoice_ID" ColumnName="Invoice ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

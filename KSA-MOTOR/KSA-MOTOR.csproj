@@ -134,6 +134,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoriesController.cs" />
     <Compile Include="Controllers\InvoiceController.cs" />
+    <Compile Include="Controllers\OrderDetailsController.cs" />
     <Compile Include="Controllers\quotationsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -142,10 +143,16 @@
     <Compile Include="Models\Administration.cs">
       <DependentUpon>QuotationModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Invoice.cs">
+      <DependentUpon>QuotationModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\MarketAnalyze.cs">
       <DependentUpon>QuotationModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MyViewModel.cs" />
+    <Compile Include="Models\OrderDetail.cs">
+      <DependentUpon>QuotationModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\quotation.cs">
       <DependentUpon>QuotationModel.tt</DependentUpon>
     </Compile>
@@ -342,6 +349,11 @@
     <Content Include="Views\Invoice\Index.cshtml" />
     <Content Include="Views\Invoice\Detail.cshtml" />
     <Content Include="Views\Invoice\Create.cshtml" />
+    <Content Include="Views\OrderDetails\Create.cshtml" />
+    <Content Include="Views\OrderDetails\Delete.cshtml" />
+    <Content Include="Views\OrderDetails\Details.cshtml" />
+    <Content Include="Views\OrderDetails\Edit.cshtml" />
+    <Content Include="Views\OrderDetails\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\" />

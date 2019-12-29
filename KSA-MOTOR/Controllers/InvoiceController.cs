@@ -20,8 +20,7 @@ namespace KSA_MOTOR.Controllers
             invoice.Payment_Terms = "VISA";
             invoice.Ship_Adress = "7913 Wedgewood street,BC,Canada";
             invoice.Ship_City = "Burnaby";
-            invoice.Ship_CompanyName = "SkyWalk";
-            invoice.Ship_Phone = "7785136565";
+     
             invoice.Total_Price = 1000;
             invoice.To_Name = "Tanvir";
             
@@ -37,8 +36,7 @@ namespace KSA_MOTOR.Controllers
             invoice.Payment_Terms = "VISA";
             invoice.Ship_Adress = "7913 Wedgewood street,BC,Canada";
             invoice.Ship_City = "Burnaby";
-            invoice.Ship_CompanyName = "SkyWalk";
-            invoice.Ship_Phone = "7785136565";
+       
             invoice.Total_Price = 1000;
             invoice.To_Name = "Tanvir";
             
@@ -59,7 +57,7 @@ namespace KSA_MOTOR.Controllers
         {
 
 
-
+            Session["Invoice"] = invoice; 
             return View();
         }
 

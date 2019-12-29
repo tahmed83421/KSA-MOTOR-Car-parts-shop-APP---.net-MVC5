@@ -93,9 +93,9 @@ namespace KSA_MOTOR.Controllers
             }
 
         }
+   
 
-      
- 
+
 
         public PartialViewResult AllTest(int? NID, int? id, int? YID)
         {
