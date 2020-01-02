@@ -136,7 +136,7 @@ namespace KSA_MOTOR.Controllers
                 inventory.AddOrder(item);
             }
             List<PartsInventory> parts = (List<PartsInventory>)Session["cart"];
-            Session.Clear();
+          //  Session.Clear();
             return RedirectToAction("PlaceOrder");
 
         }
@@ -170,6 +170,9 @@ namespace KSA_MOTOR.Controllers
             return RedirectToAction("CheckOut", "Home");
         }
 
+
+
+
         [HttpPost]
         public ActionResult PlaceOrder(PartsInventory parts,int? IDD)
         {
@@ -197,6 +200,12 @@ namespace KSA_MOTOR.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult PurchaseComplete(string txtCustomerName,string txtCustomerAdress, string txtShipName)
+        {
+            return View();
         }
 
         public ActionResult About()
