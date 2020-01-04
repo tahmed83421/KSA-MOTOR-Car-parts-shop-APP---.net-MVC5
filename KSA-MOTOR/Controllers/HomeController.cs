@@ -203,7 +203,7 @@ namespace KSA_MOTOR.Controllers
         }
 
         [HttpPost]
-        public ActionResult PurchaseComplete(string txtCustomerName,string txtCustomerAdress, string txtShipName)
+        public ActionResult PurchaseComplete(string txtCustomerName,string txtCustomerAdress, string txtShipName,string txtShipPhone,string txtShipAdress,string txtShipCity,string txtCarMaker,string txtCarYear,string txtCarModel, string txtVIN,string txtDeliveryDate,bool chkPaid)
         {
             return View();
         }
