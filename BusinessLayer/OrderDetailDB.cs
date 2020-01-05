@@ -36,5 +36,43 @@ namespace BusinessLayer
             connection.Open();
             command.ExecuteNonQuery();
         }
+
+
+    }
+    public class CreateInvoice
+    {
+        public void addInvoiceDetails()
+        {
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
+            SqlCommand command = new SqlCommand("CreateInvoice", connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+
+
+            SqlParameter parameter = new SqlParameter("@To_Name", "testdescriptoin");
+            SqlParameter parameter0 = new SqlParameter("@To_Phone", "0809897");
+            SqlParameter parameter1 = new SqlParameter("@Ship_Name", "TT");
+            SqlParameter parameter2 = new SqlParameter("@Ship_Company", "Not Delivered");
+            SqlParameter parameter3 = new SqlParameter("@Ship_Adress", "Not Delivered");
+            SqlParameter parameter4 = new SqlParameter("@Ship_City", "Not Delivered");
+            SqlParameter parameter5 = new SqlParameter("@Ship_Contact", "Not Delivered");
+            SqlParameter parameter6 = new SqlParameter("@Vehicle_Id", "Not Delivered");
+            SqlParameter parameter7 = new SqlParameter("@Order_Id", "Not Delivered");
+            SqlParameter parameter8 = new SqlParameter("@Delivary_Date", "Not Delivered");
+            SqlParameter parameter9 = new SqlParameter("@Payment_Terms", "Not Delivered");
+
+            command.Parameters.Add(parameter);
+            command.Parameters.Add(parameter0);
+            command.Parameters.Add(parameter1);
+            command.Parameters.Add(parameter2);
+            command.Parameters.Add(parameter3);
+            command.Parameters.Add(parameter4);
+            command.Parameters.Add(parameter5);
+            command.Parameters.Add(parameter6);
+            command.Parameters.Add(parameter7);
+            command.Parameters.Add(parameter8);
+            command.Parameters.Add(parameter9);
+
+        }
     }
 }

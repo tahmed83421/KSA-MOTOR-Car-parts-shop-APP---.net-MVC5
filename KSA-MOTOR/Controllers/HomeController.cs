@@ -203,8 +203,15 @@ namespace KSA_MOTOR.Controllers
         }
 
         [HttpPost]
-        public ActionResult PurchaseComplete(string txtCustomerName,string txtCustomerAdress, string txtShipName,string txtShipPhone,string txtShipAdress,string txtShipCity,string txtCarMaker,string txtCarYear,string txtCarModel, string txtVIN,string txtDeliveryDate,bool chkPaid)
+        public ActionResult PurchaseComplete(string txtCustomerName,string txtCustomerAdress, string txtShipName,string txtShipPhone,string txtShipAdress,string txtShipCity,string txtCarMaker,string txtCarYear,string txtCarModel, string txtVIN,string txtDeliveryDate,bool? chkPaid)
         {
+            CreateInvoice createInvoice = new CreateInvoice();
+            createInvoice.addInvoiceDetails();
+            foreach (var item in (List<PartsInventory>)Session["cart"])
+            {
+                string Parts = string.Join(",", item.PartID);
+            }
+            
             return View();
         }
 
