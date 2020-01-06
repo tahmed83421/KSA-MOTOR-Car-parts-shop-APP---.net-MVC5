@@ -48,7 +48,7 @@ namespace BusinessLayer
             command.CommandType = CommandType.StoredProcedure;
 
 
-
+            SqlParameter parameter10 = new SqlParameter("@CustomerID", 1);
             SqlParameter parameter = new SqlParameter("@To_Name", "testdescriptoin");
             SqlParameter parameter0 = new SqlParameter("@To_Phone", "0809897");
             SqlParameter parameter1 = new SqlParameter("@Ship_Name", "TT");
@@ -56,9 +56,9 @@ namespace BusinessLayer
             SqlParameter parameter3 = new SqlParameter("@Ship_Adress", "Not Delivered");
             SqlParameter parameter4 = new SqlParameter("@Ship_City", "Not Delivered");
             SqlParameter parameter5 = new SqlParameter("@Ship_Contact", "Not Delivered");
-            SqlParameter parameter6 = new SqlParameter("@Vehicle_Id", "Not Delivered");
-            SqlParameter parameter7 = new SqlParameter("@Order_Id", "Not Delivered");
-            SqlParameter parameter8 = new SqlParameter("@Delivary_Date", "Not Delivered");
+            SqlParameter parameter6 = new SqlParameter("@Vehicle_id", 1);
+            SqlParameter parameter7 = new SqlParameter("@Order_Id", 27);
+            SqlParameter parameter8 = new SqlParameter("@Delivary_Date", DateTime.Now.ToShortDateString());
             SqlParameter parameter9 = new SqlParameter("@Payment_Terms", "Not Delivered");
 
             command.Parameters.Add(parameter);
@@ -72,6 +72,9 @@ namespace BusinessLayer
             command.Parameters.Add(parameter7);
             command.Parameters.Add(parameter8);
             command.Parameters.Add(parameter9);
+            command.Parameters.Add(parameter10);
+            connection.Open();
+            command.ExecuteNonQuery();
 
         }
     }
