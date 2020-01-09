@@ -41,7 +41,9 @@ namespace BusinessLayer
     }
     public class CreateInvoice
     {
-        public void addInvoiceDetails()
+        public void addInvoiceDetails(int CustomerID,string To_Name,string To_Phone, string Ship_Name,
+            string Ship_Company,string Ship_Adress,string Ship_City,string Ship_Contact,int Vehicleid,int OrderId,string Delivary_Date,
+            string Payment_Terms)
         {
             SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
             SqlCommand command = new SqlCommand("CreateInvoice", connection);
@@ -49,17 +51,17 @@ namespace BusinessLayer
 
 
             SqlParameter parameter10 = new SqlParameter("@CustomerID", 1);
-            SqlParameter parameter = new SqlParameter("@To_Name", "testdescriptoin");
-            SqlParameter parameter0 = new SqlParameter("@To_Phone", "0809897");
-            SqlParameter parameter1 = new SqlParameter("@Ship_Name", "TT");
-            SqlParameter parameter2 = new SqlParameter("@Ship_Company", "Not Delivered");
-            SqlParameter parameter3 = new SqlParameter("@Ship_Adress", "Not Delivered");
-            SqlParameter parameter4 = new SqlParameter("@Ship_City", "Not Delivered");
-            SqlParameter parameter5 = new SqlParameter("@Ship_Contact", "Not Delivered");
-            SqlParameter parameter6 = new SqlParameter("@Vehicle_id", 1);
-            SqlParameter parameter7 = new SqlParameter("@Order_Id", 27);
-            SqlParameter parameter8 = new SqlParameter("@Delivary_Date", DateTime.Now.ToShortDateString());
-            SqlParameter parameter9 = new SqlParameter("@Payment_Terms", "Not Delivered");
+            SqlParameter parameter = new SqlParameter("@To_Name", To_Name);
+            SqlParameter parameter0 = new SqlParameter("@To_Phone", To_Phone);
+            SqlParameter parameter1 = new SqlParameter("@Ship_Name", Ship_Name);
+            SqlParameter parameter2 = new SqlParameter("@Ship_Company", Ship_Company);
+            SqlParameter parameter3 = new SqlParameter("@Ship_Adress", Ship_Adress);
+            SqlParameter parameter4 = new SqlParameter("@Ship_City", Ship_City);
+            SqlParameter parameter5 = new SqlParameter("@Ship_Contact", Ship_Contact);
+            SqlParameter parameter6 = new SqlParameter("@Vehicle_id", Vehicleid);
+            SqlParameter parameter7 = new SqlParameter("@Order_Id", OrderId);
+            SqlParameter parameter8 = new SqlParameter("@Delivary_Date", Delivary_Date.ToString());
+            SqlParameter parameter9 = new SqlParameter("@Payment_Terms", Payment_Terms.ToString());
 
             command.Parameters.Add(parameter);
             command.Parameters.Add(parameter0);

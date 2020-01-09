@@ -107,17 +107,17 @@
                         </li>
                     </ul>
                 </li>
-                <li class="align-content-xl-end" >
-                    <a  href="@Url.Action("CheckOut", "Home")" class="btn btn-info btn-lg">
+                <li class="align-content-xl-end">
+                    <a href="@Url.Action("CheckOut", "Home")" class="btn btn-info btn-lg">
                         <span class="glyphicon glyphicon-shopping-cart" style="color:green"></span><span class="badge"> @Session["count"]</span>
                     </a>
                 </li>
             </ul>
-         
-          
-                    <!-- Links -->
 
-                 
+
+            <!-- Links -->
+
+
         </div>
         <!-- Collapsible content -->
     </nav>
@@ -174,17 +174,17 @@
                             </td>
 
                             <td>
-                              
+
                                 @Ajax.ActionLink("Search ", "AllTest", new { NID = Convert.ToInt32(Model.selctedCarModel), id = Convert.ToInt32(Model.selctedCarBrands), YID = Model.selectedYear },
   new AjaxOptions
   {
       HttpMethod = "GET", // HttpMethod to use, GET or POST
       UpdateTargetId = "Cardd", // ID of the HTML element to update
       InsertionMode = InsertionMode.Replace // Replace the existing contents
-  },new { @class = "btn btn-warning" })
+  }, new { @class = "btn btn-warning" })
 
                             </td>
-                           
+
                         </tr>
 
 
@@ -199,8 +199,9 @@
 
     </div>
 
-
-   
+ 
+      
+  
     <!-- Head End  AFter Head Start-->
     <div class="container" style="width:120%">
 
@@ -217,100 +218,100 @@
                         {
                             using (Html.BeginForm("PlaceOrder", "Home", FormMethod.Post))
                             {
-                            <div class="card">
-                                <div class="row">
-                                    <aside class="col-sm-5 border-right">
-                                        <article class="gallery-wrap">
-                                            <div class="img-big-wrap">
-                                                <img src="@Url.Content(item.ImagePath)" style="height:90%; width:100%" />
-                                            </div> <!-- slider-product.// -->
+                                <div class="card">
+                                    <div class="row">
+                                        <aside class="col-sm-5 border-right">
+                                            <article class="gallery-wrap">
+                                                <div class="img-big-wrap">
+                                                    <img src="@Url.Content(item.ImagePath)" style="height:90%; width:100%" />
+                                                </div> <!-- slider-product.// -->
 
-                                        </article> <!-- gallery-wrap .end// -->
-                                    </aside>
-                                    <aside class="col-sm-7">
-                                        <article class="card-body p-5">
+                                            </article> <!-- gallery-wrap .end// -->
+                                        </aside>
+                                        <aside class="col-sm-7">
+                                            <article class="card-body p-5">
 
-                                            <tr>
+                                                <tr>
 
-                                                <td>
-                                                    <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
-                                                </td>
-                                                <td>
-                                            </tr>
+                                                    <td>
+                                                        <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
+                                                    </td>
+                                                    <td>
+                                                </tr>
 
-                                            <p class="price-detail-wrap">
-                                                <span class="price h3 text-warning">
-                                                    <span class="currency">US $</span><span class="num"> @Html.DisplayFor(modelItem => item.SalePrice)</span>
-                                                </span>
+                                                <p class="price-detail-wrap">
+                                                    <span class="price h3 text-warning">
+                                                        <span class="currency">US $</span><span class="num"> @Html.DisplayFor(modelItem => item.SalePrice)</span>
+                                                    </span>
 
-                                            </p> <!-- price-detail-wrap .// -->
-                                            <dl class="item-property">
-                                                <dt>Description</dt>
-                                                <dd>
-                                                    <p>
+                                                </p> <!-- price-detail-wrap .// -->
+                                                <dl class="item-property">
+                                                    <dt>Description</dt>
+                                                    <dd>
+                                                        <p>
 
-                                                        @Html.DisplayFor(modelItem => item.Description)
-                                                    </p>
-                                                </dd>
-                                            </dl>
-                                            @Html.Hidden("SalePrice", item.SalePrice)
-                                            @Html.Hidden("ImagePath", item.ImagePath)
-                                            @Html.Hidden("Name", item.Name)
-                                            @Html.Hidden("Description", item.Description)
+                                                            @Html.DisplayFor(modelItem => item.Description)
+                                                        </p>
+                                                    </dd>
+                                                </dl>
+                                                @Html.Hidden("SalePrice", item.SalePrice)
+                                                @Html.Hidden("ImagePath", item.ImagePath)
+                                                @Html.Hidden("Name", item.Name)
+                                                @Html.Hidden("Description", item.Description)
 
-                                            @Html.Hidden("PartID", item.PartID)
-                                            @Html.Hidden("IDD", item.PartID)
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-sm-5">
-                                                    <dl class="param param-inline">
-                                                        <dt>Quantity: </dt>
-                                                        <dd>
+                                                @Html.Hidden("PartID", item.PartID)
+                                                @Html.Hidden("IDD", item.PartID)
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-sm-5">
+                                                        <dl class="param param-inline">
+                                                            <dt>Quantity: </dt>
+                                                            <dd>
 
-                                                            @Html.DropDownList("Qty", new List<SelectListItem>
-                     {
-                                         new SelectListItem() {Text = "1", Value="1"},
-                                         new SelectListItem() {Text = "2", Value="2"},
-                                         new SelectListItem() {Text = "3", Value="3"},
-                                         new SelectListItem() {Text = "4", Value="4"}
+                                                                @Html.DropDownList("Qty", new List<SelectListItem>
+                         {
+                                             new SelectListItem() {Text = "1", Value="1"},
+                                             new SelectListItem() {Text = "2", Value="2"},
+                                             new SelectListItem() {Text = "3", Value="3"},
+                                             new SelectListItem() {Text = "4", Value="4"}
 
-                     }, new { @class = "form-control", id = "Qty" })
+                         }, new { @class = "form-control", id = "Qty" })
 
-                                                        </dd>
-                                                    </dl>  <!-- item-property .// -->
-                                                    ,
-                                                </div> <!-- col.// -->
-                                                <div class="col-sm-7">
-                                                    <dl class="param param-inline">
-                                                        <dt>Total Order(5) </dt>
+                                                            </dd>
+                                                        </dl>  <!-- item-property .// -->
+                                                        ,
+                                                    </div> <!-- col.// -->
+                                                    <div class="col-sm-7">
+                                                        <dl class="param param-inline">
+                                                            <dt>Total Order(5) </dt>
 
-                                                    </dl>  <!-- item-property .// -->
-                                                </div> <!-- col.// -->
-                                            </div> <!-- row.// -->
-                                            <hr>
-
-
-                                            <input id="Submit1" type="submit" data-toggle="modal" data-target="#myModal" class="btn btn-danger" value="Order" />
-                                            <!--    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" onclick="OrderPostback()" data-target="#myModal">Order</button>-->
+                                                        </dl>  <!-- item-property .// -->
+                                                    </div> <!-- col.// -->
+                                                </div> <!-- row.// -->
+                                                <hr>
 
 
-                                        </article> <!-- card-body.// -->
-                                    </aside> <!-- col.// -->
-                                </div> <!-- row.// -->
-                            </div> <!-- card.// -->
-                                }
+                                                <input id="Submit1" type="submit" data-toggle="modal" data-target="#myModal" class="btn btn-danger" value="Order" />
+                                                <!--    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" onclick="OrderPostback()" data-target="#myModal">Order</button>-->
 
+
+                                            </article> <!-- card-body.// -->
+                                        </aside> <!-- col.// -->
+                                    </div> <!-- row.// -->
+                                </div> <!-- card.// -->
                             }
 
-
                         }
+
+
                     }
+                }
             </div>
         </div>
 
     </div>
 
-  
+
 </body>
 </html>
 <script>

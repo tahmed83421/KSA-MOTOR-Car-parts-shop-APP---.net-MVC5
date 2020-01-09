@@ -10,11 +10,17 @@ namespace KSA_MOTOR.Controllers
     public class HomeController : Controller
     {
         
+        
         public ActionResult Index()
         {
             if (Session["User"] == null)
             {
                 Session["User"] = "Guest";
+
+            }
+            else
+            {
+                Session["User"] = 2;
             }
             
             Inventory inventory = new Inventory();
@@ -209,10 +215,14 @@ namespace KSA_MOTOR.Controllers
         }
 
         [HttpPost]
-        public ActionResult PurchaseComplete(string txtCustomerName,string txtCustomerAdress, string txtShipName,string txtShipPhone,string txtShipAdress,string txtShipCity,string txtCarMaker,string txtCarYear,string txtCarModel, string txtVIN,string txtDeliveryDate,bool? chkPaid)
+        public ActionResult PurchaseComplete(int? CustomerID, string To_Name, string To_Phone, string Ship_Name,
+            string Ship_Company, string Ship_Adress, string Ship_City, string Ship_Contact, int Vehicleid, int OrderId, string Delivary_Date,
+            string Payment_Terms)
         {
             CreateInvoice createInvoice = new CreateInvoice();
-            createInvoice.addInvoiceDetails();
+            createInvoice.addInvoiceDetails( 2,  To_Name,  To_Phone,  Ship_Name,
+             Ship_Company, Ship_Adress, Ship_City,  Ship_Contact,  Vehicleid,  OrderId,  Delivary_Date,
+             Payment_Terms);
             foreach (var item in (List<PartsInventory>)Session["cart"])
             {
                 string Parts = string.Join(",", item.PartID);

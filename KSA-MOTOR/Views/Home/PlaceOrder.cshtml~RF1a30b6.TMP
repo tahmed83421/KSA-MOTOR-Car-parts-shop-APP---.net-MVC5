@@ -248,7 +248,6 @@
                     </div>
                     <hr />
                     @Html.Hidden("Vehicleid", 3)
-                    @Html.Hidden("OrderId",77)
                     <table>
                         <tr style="color:white">
                             <td style="background-color:dodgerblue">Year</td>
@@ -282,10 +281,10 @@
                                 <input id="Text1" name="VIN" type="text" class="form-control-sm" placeholder="Please Type VIN" />
                             </td>
                             <td>
-                                <input id="Text1" type="date" name="Delivary_Date" class="form-control-sm" />
+                                <input id="Text1" type="date" class="form-control-sm" />
                             </td>
                             <td>
-                                <input id="Text1" type="text" name="Payment_Terms" class="form-control-sm" placeholder="Payment" />
+                                <input id="Text1" type="text" class="form-control-sm" placeholder="Payment" />
                             </td>
                         </tr>
                     </table>
