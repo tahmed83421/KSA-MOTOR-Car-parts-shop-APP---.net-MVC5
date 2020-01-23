@@ -57,19 +57,19 @@
 <body>
     @*topmost navbar*@
     @*<nav class="navbar navbar-expand-sm navbar-dark m-0 pl-1 pr-1 pt-0 pb-0" style="background-color:#525c6b;">
-        <div class="collapse navbar-collapse" id="basicExampleNav">
-            <ul class="navbar-nav justify-content-between container-fluid">
-                <li class="nav-item"><a href="#" class="nav-link">Car &amp; Truck</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Semi Truck</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Motorcycle</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Powersports</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">RV / Camper</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Boating</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Recreation</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Tools</a></li>
-            </ul>
-        </div>
-    </nav>*@
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+                <ul class="navbar-nav justify-content-between container-fluid">
+                    <li class="nav-item"><a href="#" class="nav-link">Car &amp; Truck</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Semi Truck</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Motorcycle</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Powersports</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">RV / Camper</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Boating</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Recreation</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Tools</a></li>
+                </ul>
+            </div>
+        </nav>*@
 
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm navbar-dark primary-color container-fluid">
@@ -169,52 +169,124 @@
             </ul>
         </div>
     </nav>
-    <div style="background-image:url('https://wallup.net/wp-content/uploads/2016/07/21/408376-abstract-car-sports_car-parts-mechanics-Ferrari-Exploded-view_diagram-Composite-748x421.jpg'); background-position:center; background-color:whitesmoke;">
-        <div class="containerr" style="margin-left:90px;margin-right:90px;">
-            <img class="mySlides" src="~/Images/backgg.jpg" style="width:100%;height:370px;">
-            <img class="mySlides" src="~/Images/b2.jpg" style="width:100%;height:370px;">
-            <img class="mySlides" src="~/Images/b3.jpg" style="width:100%;height:370px;">
-
-
-            <div class="text-block" style=" margin-left:auto; margin-right:auto;">
-                @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-                {
-                    <table style=" margin-left:auto; margin-right:auto;">
-                        @Html.AntiForgeryToken()
-                        <tr>
-                            <td>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" style="width:100%" data-ride="carousel">
+        <div class="text-block" style="text-align:center; position:absolute; left:0; right:0; z-index:9;">
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+            {
+                <table style="margin-left:auto; margin-right:auto;">
+                    @Html.AntiForgeryToken()
+                    <tr>
+                        <td>
+                            <div class="form-group">
                                 @Html.DropDownListFor(m => m.selctedCarBrands, Model.GetVehivclesList.Select(x => new SelectListItem
-                           {
-                               Text = x.Make,
-                               Value = x.Id.ToString()
-                           }), "Select Vehicle", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL", style = " border-color:yellow" })
-                            </td>
-                            <td>
-                                @Html.DropDownListFor(m => m.selctedCarModel, Model.GetModelList.Select(x => new SelectListItem
-                           {
-                               Text = x.Model,
-                               Value = x.Id.ToString()
-                           }), "Select Vehicle", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDLL", style = " border-color:yellow" })
-                            </td>
-                            <td>
-                                @Html.DropDownListFor(m => m.selectedYear, (IEnumerable<SelectListItem>)ViewBag.Years, "Select Year", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL2", style = " border-color:yellow" })
-                            </td>
-                            <td>
+                       {
+                           Text = x.Make,
+                           Value = x.Id.ToString()
+                       }), "Select Vehicle", new { @class = "form-control custom-select chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL", style = "border-color:yellow" })
 
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                @Html.DropDownListFor(m => m.selctedCarModel, Model.GetModelList.Select(x => new SelectListItem
+                       {
+                           Text = x.Model,
+                           Value = x.Id.ToString()
+                       }), "Select Vehicle", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDLL", style = " border-color:yellow" })
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                @Html.DropDownListFor(m => m.selectedYear, (IEnumerable<SelectListItem>)ViewBag.Years, "Select Year", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL2", style = " border-color:yellow" })
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="form-group">
                                 @Ajax.ActionLink("Search ", "AllTest", new { NID = Convert.ToInt32(Model.selctedCarModel), id = Convert.ToInt32(Model.selctedCarBrands), YID = Model.selectedYear },
-  new AjaxOptions
-  {
-      HttpMethod = "GET", // HttpMethod to use, GET or POST
-      UpdateTargetId = "Cardd", // ID of the HTML element to update
-      InsertionMode = InsertionMode.Replace // Replace the existing contents
-  }, new { @class = "btn btn-warning" })
-                            </td>
-                        </tr>
-                    </table>
-                }
+new AjaxOptions
+{
+  HttpMethod = "GET", // HttpMethod to use, GET or POST
+  UpdateTargetId = "Cardd", // ID of the HTML element to update
+  InsertionMode = InsertionMode.Replace // Replace the existing contents
+}, new { @class = "btn btn-warning" })
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="~/Images/backgg.jpg" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>Amazing cars available</h2>
+                    <p>This is the first dummy slide</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/Images/b2.jpg" alt="Second slide">
+                <div class="carousel-caption d-none d-block">
+                    <h2>Car Parts Available</h2>
+                    <p>Second Dummy Slide</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="~/Images/b3.jpg" alt="Third slide">
+                <div class="carousel-caption d-none d-block">
+                    <h5>Request for new parts</h5>
+                    <p>third dummy slide</p>
+                </div>
             </div>
         </div>
     </div>
+    @*<div>
+              <div class="container" style="margin-left:90px;margin-right:90px;">
+                  <img class="mySlides" src="~/Images/backgg.jpg" style="width:100%;height:370px;">
+                  <img class="mySlides" src="~/Images/b2.jpg" style="width:100%;height:370px;">
+                  <img class="mySlides" src="~/Images/b3.jpg" style="width:100%;height:370px;">
+
+
+                  <div class="text-block" style=" margin-left:auto; margin-right:auto;">
+                      @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                      {
+                          <table style=" margin-left:auto; margin-right:auto;">
+                              @Html.AntiForgeryToken()
+                              <tr>
+                                  <td>
+                                      @Html.DropDownListFor(m => m.selctedCarBrands, Model.GetVehivclesList.Select(x => new SelectListItem
+                                 {
+                                     Text = x.Make,
+                                     Value = x.Id.ToString()
+                                 }), "Select Vehicle", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL", style = " border-color:yellow" })
+                                  </td>
+                                  <td>
+                                      @Html.DropDownListFor(m => m.selctedCarModel, Model.GetModelList.Select(x => new SelectListItem
+                                 {
+                                     Text = x.Model,
+                                     Value = x.Id.ToString()
+                                 }), "Select Vehicle", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDLL", style = " border-color:yellow" })
+                                  </td>
+                                  <td>
+                                      @Html.DropDownListFor(m => m.selectedYear, (IEnumerable<SelectListItem>)ViewBag.Years, "Select Year", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL2", style = " border-color:yellow" })
+                                  </td>
+                                  <td>
+
+                                      @Ajax.ActionLink("Search ", "AllTest", new { NID = Convert.ToInt32(Model.selctedCarModel), id = Convert.ToInt32(Model.selctedCarBrands), YID = Model.selectedYear },
+        new AjaxOptions
+        {
+            HttpMethod = "GET", // HttpMethod to use, GET or POST
+            UpdateTargetId = "Cardd", // ID of the HTML element to update
+            InsertionMode = InsertionMode.Replace // Replace the existing contents
+        }, new { @class = "btn btn-warning" })
+                                  </td>
+                              </tr>
+                          </table>
+                      }
+                  </div>
+              </div>
+          </div>*@
 
     <!-- Head End  AFter Head Start-->
     <div class="container" style="width:120%">
