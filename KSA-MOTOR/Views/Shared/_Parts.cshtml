@@ -54,100 +54,50 @@
 
 
 
-    <div class="container" style=" width:100%">
-        @{
-            if (Model.Count() == 0)
-            { <h2>Sorry :( Nothing Found for you search... </h2> }
-        }
+<div class="container" style=" width:100%">
+    @{
+        if (Model.Count() == 0)
+        { <h2>Sorry :( Nothing Found for you search... </h2> }
+    }
 
-        @foreach (var item in Model)
-        {
-
-            <div class="card">
-                <div class="row">
-                    <aside class="col-sm-5 border-right">
-                        <article class="gallery-wrap">
-                            <div class="img-big-wrap">
-                                <img src="@Url.Content(item.ImagePath)" style="height:90%; width:100%" />
-                            </div> <!-- slider-product.// -->
-
-                        </article> <!-- gallery-wrap .end// -->
-                    </aside>
-                    <aside class="col-sm-7">
-                        <article class="card-body p-5">
-
-                            <tr>
-
-                                <td>
-                                    <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
-                                </td>
-                                <td>
-                            </tr>
-
-                            <p class="price-detail-wrap">
-                                <span class="price h3 text-warning">
-                                    <span class="currency">US $</span><span class="num"> @Html.DisplayFor(modelItem => item.SalePrice)</span>
-                                </span>
-
-                            </p> <!-- price-detail-wrap .// -->
-                            <dl class="item-property">
-                                <dt>Description</dt>
-                                <dd>
-                                    <p>
-
-                                        @Html.DisplayFor(modelItem => item.Description)
-                                    </p>
-                                </dd>
-                            </dl>
-                            @Html.Hidden("PartID",item.PartID)
-                            @Html.Hidden("SalePrice", item.SalePrice)
-                            @Html.Hidden("ImagePath", item.ImagePath)
-                            @Html.Hidden("Name", item.Name)
-                            @Html.Hidden("Description",item.Description)
-
-
-
-                            @Html.Hidden("IDD", item.PartID)
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <dl class="param param-inline">
-                                        <dt>Quantity: </dt>
-                                        <dd>
-
-                                            @Html.DropDownList("Qty", new List<SelectListItem>
-     {
-                         new SelectListItem() {Text = "1", Value="1"},
-                         new SelectListItem() {Text = "2", Value="2"},
-                         new SelectListItem() {Text = "3", Value="3"},
-                         new SelectListItem() {Text = "4", Value="4"}
-
-     }, new { @class = "form-control", id = "Qty" })
-
-                                        </dd>
-                                    </dl>  <!-- item-property .// -->
-                                    ,
-                                </div> <!-- col.// -->
-                                <div class="col-sm-7">
-                                    <dl class="param param-inline">
-                                        <dt>Total Order(5) </dt>
-
-                                    </dl>  <!-- item-property .// -->
-                                </div> <!-- col.// -->
-                            </div> <!-- row.// -->
-                            <hr>
-
-                        
-                            <input id="Submit1"  type="submit" data-toggle="modal" data-target="#myModal" class="btn btn-danger" value="Order" />
-                         
-
-                        </article> <!-- card-body.// -->
-</aside> <!-- col.// -->
-                </div> <!-- row.// -->
-            </div> <!-- card.// -->
-        }
-
-    </div>
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <div class="row card-body">
+                @*product image*@
+                <div class="col-4">
+                    <div class="img-big-wrap img-thumbnail card-img">
+                        <img src="@Url.Content(item.ImagePath)" style="max-height:200px; width:100%" />
+                    </div>
+                </div>
+                @*product description and actions*@
+                <div class="col-8 text-left">
+                    <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+                    <p class="price-detail-wrap">
+                        <span class="price h3 text-warning">
+                            <span class="currency">US <i class="fa fa-usd"></i></span><span class="num"> @Html.DisplayFor(modelItem => item.SalePrice)</span>
+                        </span>
+                    </p> <!-- price-detail-wrap .// -->
+                    <div>
+                        @Html.Hidden("PartID", item.PartID)
+                        @Html.Hidden("SalePrice", item.SalePrice)
+                        @Html.Hidden("ImagePath", item.ImagePath)
+                        @Html.Hidden("Name", item.Name)
+                        @Html.Hidden("Description", item.Description)
+                        @Html.Hidden("IDD", item.PartID)
+                        <h6>Description</h6>
+                        <p class="small">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </p>
+                    </div>
+                    <div class="pt-4">
+                        <input id="Submit1" type="submit" data-toggle="modal" data-target="#myModal" class="btn btn-danger" value="Order" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 }
 
 
