@@ -6,9 +6,9 @@
     int total = 0;
     if ((List<PartsInventory>)Session["cart"] != null)
     {
-        foreach (PartsInventory parts1 in (List<PartsInventory>)Session["cart"])
+        foreach (var itemParts in Model)
         {
-            total = total + Convert.ToInt32(parts1.SalePrice) * Convert.ToInt32(parts1.Qty);
+            total = total + Convert.ToInt32(itemParts.SalePrice) * Convert.ToInt32(itemParts.Qty);
         }
     }
 }

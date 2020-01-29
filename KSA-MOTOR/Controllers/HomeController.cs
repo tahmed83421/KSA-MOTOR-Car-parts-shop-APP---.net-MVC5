@@ -138,7 +138,6 @@ namespace KSA_MOTOR.Controllers
             Inventory inventory = new Inventory();
             foreach ( var item in (List<PartsInventory>)Session["cart"])
             {
-                
                 inventory.AddOrder(item);
             }
             List<PartsInventory> parts = (List<PartsInventory>)Session["cart"];
@@ -191,24 +190,20 @@ namespace KSA_MOTOR.Controllers
             if (Session["cart"] == null)
             {
                 List<PartsInventory> li = new List<PartsInventory>();
-
+                parts.Qty = parts.Qty == null ? "1" : parts.Qty;
                 li.Add(parts);
                 Session["cart"] = li;
                 ViewBag.cart = li.Count();
-
-
                 Session["count"] = 1;
-
-
             }
             else
             {
                 List<PartsInventory> li = (List<PartsInventory>)Session["cart"];
+                parts.Qty = parts.Qty == null ? "1" : parts.Qty;
                 li.Add(parts);
                 Session["cart"] = li;
                 ViewBag.cart = li.Count();
                 Session["count"] = Convert.ToInt32(Session["count"]) + 1;
-
             }
 
             return RedirectToAction("Index");
