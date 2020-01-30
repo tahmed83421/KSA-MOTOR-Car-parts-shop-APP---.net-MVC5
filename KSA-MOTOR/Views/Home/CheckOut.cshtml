@@ -22,28 +22,20 @@
 
 
 <div class="container">
-
+    <div class="col-xs-6">
+        <h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
+    </div>
     <div class="row">
-        <div class="col-xl-12">
-            <div class="panel panel-info">
+        <div class="container row">
+            <div class="panel panel-info col-10">
                 <div class="panel-heading">
                     <div class="panel-title">
                         <div class="row">
-                            <div class="col-xs-6">
-                                <h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
-                            </div>
-                            <div class="col-xs-2">
-                                <a href="https://localhost:44316/Home"
-                                   class="btn btn-primary btn-sm btn-block">
-                                    <span class="glyphicon glyphicon-share-alt"></span> Continue shopping
-                                </a>
-                            </div>
+
+                            
                         </div>
                     </div>
                 </div>
-
-
-
                 <div class="panel-body">
 
                     @if ((List<PartsInventory>
@@ -110,7 +102,7 @@
                 </div>
 
 
-                <div class="panel-footer">
+                @*<div class="panel-footer">
                     <div class="row text-center">
                         <div class="col-xs-9">
                             <h4 class="text-right">Total <strong>$@total</strong></h4>
@@ -132,9 +124,30 @@
                             }
                         </div>
                     </div>
+                </div>*@
+            </div>
+            <div class="col-2">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h2>Sub Total</h2>
+                    </div>
+                    <div class="panel-body">
+                        <h4>Total <i class="fa fa-usd"></i> @total</h4>
+                    </div>
                 </div>
+
+                @using (Html.BeginForm("CheckOut", "Home", FormMethod.Post))
+                {
+                    <input id="Submit1" type="submit" value="Place Order" class="btn btn-success btn-block" />
+                }
+
+            <a href="https://localhost:44316/Home"
+               class="btn btn-primary btn-sm btn-block">
+                <span class="glyphicon glyphicon-share-alt"></span> Continue shopping
+            </a>
             </div>
         </div>
+        
     </div>
 </div>
 
