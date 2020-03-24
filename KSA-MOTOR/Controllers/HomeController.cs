@@ -9,39 +9,42 @@ namespace KSA_MOTOR.Controllers
 {
     public class HomeController : Controller
     {
-        
-        
+               
+        //public ActionResult Index()
+        //{
+        //    if (Session["User"] == null)
+        //    {
+        //        Session["User"] = "Guest";
+
+        //    }
+        //    else
+        //    {
+        //        Session["User"] = 2;
+        //    }
+            
+        //    Inventory inventory = new Inventory();
+
+        //    PartsInventory parts = new PartsInventory();
+        //    Vehicle vehicle = new Vehicle();
+        //    parts.GetVehivclesList = inventory.Vehicles.ToList();
+        //    parts.GetModelList = inventory.VModels.ToList();
+        //    ViewBag.parrt = inventory.Parts.ToList();
+        //    ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year, 20).Select(x =>
+         
+        //    new SelectListItem()
+        //   {
+        //       Text = x.ToString(),
+        //       Value = x.ToString()
+        //   }), "Value", "Text");
+
+
+        //    return View(parts);
+        //}
+
         public ActionResult Index()
         {
-            if (Session["User"] == null)
-            {
-                Session["User"] = "Guest";
-
-            }
-            else
-            {
-                Session["User"] = 2;
-            }
-            
-            Inventory inventory = new Inventory();
-
-            PartsInventory parts = new PartsInventory();
-            Vehicle vehicle = new Vehicle();
-            parts.GetVehivclesList = inventory.Vehicles.ToList();
-            parts.GetModelList = inventory.VModels.ToList();
-            ViewBag.parrt = inventory.Parts.ToList();
-            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year, 20).Select(x =>
-         
-            new SelectListItem()
-           {
-               Text = x.ToString(),
-               Value = x.ToString()
-           }), "Value", "Text");
-
-
-            return View(parts);
+            return View("Home");
         }
-
 
         public JsonResult GetModels(string selctedCarBrands)
         {

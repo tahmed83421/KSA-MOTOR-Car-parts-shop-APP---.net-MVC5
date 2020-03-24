@@ -355,6 +355,8 @@
     <Content Include="Views\OrderDetails\Edit.cshtml" />
     <Content Include="Views\OrderDetails\Index.cshtml" />
     <Content Include="Views\Home\PurchaseComplete.cshtml" />
+    <Content Include="Views\Inventories\StorageInformation.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\" />
