@@ -1,4 +1,5 @@
-﻿
+﻿@model BusinessLayer.PartsInventory
+@using BusinessLayer
 @{
     ViewBag.Title = "Home";
 }
@@ -12,10 +13,27 @@
         </ol>
 
         <div class="inputs-wrapper d-flex">
-            <input type="text" name="bar" class="search-text-box" placeholder="Search Your Result">
-            <input type="text" name="bar" class="search-text-box" placeholder="Search Your Result">
-            <input type="text" name="bar" class="search-text-box" placeholder="Search Your Result">
-            <input type="submit" name="submit" id="submit" class="search-button" value="search">
+            @Html.DropDownListFor(m => m.selctedCarBrands, Model.GetVehivclesList.Select(x => new SelectListItem
+                 {
+                     Text = x.Make,
+                     Value = x.Id.ToString()
+                 }), "Select Vehicle", new { @class = "search-text-box", onchange = "this.form.submit();", id = "DDL", style = "border-color:yellow" })
+            @Html.DropDownListFor(m => m.selctedCarModel, Model.GetModelList.Select(x => new SelectListItem
+                 {
+                     Text = x.Model,
+                     Value = x.Id.ToString()
+                 }), "Select Model", new { @class = "search-text-box", onchange = "this.form.submit();", id = "DDLL", style = " border-color:yellow" })
+
+
+            @Html.DropDownListFor(m => m.selectedYear, (IEnumerable<SelectListItem>)ViewBag.Years, "Select Year", new { @class = "search-text-box", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL2", style = " border-color:yellow" })
+
+            @Ajax.ActionLink("Search ", "AllTest", new { NID = Convert.ToInt32(Model.selctedCarModel), id = Convert.ToInt32(Model.selctedCarBrands), YID = Model.selectedYear },
+                    new AjaxOptions
+                    {
+                    HttpMethod = "GET", // HttpMethod to use, GET or POST
+                    UpdateTargetId = "Cardd", // ID of the HTML element to update
+                    InsertionMode = InsertionMode.Replace // Replace the existing contents
+                    }, new { @class = "search-button btn btn-block btn-danger text-center" })
         </div>
 
         <div class="carousel-inner">

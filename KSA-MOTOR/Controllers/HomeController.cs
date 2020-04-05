@@ -43,7 +43,24 @@ namespace KSA_MOTOR.Controllers
 
         public ActionResult Index()
         {
-            return View("Home");
+            Inventory inventory = new Inventory();
+            PartsInventory parts = new PartsInventory();
+
+            parts.GetVehivclesList = inventory.Vehicles.ToList();
+            parts.GetModelList = inventory.VModels.ToList();
+            ViewBag.years = new SelectList(Enumerable.Range(DateTime.Today.Year, 20).Select(x =>
+            new SelectListItem()
+            {
+                Text = x.ToString(),
+                Value = x.ToString()
+
+            }), "value", "text"
+
+            );
+
+
+
+            return View("Home", parts);
         }
 
         public JsonResult GetModels(string selctedCarBrands)
