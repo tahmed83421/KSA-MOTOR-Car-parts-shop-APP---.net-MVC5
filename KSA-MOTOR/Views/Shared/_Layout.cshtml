@@ -43,8 +43,8 @@
                     </span>
                 </div>
             </div>
-            <div class="col-5 d-flex justify-content-between">
-                <div class="btn-group">
+            <div class="col-5 d-flex">
+                <div class="btn-group col-6">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-user-circle-o" aria-hidden="true"></i> Account
                     </button>
@@ -56,31 +56,7 @@
                         <a class="dropdown-item" href="#">Separated link</a>
                     </div>
                 </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-calculator" aria-hidden="true"></i> Garage
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
-                    </div>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-list" aria-hidden="true"></i> Wishlist
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
-                    </div>
-                </div>
-                <div class="btn-group">
+                <div class="btn-group col-6">
                     <a href="@Url.Action("CheckOut", "Home")" type="button" class="btn btn-success">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         <span class="badge"> @Session["count"]</span> Cart
@@ -98,13 +74,6 @@
             <ul class="navbar-nav justify-content">
                 <li class="nav-item"><a href="#" class="nav-link font-weight-bold text-dark pl-3">Shop By Vehicle</a></li>
                 <li class="nav-item"><a href="#" class="nav-link font-weight-bold text-dark pl-3">Shop By Brand</a></li>
-                @*<li class="nav-item"><a href="#" class="nav-link font-weight-bold text-dark">Performance</a></li>
-                <li class="nav-item"><a href="#" class="nav-link font-weight-bold text-dark">Lighting</a></li>
-                <li class="nav-item"><a href="#" class="nav-link font-weight-bold text-dark">Wheels</a></li>
-                <li class="nav-item"><a href="#" class="nav-link font-weight-bold text-dark">Repair</a></li>
-                <li class="nav-item"><a href="#" class="nav-link font-weight-bold text-dark">Body</a></li>
-                <li class="nav-item"><a href="#" class="nav-link font-weight-bold text-dark">Audio</a></li>
-                <li class="nav-item"><a href="#" class="nav-link font-weight-bold text-dark">Automotive Tools</a></li>*@
             </ul>
         </div>
     </nav>
