@@ -37,16 +37,19 @@ namespace KSA_MOTOR.Controllers
 
             LoginCheck login = new LoginCheck();
            
-            if (login.LoginAuthorization(Password))
-            {
-                Session["user"] = Password.ToString();
-                return RedirectToAction("Index", "Inventories", new { area = "" });
-            }
-            else
-            {
-                return RedirectToAction("Index");
-            }
-            
+            //if (login.LoginAuthorization(Password))
+            //{
+            //    Session["user"] = Password.ToString();
+            //    return RedirectToAction("Index", "Inventories", new { area = "" });
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Index");
+            //}
+            // bypassing ... 
+            Session["user"] = Password.ToString();
+            return RedirectToAction("Index", "Inventories", new { area = "" });
+
         }
 
         // GET: Administrations/Details/5

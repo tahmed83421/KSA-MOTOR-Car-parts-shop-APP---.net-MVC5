@@ -29,8 +29,10 @@ namespace KSA_MOTOR.Controllers
             return View(Parts);
         }
 
-
-      
+        public ActionResult StorageInformation()
+        {
+            return View();
+        }      
 
 
         [HttpGet]

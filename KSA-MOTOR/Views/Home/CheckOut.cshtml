@@ -3,10 +3,15 @@
 
 @{
     ViewBag.Title = "CheckOut";
+    int total = 0;
+    if ((List<PartsInventory>)Session["cart"] != null)
+    {
+        foreach (var itemParts in Model)
+        {
+            total = total + Convert.ToInt32(itemParts.SalePrice) * Convert.ToInt32(itemParts.Qty);
+        }
+    }
 }
-
-
-
 
 
 <style>
@@ -15,239 +20,181 @@
     }
 </style>
 
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
-
-    <div class="container">
-
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
-                                </div>
-                                <div class="col-xs-2">
-                                    <a href="https://localhost:44316/Home"
-                                       class="btn btn-primary btn-sm btn-block">
-                                        <span class="glyphicon glyphicon-share-alt"></span> Continue shopping
-
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-             
-                    <div class="panel-body">
-
-                        @if ((List<PartsInventory>
-                    )Session["cart"] == null)
-                        {<h3 style="text-align:center;color:red"><strong>Sorry No Items Found in Your Cart <span class="text-muted"></span></strong></h3>}
-                        else
-                        {
-                            foreach (var items in Model)
-                            {
-                                using (Html.BeginForm("UpdateCart", "Home", FormMethod.Post))
-                                {
-
-                                    <div class="row">
-                                        <div class="col-xs-3">
-
-                                            <img src="@Url.Content(items.ImagePath)" style="height:90%; width:100%" />
-                                        </div>
-                                        <div id="dvContents">
-                                            <div class="col-xs-4">
-                                                <h4 class="product-name"><strong>@items.Name</strong></h4><h4><small>@items.Description</small></h4>
-                                            </div>
-                                            <div class="col-xs-4">
-                                                <div class="col-xs-6 text-right">
-                                                    <h6><strong>@items.SalePrice  <span class="text-muted">x</span></strong></h6>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    @Html.TextBox("Qty", items.Qty, new { @class = "form-control" })
-
-                                                </div>
-                                            </div>
-                                            @Html.HiddenFor(model => items.PartID, items.PartID)
-                                            @Html.Hidden("PartID", items.PartID)
-                                            @Html.Hidden("IDD", items.PartID)
-
-                                            <div class="col-xs-2">
-
-
-                                                <button type="button" class="btn btn-link btn-xs">
-
-                                                    <span class="glyphicon glyphicon-trash">  @Html.ActionLink("Remove ", "RemoveItemFromCart", new { id = items.PartID }) </span>
-                                                </button>
-
-
-                                            </div>
-                                            <div class="col-xs-2">
-
-
-
-                                                <input id="Submit1" class="btn btn-warning" type="submit" value="Update" />
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <hr>
-
-
-
-
-
-                                }
-                                <hr>
-                            }
-                        }
-
-
+<div class="container">
+    <div class="col-6">
+        <h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
+    </div>
+    <div class="row">
+        <div class="container row">
+            <div class="card col-10">
+                <div class="panel-heading">
+                    <div class="panel-title">
                         <div class="row">
-                            <div class="text-center">
 
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
 
+                    @if ((List<PartsInventory>
+                )Session["cart"] == null)
+                    {<h3 style="text-align:center;color:red"><strong>Sorry No Items Found in Your Cart <span class="text-muted"></span></strong></h3>}
+                    else
+                    {
+                        <div class="card">
+                            <div class="card-body">
+                                @foreach (var items in Model)
+                                {
+                                    using (Html.BeginForm("UpdateCart", "Home", FormMethod.Post))
+                                    {
+                                        @Html.HiddenFor(model => items.PartID, items.PartID)
+                                        @Html.Hidden("PartID", items.PartID)
+                                        @Html.Hidden("IDD", items.PartID)
+                                        <div class="row container">
+                                            <div class="col-4">
+                                                <div class="card-img img-fluid">
+                                                    <img src="@Url.Content(items.ImagePath)" style="max-height:200px; max-width:100%" />
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <h4>
+                                                    @items.Name
+                                                </h4>
+                                                <p>@items.Description</p>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        @Html.TextBox("Qty", items.Qty, new { @class = "form-control" })
+                                                    </div>
 
-                                <div class="col-xs-2">
-                                    <button type="button" id="btnPrint" class="btn btn-warning">
-                                        Print
-                                    </button>
-                                </div>
+                                                    <div class="col-3">
+                                                        <input id="Submit1" class="btn btn-warning" type="submit" value="Update" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-3">
+                                                    @Html.ActionLink("Remove ", "RemoveItemFromCart", new { id = items.PartID })
+                                                </div>
+                                            </div>
+                                            <div class="col-2 float-right">
+                                                <i class="fa fa-usd"></i>@items.SalePrice
+                                            </div>
+                                        </div>
+                                        <hr />
+                                    }
+                                }
+                            </div>
+                            <div class="card-footer col-2 offset-10">
+                                <h4 class="text-right float-right">Total <strong>$ @total</strong></h4>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="row">
+                        <div class="text-center">
+                            <div class="col-xs-2">
+                                <button type="button" id="btnPrint" class="btn btn-warning">
+                                    Print
+                                </button>
                             </div>
                         </div>
                     </div>
-
-                        @{
-                            int total = 0;
-                            if ((List<PartsInventory>)Session["cart"] != null)
-                            {
-                                foreach (PartsInventory parts1 in (List<PartsInventory>)Session["cart"])
-                                {
-                                    total = total + Convert.ToInt32(parts1.SalePrice) * Convert.ToInt32(parts1.Qty);
-
-                                }
-                            }
-
-                        }
-                        <div class="panel-footer">
-                            <div class="row text-center">
-                                <div class="col-xs-9">
-                                    <h4 class="text-right">Total <strong>$@total</strong></h4>
-                                </div>
-                                <div class="col-xs-3">
-                                    @{
-                                        if ((List<PartsInventory>
-                                        )Session["cart"] != null)
-                                        {
-                                            foreach (PartsInventory parts1 in (List<PartsInventory>
-                                           )Session["cart"])
-                                            {
-                                                using (Html.BeginForm("CheckOut", "Home", FormMethod.Post))
-                                                {
-                                                    @Html.Hidden("Description", parts1.Description)
-                                                    @Html.Hidden("PartsId", parts1.PartID)
-                                                    <input id="Submit1" type="submit" value="Place Order" class="btn btn-success btn-block" />
-
-                                                }
-                                            }
-                                        }
-
-                                    }
-                                </div>
-                            </div>
-                        </div>
                 </div>
+
+            </div>
+            <div class="col-2">
+                <div class="card p-2">
+                    <h4>Sub Total</h4>
+                    <div>
+                        <h6>Total <i class="fa fa-usd text-danger"></i> @total</h6>
+                    </div>
+
+                    @using (Html.BeginForm("CheckOut", "Home", FormMethod.Post))
+                    {
+                        <input id="Submit1" type="submit" value="Proceed to checkout" class="btn btn-success" />
+                    }
+                </div>
+
+
+            @*<a href="https://localhost:44316/Home"
+               class="btn btn-primary btn-sm btn-block">
+                <span class="glyphicon glyphicon-share-alt"></span> Continue shopping
+            </a>*@
             </div>
         </div>
-
-    </div>
-    <p>
         
-    </p>
-    <table class="table">
-        <tr>
-            <th></th>
-        </tr>
+    </div>
+</div>
 
 
-    </table>
-                            
-    <style type="text/css">
-        .label {
-            -size: 10pt;
-            -weight: bold;
-            -family: Arial;
-        }
+<style type="text/css">
+    .label {
+        -size: 10pt;
+        -weight: bold;
+        -family: Arial;
+    }
 
-        .contents {
-            border: 1px dotted black;
-            padding: 5px;
-            width: 300px;
-        }
+    .contents {
+        border: 1px dotted black;
+        padding: 5px;
+        width: 300px;
+    }
 
-        .name {
-            color: #18B5F0;
-        }
+    .name {
+        color: #18B5F0;
+    }
 
-        .left {
-            float: left;
-            width: 50px;
-            height: 50px;
-        }
+    .left {
+        float: left;
+        width: 50px;
+        height: 50px;
+    }
 
-        .right {
-            margin-left: 60px;
-            line-height: 50px;
-        }
+    .right {
+        margin-left: 60px;
+        line-height: 50px;
+    }
 
-        .clear {
-            clear: both;
-        }
+    .clear {
+        clear: both;
+    }
 
-        #footer {
-            position: fixed;
-            bottom: 0px;
-            height: 3px;
-            background-color: #666;
-            color: #eee;
-            width: 100%
-        }
-    </style>
-    <script type="text/javascript">
-        $(function () {
-            $("#btnPrint").click(function () {
-                var contents = $("#dvContents").html();
-                var frame1 = $('<iframe />');
-                frame1[0].name = "frame1";
-                frame1.css({
-                    "position": "absolute",
-                    "top": "-1000000px"
-                });
-                $("body").append(frame1);
-                var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
-                frameDoc.document.open();
-                //Create a new HTML document.
-                frameDoc.document.write('<html><head><title>DIV Contents</title>');
-                frameDoc.document.write('</head><body>');
-                //Append the external CSS file.
-                frameDoc.document.write('<link href="style.css" rel="stylesheet" type="text/css" />');
-                //Append the DIV contents.
-                frameDoc.document.write(contents);
-                frameDoc.document.write('</body></html>');
-                frameDoc.document.close();
-                setTimeout(function () {
-                    window.frames["frame1"].focus();
-                    window.frames["frame1"].print();
-                    frame1.remove();
-                }, 500);
+    #footer {
+        position: fixed;
+        bottom: 0px;
+        height: 3px;
+        background-color: #666;
+        color: #eee;
+        width: 100%
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        $("#btnPrint").click(function () {
+            var contents = $("#dvContents").html();
+            var frame1 = $('<iframe />');
+            frame1[0].name = "frame1";
+            frame1.css({
+                "position": "absolute",
+                "top": "-1000000px"
             });
+            $("body").append(frame1);
+            var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
+            frameDoc.document.open();
+            //Create a new HTML document.
+            frameDoc.document.write('<html><head><title>DIV Contents</title>');
+            frameDoc.document.write('</head><body>');
+            //Append the external CSS file.
+            frameDoc.document.write('<link href="style.css" rel="stylesheet" type="text/css" />');
+            //Append the DIV contents.
+            frameDoc.document.write(contents);
+            frameDoc.document.write('</body></html>');
+            frameDoc.document.close();
+            setTimeout(function () {
+                window.frames["frame1"].focus();
+                window.frames["frame1"].print();
+                frame1.remove();
+            }, 500);
         });
-    </script>
+    });
+</script>

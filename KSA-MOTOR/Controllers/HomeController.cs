@@ -9,39 +9,59 @@ namespace KSA_MOTOR.Controllers
 {
     public class HomeController : Controller
     {
-        
-        
+               
+        //public ActionResult Index()
+        //{
+        //    if (Session["User"] == null)
+        //    {
+        //        Session["User"] = "Guest";
+
+        //    }
+        //    else
+        //    {
+        //        Session["User"] = 2;
+        //    }
+            
+        //    Inventory inventory = new Inventory();
+
+        //    PartsInventory parts = new PartsInventory();
+        //    Vehicle vehicle = new Vehicle();
+        //    parts.GetVehivclesList = inventory.Vehicles.ToList();
+        //    parts.GetModelList = inventory.VModels.ToList();
+        //    ViewBag.parrt = inventory.Parts.ToList();
+        //    ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year, 20).Select(x =>
+         
+        //    new SelectListItem()
+        //   {
+        //       Text = x.ToString(),
+        //       Value = x.ToString()
+        //   }), "Value", "Text");
+
+
+        //    return View(parts);
+        //}
+
         public ActionResult Index()
         {
-            if (Session["User"] == null)
-            {
-                Session["User"] = "Guest";
-
-            }
-            else
-            {
-                Session["User"] = 2;
-            }
-            
             Inventory inventory = new Inventory();
-
             PartsInventory parts = new PartsInventory();
-            Vehicle vehicle = new Vehicle();
+
             parts.GetVehivclesList = inventory.Vehicles.ToList();
             parts.GetModelList = inventory.VModels.ToList();
-            ViewBag.parrt = inventory.Parts.ToList();
-            ViewBag.Years = new SelectList(Enumerable.Range(DateTime.Today.Year, 20).Select(x =>
-         
+            ViewBag.years = new SelectList(Enumerable.Range(DateTime.Today.Year, 20).Select(x =>
             new SelectListItem()
-           {
-               Text = x.ToString(),
-               Value = x.ToString()
-           }), "Value", "Text");
+            {
+                Text = x.ToString(),
+                Value = x.ToString()
+
+            }), "value", "text"
+
+            );
 
 
-            return View(parts);
+
+            return View("Home", parts);
         }
-
 
         public JsonResult GetModels(string selctedCarBrands)
         {
@@ -96,11 +116,11 @@ namespace KSA_MOTOR.Controllers
                 Vehicle vehicle = new Vehicle();
                 parts.GetVehivclesList = inventory.Vehicles.ToList();
                 parts.GetModelList = inventory.VModels.Where(x => x.MakerId == Convert.ToInt32(parts.selctedCarBrands)).ToList();
-                return View(parts);
+                return View("Home",parts);
             }
             else
             {
-                return View();
+                return View("Home",parts);
             }
 
         }
@@ -138,7 +158,6 @@ namespace KSA_MOTOR.Controllers
             Inventory inventory = new Inventory();
             foreach ( var item in (List<PartsInventory>)Session["cart"])
             {
-                
                 inventory.AddOrder(item);
             }
             List<PartsInventory> parts = (List<PartsInventory>)Session["cart"];
@@ -191,24 +210,20 @@ namespace KSA_MOTOR.Controllers
             if (Session["cart"] == null)
             {
                 List<PartsInventory> li = new List<PartsInventory>();
-
+                parts.Qty = parts.Qty == null ? "1" : parts.Qty;
                 li.Add(parts);
                 Session["cart"] = li;
                 ViewBag.cart = li.Count();
-
-
                 Session["count"] = 1;
-
-
             }
             else
             {
                 List<PartsInventory> li = (List<PartsInventory>)Session["cart"];
+                parts.Qty = parts.Qty == null ? "1" : parts.Qty;
                 li.Add(parts);
                 Session["cart"] = li;
                 ViewBag.cart = li.Count();
                 Session["count"] = Convert.ToInt32(Session["count"]) + 1;
-
             }
 
             return RedirectToAction("Index");

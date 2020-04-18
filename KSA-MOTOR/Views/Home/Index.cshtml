@@ -1,344 +1,242 @@
 ﻿@model BusinessLayer.PartsInventory
-    @using BusinessLayer
+@using BusinessLayer
 
 @{
     ViewBag.Title = "Create";
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title -Care-n-Repair</title>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
-    <script src="~/Scripts/modernizr.custom.86080.js"></script>
-    <script src="~/Scripts/jquery-3.4.1.js"></script>
-    <style>
-        .chosen-container {
-            width: 100% !important;
-        }
-
-        .chosen-single {
-            width: 100%;
-            height: 305px;
-        }
-
-        .container {
-            position: relative;
-            font-family: Arial;
-            width: 95%;
-        }
-
-        .text-block {
-            position: sticky;
-            bottom: 80%;
-            right: 10%;
-            background-color: transparent;
-            color: white;
-            padding-left: 20px;
-            padding-right: 0px;
-        }
-    </style>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <link href="~/Content/chosen.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/chosen.jquery.min.js"></script>
-
-</head>
-
-
-
-
-
-
-
-<body>
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-sm navbar-dark primary-color" style="background-color:darkslategrey; margin-bottom:0.1px;">
-        <!-- Navbar brand -->
-        <a class="navbar-brand" href="#">Care-n-Reapir</a>
-        <!-- Collapse button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- Collapsible content -->
-        <div class="collapse navbar-collapse" id="basicExampleNav">
-            <!-- Links -->
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="https://localhost:44316/Home">
-                        Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://localhost:44316/quotations">Request Quotation</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://localhost:44316/inventories">Inventory</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <!-- Dropdown -->
-                <li class="nav-item dropdown multi-level-dropdown">
-                    <a href="#" id="menu" data-toggle="dropdown" class="nav-link dropdown-toggle w-100">Order</a>
-                    <ul class="dropdown-menu mt-2 rounded-0 primary-color border-0 z-depth-1">
-                        <li class="dropdown-item dropdown-submenu p-0">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle text-white w-100">Click Me Too! </a>
-
-                        </li>
-                        <li class="dropdown-item dropdown-submenu">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle text-white w-100">Click me </a>
-                            <ul class="dropdown-menu mr-2 rounded-0  primary-color border-0 z-depth-1 r-100 ">
-                                <li class="dropdown-item p-0">
-                                    <a href="#" class="text-white w-100">How</a>
-                                </li>
-
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="align-content-xl-end">
-                    <a href="@Url.Action("CheckOut", "Home")" class="btn btn-info btn-lg">
-                        <span class="glyphicon glyphicon-shopping-cart" style="color:green"></span><span class="badge"> @Session["count"]</span>
-                    </a>
-                </li>
-            </ul>
-
-
-            <!-- Links -->
-
-
-        </div>
-        <!-- Collapsible content -->
-    </nav>
-    <!--/.Navbar-->
-    <div style="background-image:url('https://wallup.net/wp-content/uploads/2016/07/21/408376-abstract-car-sports_car-parts-mechanics-Ferrari-Exploded-view_diagram-Composite-748x421.jpg'); background-position:center; background-color:whitesmoke;">
-        <div class="containerr" style="margin-left:90px;margin-right:90px;">
-            <img class="mySlides" src="~/Images/backgg.jpg" style="width:100%;height:370px;">
-            <img class="mySlides" src="~/Images/b2.jpg" style="width:100%;height:370px;">
-            <img class="mySlides" src="~/Images/b3.jpg" style="width:100%;height:370px;">
-
-
-            <div class="text-block" style=" margin-left:auto; margin-right:auto;">
-                @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-                {
-                    <table style=" margin-left:auto; margin-right:auto;">
-
-
-
-                        @Html.AntiForgeryToken()
-                        <tr>
-
-                            <td>
-
-
-
-                                @Html.DropDownListFor(m => m.selctedCarBrands, Model.GetVehivclesList.Select(x => new SelectListItem
-                           {
-                               Text = x.Make,
-                               Value = x.Id.ToString()
-                           }), "Select Vehicle", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL", style = " border-color:yellow" })
-
-
-
-
-
-                            </td>
-                            <td>
-
-
-                                @Html.DropDownListFor(m => m.selctedCarModel, Model.GetModelList.Select(x => new SelectListItem
-                           {
-                               Text = x.Model,
-                               Value = x.Id.ToString()
-                           }), "Select Vehicle", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDLL", style = " border-color:yellow" })
-
-
-
-
-
-
-                            </td>
-                            <td>
-                                @Html.DropDownListFor(m => m.selectedYear, (IEnumerable<SelectListItem>)ViewBag.Years, "Select Year", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL2", style = " border-color:yellow" })
-                            </td>
-
-                            <td>
-
-                                @Ajax.ActionLink("Search ", "AllTest", new { NID = Convert.ToInt32(Model.selctedCarModel), id = Convert.ToInt32(Model.selctedCarBrands), YID = Model.selectedYear },
-  new AjaxOptions
-  {
-      HttpMethod = "GET", // HttpMethod to use, GET or POST
-      UpdateTargetId = "Cardd", // ID of the HTML element to update
-      InsertionMode = InsertionMode.Replace // Replace the existing contents
-  }, new { @class = "btn btn-warning" })
-
-                            </td>
-
-                        </tr>
-
-
-                    </table>
-                }
-
-
-
-            </div>
-
-        </div>
-
-    </div>
-
- 
-      
-  
-    <!-- Head End  AFter Head Start-->
-    <div class="container" style="width:120%">
-
-
-        <div class="card" style="width:100%">
-
-            <div class="card-body" id="Cardd" style="text-align:center">
-
-                @{
-                    if (ViewBag.parrt != null)
-                    {
-                        //Html.RenderAction("AllTest", "Home");
-                        foreach (PartsInventory item in ViewBag.parrt)
-                        {
-                            using (Html.BeginForm("PlaceOrder", "Home", FormMethod.Post))
-                            {
-                                <div class="card">
-                                    <div class="row">
-                                        <aside class="col-sm-5 border-right">
-                                            <article class="gallery-wrap">
-                                                <div class="img-big-wrap">
-                                                    <img src="@Url.Content(item.ImagePath)" style="height:90%; width:100%" />
-                                                </div> <!-- slider-product.// -->
-
-                                            </article> <!-- gallery-wrap .end// -->
-                                        </aside>
-                                        <aside class="col-sm-7">
-                                            <article class="card-body p-5">
-
-                                                <tr>
-
-                                                    <td>
-                                                        <h2>@Html.DisplayFor(modelItem => item.Name)</h2>
-                                                    </td>
-                                                    <td>
-                                                </tr>
-
-                                                <p class="price-detail-wrap">
-                                                    <span class="price h3 text-warning">
-                                                        <span class="currency">US $</span><span class="num"> @Html.DisplayFor(modelItem => item.SalePrice)</span>
-                                                    </span>
-
-                                                </p> <!-- price-detail-wrap .// -->
-                                                <dl class="item-property">
-                                                    <dt>Description</dt>
-                                                    <dd>
-                                                        <p>
-
-                                                            @Html.DisplayFor(modelItem => item.Description)
-                                                        </p>
-                                                    </dd>
-                                                </dl>
-                                                @Html.Hidden("SalePrice", item.SalePrice)
-                                                @Html.Hidden("ImagePath", item.ImagePath)
-                                                @Html.Hidden("Name", item.Name)
-                                                @Html.Hidden("Description", item.Description)
-
-                                                @Html.Hidden("PartID", item.PartID)
-                                                @Html.Hidden("IDD", item.PartID)
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="col-sm-5">
-                                                        <dl class="param param-inline">
-                                                            <dt>Quantity: </dt>
-                                                            <dd>
-
-                                                                @Html.DropDownList("Qty", new List<SelectListItem>
-                         {
-                                             new SelectListItem() {Text = "1", Value="1"},
-                                             new SelectListItem() {Text = "2", Value="2"},
-                                             new SelectListItem() {Text = "3", Value="3"},
-                                             new SelectListItem() {Text = "4", Value="4"}
-
-                         }, new { @class = "form-control", id = "Qty" })
-
-                                                            </dd>
-                                                        </dl>  <!-- item-property .// -->
-                                                        ,
-                                                    </div> <!-- col.// -->
-                                                    <div class="col-sm-7">
-                                                        <dl class="param param-inline">
-                                                            <dt>Total Order(5) </dt>
-
-                                                        </dl>  <!-- item-property .// -->
-                                                    </div> <!-- col.// -->
-                                                </div> <!-- row.// -->
-                                                <hr>
-
-
-                                                <input id="Submit1" type="submit" data-toggle="modal" data-target="#myModal" class="btn btn-danger" value="Order" />
-                                                <!--    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" onclick="OrderPostback()" data-target="#myModal">Order</button>-->
-
-
-                                            </article> <!-- card-body.// -->
-                                        </aside> <!-- col.// -->
-                                    </div> <!-- row.// -->
-                                </div> <!-- card.// -->
-                            }
-
-                        }
-
-
-                    }
-                }
-            </div>
-        </div>
-
-    </div>
-
-
-</body>
-</html>
-<script>
-        var myIndex = 0;
-    carousel();
-
-    function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        myIndex++;
-        if (myIndex > x.length) { myIndex = 1 }
-        x[myIndex - 1].style.display = "block";
-        setTimeout(carousel, 5000); // Change image every 2 seconds
+<style>
+    .chosen-container {
+        width: 100% !important;
     }
 
+    .chosen-single {
+        width: 100%;
+        height: 305px;
+    }
+
+    .container {
+        position: relative;
+        font-family: Arial;
+        width: 95%;
+    }
+
+    .text-block {
+        position: sticky;
+        bottom: 80%;
+        right: 10%;
+        background-color: transparent;
+        color: white;
+        padding-left: 20px;
+        padding-right: 0px;
+    }
+</style>
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" style="width:100%" data-ride="carousel">
+    <div class="text-block" style="text-align:center; position:absolute; left:0; right:0; z-index:9;">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            <table style="margin-left:auto; margin-right:auto;">
+                @Html.AntiForgeryToken()
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            @Html.DropDownListFor(m => m.selctedCarBrands, Model.GetVehivclesList.Select(x => new SelectListItem
+                   {
+                       Text = x.Make,
+                       Value = x.Id.ToString()
+                   }), "Select Vehicle", new { @class = "form-control custom-select chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL", style = "border-color:yellow" })
+
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            @Html.DropDownListFor(m => m.selctedCarModel, Model.GetModelList.Select(x => new SelectListItem
+                   {
+                       Text = x.Model,
+                       Value = x.Id.ToString()
+                   }), "Select Vehicle", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDLL", style = " border-color:yellow" })
+
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            @Html.DropDownListFor(m => m.selectedYear, (IEnumerable<SelectListItem>)ViewBag.Years, "Select Year", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL2", style = " border-color:yellow" })
+                        </div>
+
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            @Html.HiddenFor(m=>m.selctedCarModel)
+                            @Ajax.ActionLink("Search ", "AllTest", new { NID = Convert.ToInt32(Model.selctedCarModel), id = Convert.ToInt32(Model.selctedCarBrands), YID = Model.selectedYear },
+new AjaxOptions
+{
+HttpMethod = "GET", // HttpMethod to use, GET or POST
+UpdateTargetId = "Cardd", // ID of the HTML element to update
+InsertionMode = InsertionMode.Replace // Replace the existing contents
+}, new { @class = "btn btn-warning" })
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="~/Images/backgg.jpg" alt="First slide">
+            <div class="carousel-caption d-none d-md-block">
+                <h2>Amazing cars available</h2>
+                <p>This is the first dummy slide</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="~/Images/b2.jpg" alt="Second slide">
+            <div class="carousel-caption d-none d-block">
+                <h2>Car Parts Available</h2>
+                <p>Second Dummy Slide</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="~/Images/b3.jpg" alt="Third slide">
+            <div class="carousel-caption d-none d-block">
+                <h5>Request for new parts</h5>
+                <p>third dummy slide</p>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div>
+          <div class="container" style="margin-left:90px;margin-right:90px;">
+              <img class="mySlides" src="~/Images/backgg.jpg" style="width:100%;height:370px;">
+              <img class="mySlides" src="~/Images/b2.jpg" style="width:100%;height:370px;">
+              <img class="mySlides" src="~/Images/b3.jpg" style="width:100%;height:370px;">
 
 
-    $('#DDL').chosen();
-    $('#DDLL').chosen();
-    $('#DDL2').chosen();
-</script>
+              <div class="text-block" style=" margin-left:auto; margin-right:auto;">
+                  @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                  {
+                      <table style=" margin-left:auto; margin-right:auto;">
+                          @Html.AntiForgeryToken()
+                          <tr>
+                              <td>
+                                  @Html.DropDownListFor(m => m.selctedCarBrands, Model.GetVehivclesList.Select(x => new SelectListItem
+                             {
+                                 Text = x.Make,
+                                 Value = x.Id.ToString()
+                             }), "Select Vehicle", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL", style = " border-color:yellow" })
+                              </td>
+                              <td>
+                                  @Html.DropDownListFor(m => m.selctedCarModel, Model.GetModelList.Select(x => new SelectListItem
+                             {
+                                 Text = x.Model,
+                                 Value = x.Id.ToString()
+                             }), "Select Vehicle", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDLL", style = " border-color:yellow" })
+                              </td>
+                              <td>
+                                  @Html.DropDownListFor(m => m.selectedYear, (IEnumerable<SelectListItem>)ViewBag.Years, "Select Year", new { @class = "form-control chosen-select", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL2", style = " border-color:yellow" })
+                              </td>
+                              <td>
+
+                                  @Ajax.ActionLink("Search ", "AllTest", new { NID = Convert.ToInt32(Model.selctedCarModel), id = Convert.ToInt32(Model.selctedCarBrands), YID = Model.selectedYear },
+    new AjaxOptions
+    {
+        HttpMethod = "GET", // HttpMethod to use, GET or POST
+        UpdateTargetId = "Cardd", // ID of the HTML element to update
+        InsertionMode = InsertionMode.Replace // Replace the existing contents
+    }, new { @class = "btn btn-warning" })
+                              </td>
+                          </tr>
+                      </table>
+                  }
+              </div>
+          </div>
+      </div>*@
+
+<!-- Head End  AFter Head Start-->
+<div class="container" style="width:120%">
+
+
+    <div class="card" style="width:100%">
+
+        <div class="card-body" id="Cardd" style="text-align:center">
+
+            @{
+                if (ViewBag.parrt != null)
+                {
+                    //Html.RenderAction("AllTest", "Home");
+                    foreach (PartsInventory item in ViewBag.parrt)
+                    {
+                        using (Html.BeginForm("PlaceOrder", "Home", FormMethod.Post))
+                        {
+                            <div class="card">
+                                <div class="row card-body">
+                                    @*product image*@
+                                    <div class="col-4">
+                                        <div class="img-big-wrap img-thumbnail card-img">
+                                            <img src="@Url.Content(item.ImagePath)" style="max-height:200px; width:100%" />
+                                        </div>
+                                    </div>
+                                    @*product description and actions*@
+                                    <div class="col-8 text-left">
+                                        <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+                                        <p class="price-detail-wrap">
+                                            <span class="price h3 text-warning">
+                                                <span class="currency">US <i class="fa fa-usd"></i></span><span class="num"> @Html.DisplayFor(modelItem => item.SalePrice)</span>
+                                            </span>
+                                        </p> <!-- price-detail-wrap .// -->
+                                        <div>
+                                            @Html.Hidden("PartID", item.PartID)
+                                            @Html.Hidden("SalePrice", item.SalePrice)
+                                            @Html.Hidden("ImagePath", item.ImagePath)
+                                            @Html.Hidden("Name", item.Name)
+                                            @Html.Hidden("Description", item.Description)
+                                            @Html.Hidden("PartID", item.PartID)
+                                            @Html.Hidden("IDD", item.PartID)
+                                            <h6>Description</h6>
+                                            <p class="small">
+                                                @Html.DisplayFor(modelItem => item.Description)
+                                            </p>
+                                        </div>
+                                        <div class="pt-4">
+                                            <input id="Submit1" type="submit" data-toggle="modal" data-target="#myModal" class="btn btn-danger" value="Order" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                            
+                        }
+
+                    }
+
+
+                }
+            }
+        </div>
+    </div>
+
+</div>
+
 @section Scripts {
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+    <script>
+        var myIndex = 0;
+        carousel();
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jquery")
-    <script src="~/Scripts/chosen.jquery.min.js"></script>
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) { myIndex = 1 }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 5000); // Change image every 2 seconds
+        }
+        $('#DDL').chosen();
+        $('#DDLL').chosen();
+        $('#DDL2').chosen();
+    </script>
+    @*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>*@
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @*<script src="~/Scripts/chosen.jquery.min.js"></script>*@
 }

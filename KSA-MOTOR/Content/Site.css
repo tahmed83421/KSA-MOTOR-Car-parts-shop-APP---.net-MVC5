@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     padding-bottom: 20px;
 }
 
@@ -8,7 +8,27 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+.inputs-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 5;
+}
 
+.search-text-box {
+    flex-grow: 1;
+    width: 20rem;
+    height: 3rem;
+    padding: 0.2rem;
+    margin: 1rem;
+}
+
+.search-button {
+    width: 5rem;
+    height: 3rem;
+    margin-top: 1rem;
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -17,7 +37,6 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
 select,
 textarea {
     max-width: 280px;
