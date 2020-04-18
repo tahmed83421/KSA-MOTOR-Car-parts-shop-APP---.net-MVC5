@@ -67,6 +67,7 @@
                     </td>
                     <td>
                         <div class="form-group">
+                            @Html.HiddenFor(m=>m.selctedCarModel)
                             @Ajax.ActionLink("Search ", "AllTest", new { NID = Convert.ToInt32(Model.selctedCarModel), id = Convert.ToInt32(Model.selctedCarBrands), YID = Model.selectedYear },
 new AjaxOptions
 {

@@ -116,11 +116,11 @@ namespace KSA_MOTOR.Controllers
                 Vehicle vehicle = new Vehicle();
                 parts.GetVehivclesList = inventory.Vehicles.ToList();
                 parts.GetModelList = inventory.VModels.Where(x => x.MakerId == Convert.ToInt32(parts.selctedCarBrands)).ToList();
-                return View(parts);
+                return View("Home",parts);
             }
             else
             {
-                return View();
+                return View("Home",parts);
             }
 
         }
