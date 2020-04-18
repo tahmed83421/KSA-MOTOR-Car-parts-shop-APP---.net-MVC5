@@ -14,7 +14,8 @@
             </div>
 
             <div class="col-8">
-                <h4 class="text-left">@Html.DisplayFor(modelItem => item.Name) @Html.DisplayFor(modelItem => item.Description)</h4>
+                <h4>  @Html.ActionLink("" + item.Name + "-" + item.Description + "", "index", "Product", new {  id = item.PartID }, null)</h4>
+               
                 <div>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>

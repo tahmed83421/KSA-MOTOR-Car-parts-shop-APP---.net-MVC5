@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BusinessLayer;
 
 namespace KSA_MOTOR.Controllers
 {
@@ -11,12 +12,20 @@ namespace KSA_MOTOR.Controllers
         // GET: Product
         public ActionResult Index(int? id)
         {
-            if (id == null)
+            Inventory inventory = new Inventory();
+        
+            PartsInventory part;
+            if ( id == null )
             {
-                // show an error page
-            }
+                part = null;
 
-            return View();
+            }
+            else
+            {
+              
+                part = inventory.Parts.FirstOrDefault(x => x.PartID == id);
+            }
+            return View("Index", part);
         }
     }
 }
