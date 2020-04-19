@@ -13,20 +13,23 @@
         </ol>
         @using (Html.BeginForm("Index", "Home", FormMethod.Post))
         {  @Html.AntiForgeryToken()
+            <div class="inputs-wrapper-header d-flex font-weight-bolder text-white">
+                SELECT YOUR VEHICLE
+            </div>
             <div class="inputs-wrapper d-flex">
                 @Html.DropDownListFor(m => m.selctedCarBrands, Model.GetVehivclesList.Select(x => new SelectListItem
            {
                Text = x.Make,
                Value = x.Id.ToString()
-           }), "Select Vehicle", new { @class = "search-text-box", onchange = "this.form.submit();",  style = "border-color:yellow" })
+           }), "Make", new { @class = "search-text-box", onchange = "this.form.submit();",  style = "border-color:yellow" })
                 @Html.DropDownListFor(m => m.selctedCarModel, Model.GetModelList.Select(x => new SelectListItem
            {
                Text = x.Model,
                Value = x.Id.ToString()
-           }), "Select Model", new { @class = "search-text-box", onchange = "this.form.submit();", id = "NID", name="NID", style = " border-color:yellow" })
+           }), "Model", new { @class = "search-text-box", onchange = "this.form.submit();", id = "NID", name="NID", style = " border-color:yellow" })
 
 
-                @Html.DropDownListFor(m => m.selectedYear, (IEnumerable<SelectListItem>)ViewBag.Years, "Select Year", new { @class = "search-text-box", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL2", style = " border-color:yellow" })
+                @Html.DropDownListFor(m => m.selectedYear, (IEnumerable<SelectListItem>)ViewBag.Years, "Year", new { @class = "search-text-box", onchange = "this.form.submit();", @multipleclass = "chosen-select", id = "DDL2", style = " border-color:yellow" })
 
               
                 @Ajax.ActionLink("Search ", "Index", "Search", new { NID = Convert.ToInt32(Model.selctedCarModel), id = Convert.ToInt32(Model.selctedCarBrands), YID = Model.selectedYear },
@@ -50,14 +53,14 @@
                     <img class="d-block w-100" src="~/Images/b3.jpg" alt="Third slide">
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            @*<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
             <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
-            </a>
+            </a>*@
         </div>
 </div>
 <div class="container">

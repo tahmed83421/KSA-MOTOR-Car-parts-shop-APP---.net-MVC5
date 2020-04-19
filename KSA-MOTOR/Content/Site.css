@@ -8,6 +8,17 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+
+.inputs-wrapper-header {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 5;
+    font-size: 3.2rem;
+}
+
+
 .inputs-wrapper {
     position: absolute;
     top: 50%;
@@ -15,6 +26,7 @@
     transform: translate(-50%,-50%);
     z-index: 5;
 }
+
 
 .search-text-box {
     flex-grow: 1;
