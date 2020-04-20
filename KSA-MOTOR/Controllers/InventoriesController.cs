@@ -18,21 +18,22 @@ namespace KSA_MOTOR.Controllers
         
         public ActionResult Index()
         {
-            PartsInventory partsInventory = new PartsInventory();
-            Inventory inventory = new Inventory();
-            
+            //PartsInventory partsInventory = new PartsInventory();
+            //Inventory inventory = new Inventory();
 
-            List<PartsInventory> Parts = inventory.Parts.ToList();
-           
-            
-            ViewData["req"]= inventory.GetRequests();
-            return View(Parts);
+
+            //List<PartsInventory> Parts = inventory.Parts.ToList();
+
+
+            //ViewData["req"]= inventory.GetRequests();
+            //return View(Parts);
+            return View("StorageInformation");
         }
 
-        public ActionResult StorageInformation()
-        {
-            return View();
-        }      
+        //public ActionResult StorageInformation()
+        //{
+        //    return View();
+        //}      
 
 
         [HttpGet]
