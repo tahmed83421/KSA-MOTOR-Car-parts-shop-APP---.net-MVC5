@@ -10,36 +10,52 @@
 }
 
 .inputs-wrapper-header {
-    position: absolute;
+    /*position: absolute;
     top: 35%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);*/
     z-index: 5;
     font-size: 3.2rem;
+    justify-content: center;
 }
 
-
-.inputs-wrapper {
+.form-wrapper {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    width: 90%;
+}
+
+.inputs-wrapper {
+    /*position: absolute;
+    width: max-content;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);*/
+    display: flex;
+    overflow: auto;
+    align-items: center;
+    justify-content: center;
     z-index: 5;
 }
 
+.flex-item {
+    flex:auto;
+    position: relative;
+} 
 
 .search-text-box {
-    flex-grow: 1;
-    width: 20rem;
+    width: 100%;
     height: 3rem;
     padding: 0.2rem;
-    margin: 1rem;
+    margin: 0.5rem;
 }
 
 .search-button {
-    width: 5rem;
+    /*width: 5rem;*/
     height: 3rem;
-    margin-top: 1rem;
+    /*margin-top: 1rem;*/
 }
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
