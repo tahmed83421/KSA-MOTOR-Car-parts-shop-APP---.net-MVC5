@@ -20,9 +20,7 @@ namespace KSA_MOTOR.Controllers
         // GET: quotations
         public ActionResult Index()
         {
-            return View(db.quotations.ToList());
-            
-            
+            return View(db.quotations.ToList());    
            
         }
 
